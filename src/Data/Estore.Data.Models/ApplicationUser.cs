@@ -32,6 +32,9 @@ namespace Estore.Data.Models
         public DateTime? DeletedOn { get; set; }
 
         [Required]
+        public string CartId { get; set; }
+
+        [Required]
         public Cart Cart { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }

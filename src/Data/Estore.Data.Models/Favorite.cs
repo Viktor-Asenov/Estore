@@ -1,17 +1,9 @@
 ﻿namespace Estore.Data.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
-    using Estore.Data.Common.Models;
-
-    public class Favorite : BaseDeletableModel<string>
+    public class Favorite
     {
-        public Favorite()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-
         [Required]
         public string UserId { get; set; }
 

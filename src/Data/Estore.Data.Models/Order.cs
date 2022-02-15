@@ -1,18 +1,9 @@
 ﻿namespace Estore.Data.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
-    using Estore.Data.Common.Models;
-
-    public class Order : BaseDeletableModel<string>
+    public class Order
     {
-        public Order()
-        {
-            this.Id = Guid.NewGuid().ToString();
-            this.CreatedOn = DateTime.UtcNow;
-        }
-
         [Required]
         public string CartId { get; set; }
 
