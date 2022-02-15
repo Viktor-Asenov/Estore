@@ -50,6 +50,16 @@
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
+            builder.Entity<ApplicationUser>()
+                .HasOne(x => x.Cart)
+                .WithOne(x => x.User);
+
+            builder.Entity<Order>()
+                .HasKey(x => new { x.CartId, x.ProductId });
+
+            builder.Entity<Favorite>()
+                .HasKey(x => new { x.UserId, x.ProductId });
+
             this.ConfigureUserIdentityRelations(builder);
 
             EntityIndexesConfiguration.Configure(builder);
