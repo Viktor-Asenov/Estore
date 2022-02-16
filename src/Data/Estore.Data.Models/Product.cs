@@ -12,6 +12,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.CreatedOn = DateTime.UtcNow;
+            this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
         }
 

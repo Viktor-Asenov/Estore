@@ -11,6 +11,7 @@
         public Cart()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Orders = new HashSet<Order>();
         }
 
         [Required]

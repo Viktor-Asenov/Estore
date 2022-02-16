@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using Estore.Data.Common.Models;
 
@@ -13,6 +14,8 @@
             this.Products = new HashSet<Product>();
         }
 
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
         public string Name { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }

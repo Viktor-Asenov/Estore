@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220215164514_InitialCreate")]
+    [Migration("20220216092229_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,10 @@ namespace Estore.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("CartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -128,6 +132,9 @@ namespace Estore.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CartId")
+                        .IsUnique();
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("NormalizedEmail")
@@ -158,18 +165,11 @@ namespace Estore.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Cart");
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Category", b =>
@@ -190,13 +190,15 @@ namespace Estore.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Comment", b =>
@@ -205,9 +207,11 @@ namespace Estore.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AuthorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -228,7 +232,7 @@ namespace Estore.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Favorite", b =>
@@ -239,28 +243,11 @@ namespace Estore.Data.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("UserId", "ProductId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Favorite");
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Image", b =>
@@ -281,6 +268,7 @@ namespace Estore.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ProductId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
@@ -294,7 +282,7 @@ namespace Estore.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Order", b =>
@@ -305,21 +293,6 @@ namespace Estore.Data.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -328,11 +301,9 @@ namespace Estore.Data.Migrations
 
                     b.HasKey("CartId", "ProductId");
 
-                    b.HasIndex("IsDeleted");
-
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Product", b =>
@@ -383,7 +354,7 @@ namespace Estore.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Setting", b =>
@@ -522,22 +493,24 @@ namespace Estore.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Estore.Data.Models.Cart", b =>
+            modelBuilder.Entity("Estore.Data.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Estore.Data.Models.ApplicationUser", "User")
-                        .WithOne("Cart")
-                        .HasForeignKey("Estore.Data.Models.Cart", "UserId")
+                    b.HasOne("Estore.Data.Models.Cart", "Cart")
+                        .WithOne("User")
+                        .HasForeignKey("Estore.Data.Models.ApplicationUser", "CartId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Cart");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Comment", b =>
                 {
                     b.HasOne("Estore.Data.Models.ApplicationUser", "Author")
                         .WithMany("Comments")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });
@@ -565,7 +538,9 @@ namespace Estore.Data.Migrations
                 {
                     b.HasOne("Estore.Data.Models.Product", "Product")
                         .WithMany("Images")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Estore.Data.Models.ApplicationUser", "User")
                         .WithMany("Images")
@@ -657,9 +632,6 @@ namespace Estore.Data.Migrations
 
             modelBuilder.Entity("Estore.Data.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Cart")
-                        .IsRequired();
-
                     b.Navigation("Claims");
 
                     b.Navigation("Comments");
@@ -674,6 +646,9 @@ namespace Estore.Data.Migrations
             modelBuilder.Entity("Estore.Data.Models.Cart", b =>
                 {
                     b.Navigation("Orders");
+
+                    b.Navigation("User")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Category", b =>

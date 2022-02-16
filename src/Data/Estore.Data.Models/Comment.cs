@@ -1,6 +1,7 @@
 ﻿namespace Estore.Data.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     using Estore.Data.Common.Models;
 
@@ -11,8 +12,11 @@
             this.Id = Guid.NewGuid().ToString();
         }
 
+        [Required]
+        [MinLength(10)]
         public string Content { get; set; }
 
+        [Required]
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
