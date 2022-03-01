@@ -516,13 +516,13 @@ namespace Estore.Data.Migrations
             modelBuilder.Entity("Estore.Data.Models.Favorite", b =>
                 {
                     b.HasOne("Estore.Data.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("Favorites")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Estore.Data.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Favorites")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -634,6 +634,8 @@ namespace Estore.Data.Migrations
 
                     b.Navigation("Comments");
 
+                    b.Navigation("Favorites");
+
                     b.Navigation("Images");
 
                     b.Navigation("Logins");
@@ -656,6 +658,8 @@ namespace Estore.Data.Migrations
 
             modelBuilder.Entity("Estore.Data.Models.Product", b =>
                 {
+                    b.Navigation("Favorites");
+
                     b.Navigation("Images");
 
                     b.Navigation("Orders");

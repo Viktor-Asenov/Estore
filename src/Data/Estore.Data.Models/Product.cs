@@ -14,6 +14,7 @@
             this.CreatedOn = DateTime.UtcNow;
             this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
+            this.Favorites = new HashSet<Favorite>();
         }
 
         [Required]
@@ -39,5 +40,7 @@
         public virtual ICollection<Order> Orders { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
+
+        public virtual ICollection<Favorite> Favorites { get; set; }
     }
 }

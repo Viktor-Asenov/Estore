@@ -44,8 +44,4 @@
     <ProjectReference Include="..\Estore.Data.Models\Estore.Data.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

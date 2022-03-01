@@ -19,6 +19,7 @@ namespace Estore.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Images = new HashSet<Image>();
             this.Comments = new HashSet<Comment>();
+            this.Favorites = new HashSet<Favorite>();
         }
 
         // Audit info
@@ -46,5 +47,7 @@ namespace Estore.Data.Models
         public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<Favorite> Favorites { get; set; }
     }
 }
