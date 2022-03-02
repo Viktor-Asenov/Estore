@@ -28,15 +28,19 @@
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
-        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
 
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<ProductTag> ProductTags { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 
@@ -71,8 +75,11 @@
             builder.Entity<Order>()
                 .HasKey(x => new { x.CartId, x.ProductId });
 
-            builder.Entity<Favorite>()
+            builder.Entity<WishList>()
                 .HasKey(x => new { x.UserId, x.ProductId });
+
+            builder.Entity<ProductTag>()
+                .HasKey(x => new { x.ProductId, x.TagId });
 
             this.ConfigureUserIdentityRelations(builder);
 

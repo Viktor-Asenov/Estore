@@ -5,20 +5,26 @@
 
     using Estore.Data.Common.Models;
 
-    public class Comment : BaseDeletableModel<string>
+    public class Review : BaseDeletableModel<string>
     {
-        public Comment()
+        public Review()
         {
             this.Id = Guid.NewGuid().ToString();
         }
 
         [Required]
         [MinLength(10)]
+        [MaxLength(300)]
         public string Content { get; set; }
 
         [Required]
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
+
+        [Required]
+        public string ProductId { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

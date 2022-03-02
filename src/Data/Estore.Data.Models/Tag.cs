@@ -6,23 +6,19 @@
 
     using Estore.Data.Common.Models;
 
-    public class Category : BaseDeletableModel<string>
+    public class Tag : BaseDeletableModel<string>
     {
-        public Category()
+        public Tag()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Products = new HashSet<Product>();
+            this.TagProducts = new HashSet<ProductTag>();
         }
 
         [Required]
         [MinLength(3)]
-        [MaxLength(25)]
+        [MaxLength(20)]
         public string Name { get; set; }
 
-        public string ParentCategoryId { get; set; }
-
-        public virtual Category ParentCategory { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductTag> TagProducts { get; set; }
     }
 }

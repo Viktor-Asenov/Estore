@@ -14,23 +14,26 @@
             this.CreatedOn = DateTime.UtcNow;
             this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
-            this.Favorites = new HashSet<Favorite>();
+            this.Favorites = new HashSet<WishList>();
+            this.Reviews = new HashSet<Review>();
+            this.ProductTags = new HashSet<ProductTag>();
         }
 
         [Required]
-        [StringLength(25, MinimumLength = 3)]
+        [MinLength(3)]
+        [MaxLength(25)]
         public string Name { get; set; }
 
         [Required]
-        public string ImageUrl { get; set; }
-
-        [Required]
+        [MinLength(5)]
+        [MaxLength(200)]
         public string Description { get; set; }
 
         public decimal Price { get; set; }
 
         public decimal? Discount { get; set; }
 
+        [Required]
         public string CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
@@ -41,6 +44,10 @@
 
         public virtual ICollection<Image> Images { get; set; }
 
-        public virtual ICollection<Favorite> Favorites { get; set; }
+        public virtual ICollection<WishList> Favorites { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
+
+        public virtual ICollection<ProductTag> ProductTags { get; set; }
     }
 }
