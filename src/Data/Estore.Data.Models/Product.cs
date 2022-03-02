@@ -26,19 +26,26 @@
 
         [Required]
         [MinLength(5)]
-        [MaxLength(200)]
         public string Description { get; set; }
 
         public decimal Price { get; set; }
 
+        [Required]
+        public string Size { get; set; }
+
+        [Required]
+        [MinLength(3)]
+        [MaxLength(15)]
+        public string Color { get; set; }
+
         public decimal? Discount { get; set; }
+
+        public int ItemApplyDiscount { get; set; }
 
         [Required]
         public string CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
-        public int ItemApplyDiscount { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 
