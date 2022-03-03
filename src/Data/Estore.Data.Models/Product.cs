@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Estore.Data.Common.Models;
 
@@ -12,6 +13,8 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.CreatedOn = DateTime.UtcNow;
+            this.Colors = new HashSet<string>();
+            this.Sizes = new HashSet<string>();
             this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
             this.Favorites = new HashSet<WishList>();
@@ -30,14 +33,6 @@
 
         public decimal Price { get; set; }
 
-        [Required]
-        public string Size { get; set; }
-
-        [Required]
-        [MinLength(3)]
-        [MaxLength(15)]
-        public string Color { get; set; }
-
         public decimal? Discount { get; set; }
 
         public int ItemApplyDiscount { get; set; }
@@ -46,6 +41,12 @@
         public string CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
+        [NotMapped]
+        public ICollection<string> Colors { get; set; }
+
+        [NotMapped]
+        public ICollection<string> Sizes { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 

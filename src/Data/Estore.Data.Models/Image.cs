@@ -12,9 +12,8 @@
             this.Id = Guid.NewGuid().ToString();
         }
 
-        public string UserId { get; set; }
-
-        public virtual ApplicationUser User { get; set; }
+        [Required]
+        public string Url { get; set; }
 
         [Required]
         public string ProductId { get; set; }

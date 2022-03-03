@@ -17,7 +17,6 @@ namespace Estore.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            this.Images = new HashSet<Image>();
             this.Comments = new HashSet<Review>();
             this.Favorites = new HashSet<WishList>();
         }
@@ -43,8 +42,6 @@ namespace Estore.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-
-        public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Review> Comments { get; set; }
 

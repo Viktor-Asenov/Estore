@@ -162,8 +162,6 @@ namespace Estore.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Size = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Color = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     ItemApplyDiscount = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -273,7 +271,7 @@ namespace Estore.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -283,12 +281,6 @@ namespace Estore.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Images", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Images_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Images_Products_ProductId",
                         column: x => x.ProductId,
@@ -480,11 +472,6 @@ namespace Estore.Data.Migrations
                 name: "IX_Images_ProductId",
                 table: "Images",
                 column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_UserId",
-                table: "Images",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_ProductId",

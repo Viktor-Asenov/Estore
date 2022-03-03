@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220302175034_InitialCreate")]
+    [Migration("20220303163454_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,16 +227,15 @@ namespace Estore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Images");
                 });
@@ -271,11 +270,6 @@ namespace Estore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -305,10 +299,6 @@ namespace Estore.Data.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Size")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -583,13 +573,7 @@ namespace Estore.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Estore.Data.Models.ApplicationUser", "User")
-                        .WithMany("Images")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Product");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Order", b =>
@@ -737,8 +721,6 @@ namespace Estore.Data.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Favorites");
-
-                    b.Navigation("Images");
 
                     b.Navigation("Logins");
 
