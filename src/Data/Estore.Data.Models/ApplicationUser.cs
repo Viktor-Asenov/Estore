@@ -21,6 +21,16 @@ namespace Estore.Data.Models
             this.Favorites = new HashSet<WishList>();
         }
 
+        [Required]
+        [MinLength(1)]
+        public string Gender { get; set; }
+
+        [Required]
+        public string CartId { get; set; }
+
+        [Required]
+        public Cart Cart { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 
@@ -30,12 +40,6 @@ namespace Estore.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
-
-        [Required]
-        public string CartId { get; set; }
-
-        [Required]
-        public Cart Cart { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
