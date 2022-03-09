@@ -12,14 +12,28 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            if (dbContext.Products.Any())
+            if (dbContext.Products.Any(p => p.Category.ParentCategory.ParentCategory.Name == "Men"))
             {
                 return;
             }
 
+            // ########## PRODUCT TAGS ##########
+            var sustainableTag = dbContext.Tags
+                .FirstOrDefault(t => t.Name == "Sustainable");
+            var fashionTag = dbContext.Tags
+                .FirstOrDefault(t => t.Name == "Fashion");
+            var recycledTag = dbContext.Tags
+                .FirstOrDefault(t => t.Name == "Recycled");
+            var organicTag = dbContext.Tags
+                .FirstOrDefault(t => t.Name == "Organic");
+            var slimTag = dbContext.Tags
+                .FirstOrDefault(t => t.Name == "Slim");
+            var leatherTag = dbContext.Tags
+                .FirstOrDefault(t => t.Name == "Leather");
+
             // ########## JACKETS CATEGORY ##########
             var jacketsCategory = dbContext.Categories
-                .FirstOrDefault(c => c.Name == "Jackets" && c.ParentCategory.Name == "Men");
+                .FirstOrDefault(c => c.Name == "Jackets & Coats" && c.ParentCategory.ParentCategory.Name == "Men");
 
             var jackets = new List<Product>
             {
@@ -44,6 +58,11 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLACK, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = sustainableTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
                 new()
                 {
@@ -84,6 +103,12 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLACK, Color.DARKBLUE },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = sustainableTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                        new ProductTag { TagId = recycledTag.Id },
+                    },
                 },
                 new()
                 {
@@ -113,7 +138,7 @@
 
             // ########## JEANS CATEGORY ##########
             var jeansCategory = dbContext.Categories
-                .FirstOrDefault(c => c.Name == "Jeans" && c.ParentCategory.Name == "Men");
+                .FirstOrDefault(c => c.Name == "Jeans" && c.ParentCategory.ParentCategory.Name == "Men");
 
             var jeans = new List<Product>
             {
@@ -138,6 +163,11 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.GREY, Color.DARKBLUE },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = sustainableTag.Id },
+                        new ProductTag { TagId = organicTag.Id },
+                    },
                 },
                 new()
                 {
@@ -160,6 +190,11 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLUEBLACK },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = organicTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
                 new()
                 {
@@ -182,6 +217,10 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLUE, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = slimTag.Id },
+                    },
                 },
                 new()
                 {
@@ -200,6 +239,11 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLACK },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = organicTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
             };
 
@@ -207,7 +251,7 @@
 
             // ########## SHIRTS CATEGORY ##########
             var shirtsCategory = dbContext.Categories
-                .FirstOrDefault(c => c.Name == "Shirts" && c.ParentCategory.Name == "Men");
+                .FirstOrDefault(c => c.Name == "Shirts" && c.ParentCategory.ParentCategory.Name == "Men");
 
             var shirts = new List<Product>
             {
@@ -232,6 +276,10 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLACK, Color.OFFWHITE, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = organicTag.Id },
+                    },
                 },
                 new()
                 {
@@ -298,6 +346,11 @@
                     },
                     Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
                     Colors = new List<Color> { Color.BLUE, Color.DUSTYNUDE, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = sustainableTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
             };
 
@@ -330,6 +383,12 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.CARAMEL, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = sustainableTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                        new ProductTag { TagId = leatherTag.Id },
+                    },
                 },
                 new()
                 {
@@ -352,6 +411,10 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.SAND, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
                 new()
                 {
@@ -374,6 +437,10 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.SAND, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = leatherTag.Id },
+                    },
                 },
                 new()
                 {
@@ -403,7 +470,7 @@
 
             // ########## BELTS CATEGORY ##########
             var beltsCategory = dbContext.Categories
-                .FirstOrDefault(c => c.Name == "Belts" && c.ParentCategory.Name == "Men");
+                .FirstOrDefault(c => c.Name == "Belts" && c.ParentCategory.ParentCategory.Name == "Men");
 
             var belts = new List<Product>
             {
@@ -428,6 +495,11 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.CAMEL, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = sustainableTag.Id },
+                        new ProductTag { TagId = leatherTag.Id },
+                    },
                 },
                 new()
                 {
@@ -450,6 +522,11 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.BLACK },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = leatherTag.Id },
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
                 new()
                 {
@@ -472,6 +549,10 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.BROWN, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = leatherTag.Id },
+                    },
                 },
                 new()
                 {
@@ -494,6 +575,10 @@
                     },
                     Sizes = new List<Size> {  },
                     Colors = new List<Color> { Color.BLACK, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = leatherTag.Id },
+                    },
                 },
             };
 
@@ -501,7 +586,7 @@
 
             // ########## SUNGLASSES CATEGORY ##########
             var sunglassesCategory = dbContext.Categories
-                .FirstOrDefault(c => c.Name == "Sunglasses" && c.ParentCategory.Name == "Men");
+                .FirstOrDefault(c => c.Name == "Sunglasses" && c.ParentCategory.ParentCategory.Name == "Men");
 
             var sunglasses = new List<Product>
             {
@@ -552,6 +637,10 @@
                     },
                     Sizes = new List<Size> { Size.UNIVERSAL },
                     Colors = new List<Color> { Color.BLACK, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
                 new()
                 {
@@ -574,6 +663,10 @@
                     },
                     Sizes = new List<Size> { Size.UNIVERSAL },
                     Colors = new List<Color> { Color.PURPLE, },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag { TagId = fashionTag.Id },
+                    },
                 },
                 new()
                 {

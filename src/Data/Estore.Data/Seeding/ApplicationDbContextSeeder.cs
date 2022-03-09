@@ -29,6 +29,9 @@
                               new UsersSeeder(),
                               new RolesSeeder(),
                               new CategoriesSeeder(),
+                              new TagsSeeder(),
+                              new MenProductsSeeder(),
+                              new WomenProductsSeeder(),
                               new SettingsSeeder(),
                           };
 

@@ -23,7 +23,7 @@
 
         [Required]
         [MinLength(3)]
-        [MaxLength(25)]
+        [MaxLength(200)]
         public string Name { get; set; }
 
         [Required]
