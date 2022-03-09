@@ -11,6 +11,7 @@
         public Category()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.SubCategories = new HashSet<Category>();
             this.Products = new HashSet<Product>();
         }
 
@@ -22,6 +23,8 @@
         public string ParentCategoryId { get; set; }
 
         public virtual Category ParentCategory { get; set; }
+
+        public virtual ICollection<Category> SubCategories { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

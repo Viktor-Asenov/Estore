@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Estore.Data.Seeding.Seeders;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
@@ -27,6 +28,7 @@
                           {
                               new UsersSeeder(),
                               new RolesSeeder(),
+                              new CategoriesSeeder(),
                               new SettingsSeeder(),
                           };
 

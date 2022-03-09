@@ -229,7 +229,7 @@ namespace Estore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Url")
+                    b.Property<string>("RemoteUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -561,7 +561,7 @@ namespace Estore.Data.Migrations
             modelBuilder.Entity("Estore.Data.Models.Category", b =>
                 {
                     b.HasOne("Estore.Data.Models.Category", "ParentCategory")
-                        .WithMany()
+                        .WithMany("SubCategories")
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
@@ -740,6 +740,8 @@ namespace Estore.Data.Migrations
             modelBuilder.Entity("Estore.Data.Models.Category", b =>
                 {
                     b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
                 });
 
             modelBuilder.Entity("Estore.Data.Models.Product", b =>

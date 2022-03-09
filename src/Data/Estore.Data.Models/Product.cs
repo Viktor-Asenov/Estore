@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     using Estore.Data.Common.Models;
+    using Estore.Data.Models.Enumerations;
 
     public class Product : BaseDeletableModel<string>
     {
@@ -13,8 +14,6 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.CreatedOn = DateTime.UtcNow;
-            this.Colors = new HashSet<string>();
-            this.Sizes = new HashSet<string>();
             this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
             this.Favorites = new HashSet<WishList>();
@@ -43,10 +42,10 @@
         public virtual Category Category { get; set; }
 
         [NotMapped]
-        public ICollection<string> Colors { get; set; }
+        public ICollection<Color> Colors { get; set; }
 
         [NotMapped]
-        public ICollection<string> Sizes { get; set; }
+        public ICollection<Size> Sizes { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 

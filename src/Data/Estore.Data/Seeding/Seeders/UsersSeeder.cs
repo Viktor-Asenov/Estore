@@ -1,4 +1,4 @@
-﻿namespace Estore.Data.Seeding
+﻿namespace Estore.Data.Seeding.Seeders
 {
     using System;
     using System.Linq;

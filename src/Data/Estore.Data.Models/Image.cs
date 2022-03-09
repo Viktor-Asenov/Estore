@@ -13,7 +13,7 @@
         }
 
         [Required]
-        public string Url { get; set; }
+        public string RemoteUrl { get; set; }
 
         [Required]
         public string ProductId { get; set; }
