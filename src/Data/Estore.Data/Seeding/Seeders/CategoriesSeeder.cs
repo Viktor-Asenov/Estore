@@ -130,10 +130,6 @@
                                 {
                                     Name = "Jeans",
                                 },
-                                new()
-                                {
-                                    Name = "Shirts",
-                                },
                             },
                         },
                         new()

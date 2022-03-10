@@ -25,5 +25,9 @@
         ROSE = 21,
         KHAKI = 22,
         LAVENDER = 23,
+        BORDEAUX = 24,
+        YELLOW = 25,
+        PINK = 26,
+        OLIVE = 27,
     }
 }
