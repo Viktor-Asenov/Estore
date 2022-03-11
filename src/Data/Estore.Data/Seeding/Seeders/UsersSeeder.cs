@@ -27,8 +27,8 @@
 
             var admin = new ApplicationUser
             {
-                UserName = "Viktor",
-                NormalizedUserName = "VIKTOR",
+                UserName = "viktor@asenov.com",
+                NormalizedUserName = "VIKTOR@ASENOV.COM",
                 Email = "viktor@asenov.com",
                 NormalizedEmail = "VIKTOR@ASENOV.COM",
                 EmailConfirmed = true,
@@ -46,8 +46,8 @@
 
             var user = new ApplicationUser
             {
-                UserName = "Pesho",
-                NormalizedUserName = "PESHO",
+                UserName = "pesho@sample.com",
+                NormalizedUserName = "PESHO@SAMPLE.COM",
                 Email = "pesho@sample.com",
                 NormalizedEmail = "PESHO@SAMPLE.COM",
                 EmailConfirmed = true,
