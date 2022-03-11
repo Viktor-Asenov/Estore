@@ -1,5 +1,5 @@
 # Estore
-Online platform for shopping.
+Online shopping platform for SoftUni ASP.NET Core final course.
  
 Used technoloqies:
 - C#
