@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿@using Estore.Common
+
+<!doctype html>
 <!--[if IE]><![endif]-->
 <!--[if lt IE 7 ]> <html lang="en" class="ie6">    <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="ie7">    <![endif]-->
@@ -97,6 +99,12 @@
                                     </li>
                                 </ul>
                             </div>
+                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                            {
+                                <div class="header-left-menu">
+                                    <a asp-area="Administration" asp-controller="" asp-action="">Administration</a>
+                                </div>                                               
+                            }
                         </div>
                     </div>
                     <!-- HEADER-LEFT-MENU END -->
@@ -107,7 +115,7 @@
                                 @if (!this.User.Identity.IsAuthenticated)
                                 {
                                     <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="/Identity/Account/Login">Login</a></li>
+                                        <li class="list-inline-item"><a href="/Identity/Account/Login">Sign in</a></li>
                                         <li class="list-inline-item"><a href="/Identity/Account/Register">Register</a></li>
                                     </ul>
                                 }
@@ -119,9 +127,9 @@
                                          </li>
                                          <li class="list-inline-item">
                                              <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                                                 <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                                                 <button type="submit" class="nav-link btn btn-link text-white">Sign out</button>
                                              </form>
-                                         </li>
+                                         </li>                                          
                                      </ul>
                                 }
                             </nav>
@@ -155,13 +163,6 @@
                         </form>
                     </div>
                     <!-- CATEGORYS-PRODUCT-SEARCH END -->
-
-                    <!-- HEADER-RIGHT-CALLUS START -->
-                    <!--<div class="header-right-callus">
-                        <h3>call us free</h3>
-                        <span>0123-456-789</span>
-                    </div>-->
-                    <!-- HEADER-RIGHT-CALLUS END -->
 
                 </div>
             </div>

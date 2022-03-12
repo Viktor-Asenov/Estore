@@ -673,6 +673,12 @@ a.bstore-scrollertop i {
 	color: #ff4f4f;
 }
 
+.header-right-menu nav ul li a {
+	color: #fff;
+	padding: 0;
+	transition: all 0.3s ease 0s;
+}
+
 /*-----------------------
 3.2 header middle
 -------------------------*/
