@@ -9,6 +9,8 @@
     using Estore.Data.Repositories;
     using Estore.Data.Seeding;
     using Estore.Services.Data;
+    using Estore.Services.Data.Implementations;
+    using Estore.Services.Data.Interfaces;
     using Estore.Services.Mapping;
     using Estore.Services.Messaging;
     using Estore.Web.ViewModels;
@@ -64,6 +66,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IProductsService, ProductsService>();
             services.AddTransient<ISettingsService, SettingsService>();
         }
 

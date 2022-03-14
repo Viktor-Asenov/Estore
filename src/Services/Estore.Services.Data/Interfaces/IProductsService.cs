@@ -1,7 +1,12 @@
 ﻿namespace Estore.Services.Data.Interfaces
 {
-    public interface IProductsService<T>
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    public interface IProductsService
     {
-        T GetAllByCategory(string categoryId);
+        Task<IEnumerable<T>> GetAllByCategory<T>(int page, int itemsPerPage, string categoryId);
+
+        Task<IEnumerable<T>> GetAllTags<T>();
     }
 }

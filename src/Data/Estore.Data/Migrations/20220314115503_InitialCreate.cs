@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Estore.Data.Migrations
 {
     public partial class InitialCreate : Migration
@@ -59,8 +61,7 @@ namespace Estore.Data.Migrations
                         name: "FK_Categories_Categories_ParentCategoryId",
                         column: x => x.ParentCategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -273,7 +274,8 @@ namespace Estore.Data.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RemoteUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProductId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CategoryId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -283,11 +285,15 @@ namespace Estore.Data.Migrations
                 {
                     table.PrimaryKey("PK_Images", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Images_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Images_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -463,6 +469,11 @@ namespace Estore.Data.Migrations
                 name: "IX_Categories_ParentCategoryId",
                 table: "Categories",
                 column: "ParentCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_CategoryId",
+                table: "Images",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Images_IsDeleted",

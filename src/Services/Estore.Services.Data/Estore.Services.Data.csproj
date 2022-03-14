@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Estore.Data.Common\Estore.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\Estore.Data.Models\Estore.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\Estore.Data\Estore.Data.csproj" />
     <ProjectReference Include="..\Estore.Services.Mapping\Estore.Services.Mapping.csproj" />
   </ItemGroup>
 

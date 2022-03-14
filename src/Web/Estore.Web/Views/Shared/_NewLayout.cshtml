@@ -179,7 +179,7 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="">Men</a>
+                                        <a asp-controller="Products" asp-action="AllByCategory">Men</a>
                                         <ul class="mega-menu row">
                                             <li class="col-6">
                                                 <a class="mega-menu-title" href="">Clothes</a>
@@ -366,13 +366,15 @@
     <!-- HEADER AREA End -->
 
     <!-- MAIN-CONTENT-SECTION START -->
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
+    <section class="main-content-section">
+        <div class="container">
+            <partial name="_CookieConsentPartial" />
 
-        <main role="main" class="pb-3">
-            @this.RenderBody()
-        </main>
-    </div>
+            <main role="main" class="pb-3">
+                @this.RenderBody()
+            </main>
+        </div>
+    </section>    
     <!-- MAIN-CONTENT-SECTION END -->
 
     <!-- LATEST-NEWS-AREA START -->

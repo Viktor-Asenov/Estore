@@ -13,6 +13,7 @@
             this.Id = Guid.NewGuid().ToString();
             this.SubCategories = new HashSet<Category>();
             this.Products = new HashSet<Product>();
+            this.Images = new HashSet<Image>();
         }
 
         [Required]
@@ -27,5 +28,7 @@
         public virtual ICollection<Category> SubCategories { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

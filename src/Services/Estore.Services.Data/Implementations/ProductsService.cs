@@ -1,22 +1,41 @@
 ﻿namespace Estore.Services.Data.Implementations
 {
-    using Estore.Data.Common.Repositories;
-    using Estore.Data.Models;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Estore.Data;
     using Estore.Services.Data.Interfaces;
-    using Estore.Services.Data.Models.Products;
+    using Estore.Services.Mapping;
+    using Microsoft.EntityFrameworkCore;
 
-    public class ProductsService : IProductsService<ProductsByCategoryDto>
+    public class ProductsService : IProductsService
     {
+        private readonly ApplicationDbContext context;
 
-        public ProductsService()
+        public ProductsService(ApplicationDbContext context)
         {
+            this.context = context;
         }
 
-        public ProductsByCategoryDto GetAllByCategory(string categoryId)
+        public async Task<IEnumerable<T>> GetAllByCategory<T>(int page, int itemsPerPage, string categoryId)
         {
-            ProductsByCategoryDto categoryProducts = null;
+            var categoryProducts = this.context.Products
+                    .Where(p => p.CategoryId == categoryId)
+                    .Skip((page - 1) * itemsPerPage)
+                    .Take(itemsPerPage)
+                    .To<T>()
+                    .ToListAsync();
 
-            return categoryProducts;
+            return await categoryProducts;
+        }
+
+        public async Task<IEnumerable<T>> GetAllTags<T>()
+        {
+            var tags = this.context.Tags
+                .To<T>()
+                .ToListAsync();
+
+            return await tags;
         }
     }
 }
