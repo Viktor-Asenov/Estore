@@ -1,0 +1,37 @@
+﻿@using Estore.Web.ViewModels.Home
+@model MainMenuViewModel
+
+<!-- MAINMENU START -->
+<div class="col-lg-9">
+    <div class="mainmenu">
+        <nav>
+            <ul>
+                @foreach (var mainCategory in Model.MainCategories)
+                {
+                    <li>
+                        <a asp-controller="Categories" asp-action="All" asp-route-id="@mainCategory.Id">@mainCategory.Name</a>
+                        <ul class="mega-menu row">
+                            @foreach (var subMainCategory in mainCategory.SubMainCategories)
+                            {
+                                <li class="col-6">
+                                    <a class="mega-menu-title" asp-controller="Categories" asp-action="All" asp-route-id="@subMainCategory.Id">
+                                        @subMainCategory.Name
+                                    </a>
+                                    <ul>
+                                        @foreach (var subCategory in subMainCategory.SubCategories)
+                                        {
+                                            <li>
+                                                <a href="">@subCategory.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- MAINMENU END -->

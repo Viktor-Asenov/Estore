@@ -9,12 +9,11 @@
     using Estore.Data.Repositories;
     using Estore.Data.Seeding;
     using Estore.Services.Data;
+    using Estore.Services.Data.Contracts;
     using Estore.Services.Data.Implementations;
-    using Estore.Services.Data.Interfaces;
     using Estore.Services.Mapping;
     using Estore.Services.Messaging;
     using Estore.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -66,7 +65,9 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IProductsService, ProductsService>();
+            services.AddTransient<ITagsService, TagsService>();
             services.AddTransient<ISettingsService, SettingsService>();
         }
 

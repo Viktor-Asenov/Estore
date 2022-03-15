@@ -26,8 +26,8 @@
 
             var seeders = new List<ISeeder>
                           {
-                              new UsersSeeder(),
                               new RolesSeeder(),
+                              new UsersSeeder(),
                               new CategoriesSeeder(),
                               new TagsSeeder(),
                               new MenProductsSeeder(),

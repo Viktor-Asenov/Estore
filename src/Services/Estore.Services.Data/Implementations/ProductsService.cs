@@ -3,8 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Estore.Data;
-    using Estore.Services.Data.Interfaces;
+    using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
@@ -27,15 +28,6 @@
                     .ToListAsync();
 
             return await categoryProducts;
-        }
-
-        public async Task<IEnumerable<T>> GetAllTags<T>()
-        {
-            var tags = this.context.Tags
-                .To<T>()
-                .ToListAsync();
-
-            return await tags;
         }
     }
 }
