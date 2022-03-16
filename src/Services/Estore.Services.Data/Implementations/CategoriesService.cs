@@ -39,9 +39,9 @@
             var subMainCategories = await this.context.Categories
                 .Where(c => c.ParentCategoryId == parentCategoryId)
                 .To<SubMainCategoryViewModel>()
-                .OrderByDescending(mc => mc.Name.StartsWith("C"))
-                .ThenByDescending(mc => mc.Name.StartsWith("A"))
-                .ThenByDescending(mc => mc.Name.StartsWith("S"))
+                .OrderByDescending(smc => smc.Name.StartsWith("C"))
+                .ThenByDescending(smc => smc.Name.StartsWith("A"))
+                .ThenByDescending(smc => smc.Name.StartsWith("S"))
                 .ToListAsync();
 
             return subMainCategories;
@@ -52,6 +52,7 @@
             var subCategories = await this.context.Categories
                 .Where(c => c.ParentCategory.ParentCategoryId == parentCategoryId)
                 .To<SubCategoryViewModel>()
+                .OrderBy(sc => sc.Name.StartsWith("J"))
                 .ToListAsync();
 
             return subCategories;

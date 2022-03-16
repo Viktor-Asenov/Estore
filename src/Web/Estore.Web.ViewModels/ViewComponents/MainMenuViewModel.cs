@@ -1,4 +1,4 @@
-﻿namespace Estore.Web.ViewModels.Home
+﻿namespace Estore.Web.ViewModels.ViewComponents
 {
     using System.Collections.Generic;
 
@@ -7,9 +7,5 @@
     public class MainMenuViewModel
     {
         public IEnumerable<MainCategoryViewModel> MainCategories { get; set; }
-
-        public IEnumerable<SubMainCategoryViewModel> SubMainCategories { get; set; }
-
-        public IEnumerable<SubCategoryViewModel> SubCategories { get; set; }
     }
 }
