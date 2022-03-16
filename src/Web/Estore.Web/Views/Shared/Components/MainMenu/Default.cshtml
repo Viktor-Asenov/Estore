@@ -9,7 +9,7 @@
                 @foreach (var mainCategory in Model.MainCategories)
                 {
                     <li>
-                        <a asp-controller="Categories" asp-action="All" asp-route-id="@mainCategory.Id">@mainCategory.Name</a>
+                        <a asp-controller="Categories" asp-action="@mainCategory.Name" asp-route-id="@mainCategory.Id">@mainCategory.Name</a>
                         <ul class="mega-menu row">
                             @foreach (var subMainCategory in mainCategory.SubMainCategories)
                             {

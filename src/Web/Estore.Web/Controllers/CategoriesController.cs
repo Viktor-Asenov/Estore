@@ -6,6 +6,7 @@
     using Estore.Services.Data.Contracts;
     using Estore.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
 
     public class CategoriesController : BaseController
     {
@@ -17,16 +18,18 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> All(string categoryId)
+        public async Task<IActionResult> Men(string id)
         {
             try
             {
-                var subCategoriesViewModel = new MainCategoryViewModel
+                var allSubCategoriesModel = new AllSubCategoriesViewModel
                 {
-                    //Categories = await this.categoriesService.GetSubCategories<SubMainCategoryViewModel>(categoryId),
+                    SubCategories = await this.categoriesService
+                    .GetSubCategories<CategoryViewModel>(id)
+                    .ToListAsync(),
                 };
 
-                return this.View(subCategoriesViewModel);
+                return this.View(allSubCategoriesModel);
             }
             catch (Exception)
             {

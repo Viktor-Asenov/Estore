@@ -1,16 +1,15 @@
 ﻿namespace Estore.Services.Data.Contracts
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
-
-    using Estore.Web.ViewModels.Categories;
 
     public interface ICategoriesService
     {
-        Task<IEnumerable<MainCategoryViewModel>> GetAllMain();
+        IQueryable<T> GetMainCategories<T>();
 
-        Task<IEnumerable<SubMainCategoryViewModel>> GetSubMain(string parentCategoryId);
+        IQueryable<T> GetSubMainCategories<T>(string parentCategoryId);
 
-        Task<IEnumerable<SubCategoryViewModel>> GetSub(string parentCategoryId);
+        IQueryable<T> GetSubCategories<T>(string parentCategoryId);
     }
 }

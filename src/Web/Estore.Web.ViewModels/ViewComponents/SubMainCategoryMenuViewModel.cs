@@ -1,16 +1,16 @@
-﻿namespace Estore.Web.ViewModels.Categories
+﻿namespace Estore.Web.ViewModels.ViewComponents
 {
     using System.Collections.Generic;
 
     using Estore.Data.Models;
     using Estore.Services.Mapping;
 
-    public class MainCategoryViewModel : IMapFrom<Category>
+    public class SubMainCategoryMenuViewModel : IMapFrom<Category>
     {
         public string Id { get; set; }
 
         public string Name { get; set; }
 
-        public IEnumerable<SubMainCategoryViewModel> SubMainCategories { get; set; }
+        public ICollection<SubCategoryMenuViewModel> SubCategories { get; set; }
     }
 }

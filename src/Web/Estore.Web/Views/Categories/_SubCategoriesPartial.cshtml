@@ -1,0 +1,25 @@
+﻿@using Estore.Web.ViewModels.Categories
+@model AllSubCategoriesViewModel
+
+<div class="featured-products-area">
+    <div class="center-title-area">
+        <h2 class="center-title">Our Categories</h2>
+    </div>
+    <div class="carousel-wrap">
+        <!-- FEATURED-CAROUSEL START -->
+        <div class="feartured-carousel owl-carousel">
+            @foreach (var subCategory in Model.SubCategories)
+           {
+               <div class="class="col-md-6"">
+                   <div class="product-image">
+                       <a href="#"><img src="@subCategory.ImageUrl" /></a>
+                   </div>
+                   <div class="product-info">
+                       <a href="single-product.html">@subCategory.Name</a>
+                   </div>
+               </div>
+           }
+        </div>
+        <!-- FEATURED-CAROUSEL END -->
+    </div>
+</div>

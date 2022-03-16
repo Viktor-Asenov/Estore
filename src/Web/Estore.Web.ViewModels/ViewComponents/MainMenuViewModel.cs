@@ -6,6 +6,6 @@
 
     public class MainMenuViewModel
     {
-        public IEnumerable<MainCategoryViewModel> MainCategories { get; set; }
+        public IEnumerable<MainCategoryMenuViewModel> MainCategories { get; set; }
     }
 }

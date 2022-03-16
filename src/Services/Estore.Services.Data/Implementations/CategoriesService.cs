@@ -4,11 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
     using Estore.Data;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
-    using Estore.Web.ViewModels.Categories;
     using Microsoft.EntityFrameworkCore;
 
     public class CategoriesService : ICategoriesService
@@ -20,40 +18,39 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<MainCategoryViewModel>> GetAllMain()
+        public IQueryable<T> GetMainCategories<T>()
         {
             var categories = this.context.Categories
                 .Where(c => c.ParentCategoryId == null)
-                .To<MainCategoryViewModel>()
-                .OrderByDescending(mc => mc.Name.StartsWith("M"))
-                .ThenByDescending(mc => mc.Name.StartsWith("W"))
-                .ThenByDescending(mc => mc.Name.StartsWith("K"))
-                .ThenByDescending(mc => mc.Name.StartsWith("H"))
-                .ToListAsync();
+                .To<T>();
 
-            return await categories;
+            return categories;
         }
 
-        public async Task<IEnumerable<SubMainCategoryViewModel>> GetSubMain(string parentCategoryId)
+        public IQueryable<T> GetSubMainCategories<T>(string parentCategoryId)
         {
-            var subMainCategories = await this.context.Categories
+            if (parentCategoryId == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var subMainCategories = this.context.Categories
                 .Where(c => c.ParentCategoryId == parentCategoryId)
-                .To<SubMainCategoryViewModel>()
-                .OrderByDescending(smc => smc.Name.StartsWith("C"))
-                .ThenByDescending(smc => smc.Name.StartsWith("A"))
-                .ThenByDescending(smc => smc.Name.StartsWith("S"))
-                .ToListAsync();
+                .To<T>();
 
             return subMainCategories;
         }
 
-        public async Task<IEnumerable<SubCategoryViewModel>> GetSub(string parentCategoryId)
+        public IQueryable<T> GetSubCategories<T>(string parentCategoryId)
         {
-            var subCategories = await this.context.Categories
+            if (parentCategoryId == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var subCategories = this.context.Categories
                 .Where(c => c.ParentCategory.ParentCategoryId == parentCategoryId)
-                .To<SubCategoryViewModel>()
-                .OrderBy(sc => sc.Name.StartsWith("J"))
-                .ToListAsync();
+                .To<T>();
 
             return subCategories;
         }
