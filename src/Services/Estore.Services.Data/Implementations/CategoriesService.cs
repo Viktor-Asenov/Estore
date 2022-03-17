@@ -1,10 +1,11 @@
 ﻿namespace Estore.Services.Data.Implementations
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Estore.Data;
+    using Estore.Data.Common.Repositories;
+    using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@
     public class CategoriesService : ICategoriesService
     {
         private readonly ApplicationDbContext context;
+        private readonly IRepository<Category> categoriesRepository;
 
-        public CategoriesService(ApplicationDbContext context)
+        public CategoriesService(ApplicationDbContext context, IRepository<Category> categoriesRepository)
         {
             this.context = context;
+            this.categoriesRepository = categoriesRepository;
         }
 
         public IQueryable<T> GetMainCategories<T>()
@@ -53,6 +56,19 @@
                 .To<T>();
 
             return subCategories;
+        }
+
+        public async Task<string> GetParentName(string parentCategoryId)
+        {
+            var category = await this.context.Categories
+                .FirstOrDefaultAsync(c => c.Id == parentCategoryId);
+
+            if (category == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return category.Name;
         }
     }
 }
