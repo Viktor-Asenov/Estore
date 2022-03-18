@@ -21,7 +21,7 @@
         public async Task<IEnumerable<T>> GetAllByCategory<T>(string categoryId, int page, int itemsPerPage)
         {
             var categoryProducts = this.context.Products
-                    .Where(p => p.CategoryId == categoryId)
+                    .Where(p => p.Category.ParentCategoryId == categoryId)
                     .Skip((page - 1) * itemsPerPage)
                     .Take(itemsPerPage)
                     .To<T>()

@@ -12,6 +12,6 @@
 
         IQueryable<T> GetSubCategories<T>(string parentCategoryId);
 
-        Task<string> GetParentName(string parentCategoryId);
+        Task<string> GetName(string parentCategoryId);
     }
 }

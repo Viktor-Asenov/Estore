@@ -58,7 +58,7 @@
             return subCategories;
         }
 
-        public async Task<string> GetParentName(string parentCategoryId)
+        public async Task<string> GetName(string parentCategoryId)
         {
             var category = await this.context.Categories
                 .FirstOrDefaultAsync(c => c.Id == parentCategoryId);

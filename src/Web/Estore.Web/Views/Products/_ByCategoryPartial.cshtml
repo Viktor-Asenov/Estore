@@ -1,8 +1,11 @@
-﻿<!-- BSTORE-BREADCRUMB START -->
+﻿@using Estore.Web.ViewModels.Products
+@model ProductstByCategoryViewModel
+
+<!-- BSTORE-BREADCRUMB START -->
 <div class="bstore-breadcrumb">
     <a href="index.html">HOMe</a>
     <span><i class="fa fa-caret-right"></i></span>
-    <span>Women</span>
+    <span>@Model.CategoryName</span>
 </div>
 <!-- BSTORE-BREADCRUMB END -->
 
@@ -12,12 +15,12 @@
 			<!-- PRODUCT-CATEGORY-HEADER START -->
 			<div class="product-category-header">
 				<div class="category-header-image">
-					<img src="assets/images/category-header.webp" alt="category-header">
+					<img src="~/assets/images/category-header.webp" alt="category-header">
 					<div class="category-header-text">
-						<h2>Women </h2>
+						@*<h2>@Model.CategoryName </h2>
 						<strong>You will find here all woman fashion collections.</strong>
 						<p>This category includes all the basics of your wardrobe and much more:</p>
-						<p>shoes, accessories, printed t-shirts, feminine dresses, women's jeans!</p>
+						<p>shoes, accessories, printed t-shirts, feminine dresses, women's jeans!</p>*@
 					</div>
 				</div>
 			</div>
@@ -25,8 +28,8 @@
 			<div class="product-category-title">
 				<!-- PRODUCT-CATEGORY-TITLE START -->
 				<h1>
-					<span class="cat-name">Women</span>
-					<span class="count-product">There are 13 products.</span>
+					<span class="cat-name">@Model.CategoryName</span>
+					<span class="count-product">There are @Model.CategoriesProductsCount products.</span>
 				</h1>
 				<!-- PRODUCT-CATEGORY-TITLE END -->
 			</div>
@@ -109,637 +112,64 @@
 		<div class="all-gategory-product">
 			<div class="row">
 				<ul class="gategory-product">
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/3.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
+					@foreach (var product in @Model.CategoryProducts)
+					{
+						<!-- SINGLE ITEM START -->
+						<li class="cat-product-list">
+							<div class="row">
+								<div class="col-md-4 col-12">
 									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Faded Short Sleeves T-shirt
-												</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Faded short sleeves t-shirt with high neckline. Soft and
-													stretchy material for a comfortable fit. Accessorize
-													with a
-													straw hat and you're ready for summer! </p>
-											</div>
-											<div class="price-box">
-												<span class="price">$16.51</span>
-											</div>
+										<div class="product-image">
+											<a href="#"><img src="@product.ImageUrl" alt="product-image"></a>
 										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
+									</div>
+								</div>
+								<div class="col-md-8 col-12">
+									<div class="list-view-content">
+										<div class="single-product-item">
+											<div class="product-info">
+												<div class="customar-comments-box">
+													<a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Name </a>
+													<div class="rating-box">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="review-box">
+														<span>4 Review(s)</span>
+													</div>
+												</div>
+												<div class="product-datails">
+													<p>@product.Description</p>
+												</div>
+												<div class="price-box">
+													@if(@product.Discount != null) 
+													{
+														<span class="price">$@product.DiscountedPrice</span>
+														<span class="old-price">$@product.Price</span>														
+													}
+													else
+													{
+														<span class="old-price">$@product.Price</span>
+													}													
+												</div>
+											</div>
+											<div class="overlay-content-list">
+												<ul>
+													<li><a href="#" title="Add to cart" class="add-cart-text">Add to
+															cart</a></li>
+													<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
+												</ul>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/1.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">Sale!</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Blouse</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Short-sleeved blouse with feminine draped sleeve detail.
-												</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$22.95</span>
-												<span class="old-price">$27.00</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/9.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">Sale!</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Dress</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>100% cotton double printed dress. Black and white striped
-													top
-													and orange high waisted skater skirt bottom.</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$23.40</span>
-												<span class="old-price">$26.00</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/5.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">Sale!</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Dress</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>2 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Printed evening dress with straight sleeves with black
-													thin
-													waist belt and ruffled linings. </p>
-											</div>
-											<div class="price-box">
-												<span class="price">$50.99</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/12.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Summer Dress </a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Long printed dress with thin adjustable straps.
-													V-neckline
-													and wiring under the bust with ruffles at the bottom of
-													the
-													dress. </p>
-											</div>
-											<div class="price-box">
-												<span class="price">$28.98</span>
-												<span class="old-price">$30.51</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/13.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Summer Dress </a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Sleeveless knee-length chiffon dress. V-neckline with
-													elastic
-													under the bust lining.</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$30.50</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/11.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Dress</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>100% cotton double printed dress. Black and white striped
-													top
-													and orange high waisted skater skirt bottom.</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$26.00</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/2.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Blouse</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Short-sleeved blouse with feminine draped sleeve detail.
-												</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$27.00</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/4.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Faded Short Sleeves
-													T-shirt</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Faded short sleeves t-shirt with high neckline. Soft and
-													stretchy material for a comfortable fit. Accessorize
-													with a
-													straw hat and you're ready for summer!</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$16.51</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/7.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Chiffon Dress</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Printed chiffon knee length dress with tank straps. Deep
-													v-neckline.</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$16.40</span>
-												<span class="old-price">$20.50</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/10.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Dress</a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-half-empty"></i>
-													<i class="fa fa-star-half-empty"></i>
-												</div>
-												<div class="review-box">
-													<span>1 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>100% cotton double printed dress. Black and white striped
-													top
-													and orange high waisted skater skirt bottom.</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$26.00</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
-					<!-- SINGLE ITEM START -->
-					<li class="cat-product-list">
-						<div class="row">
-							<div class="col-md-4 col-12">
-								<div class="single-product-item">
-									<div class="product-image">
-										<a href="single-product.html"><img src="assets/images/product/sale/6.webp" alt="product-image"></a>
-										<a href="single-product.html" class="new-mark-box">new</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-12">
-								<div class="list-view-content">
-									<div class="single-product-item">
-										<div class="product-info">
-											<div class="customar-comments-box">
-												<a href="single-product.html">Printed Chiffon Dress </a>
-												<div class="rating-box">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="review-box">
-													<span>4 Review(s)</span>
-												</div>
-											</div>
-											<div class="product-datails">
-												<p>Printed chiffon knee length dress with tank straps. Deep
-													v-neckline.</p>
-											</div>
-											<div class="price-box">
-												<span class="price">$16.40</span>
-												<span class="old-price">$22.50</span>
-											</div>
-										</div>
-										<div class="overlay-content-list">
-											<ul>
-												<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-														cart</a></li>
-												<li><a href="#" title="Quick view"><i class="fa fa-search"></i></a></li>
-												<li><a href="#" title="Add to compare"><i class="fa fa-retweet"></i></a></li>
-												<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<!-- SINGLE ITEM END -->
+						</li>
+						<!-- SINGLE ITEM END -->
+					}					
 				</ul>
 			</div>
 		</div>
@@ -1049,15 +479,10 @@
 		<div class="product-left-sidebar">
 			<h2 class="left-title">Tags </h2>
 			<div class="category-tag">
-				<a href="#">fashion</a>
-				<a href="#">handbags</a>
-				<a href="#">women</a>
-				<a href="#">men</a>
-				<a href="#">kids</a>
-				<a href="#">New</a>
-				<a href="#">Accessories</a>
-				<a href="#">clothing</a>
-				<a href="#">New</a>
+				@foreach (var tag in Model.Tags)
+				{
+					<a href="#">@tag.Name</a>					   
+				}
 			</div>
 		</div>
 		<!-- SINGLE SIDEBAR TAG END -->
