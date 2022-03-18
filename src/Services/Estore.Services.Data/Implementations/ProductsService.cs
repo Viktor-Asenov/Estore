@@ -18,7 +18,7 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<T>> GetAllByCategory<T>(int page, int itemsPerPage, string categoryId)
+        public async Task<IEnumerable<T>> GetAllByCategory<T>(string categoryId, int page, int itemsPerPage)
         {
             var categoryProducts = this.context.Products
                     .Where(p => p.CategoryId == categoryId)

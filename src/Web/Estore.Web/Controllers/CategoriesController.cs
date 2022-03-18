@@ -1,6 +1,7 @@
 ﻿namespace Estore.Web.Controllers
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Estore.Services.Data.Contracts;
@@ -27,6 +28,9 @@
                     ParentCategoryName = await this.categoriesService.GetParentName(id),
                     SubCategories = await this.categoriesService
                     .GetSubCategories<CategoryViewModel>(id)
+                    .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
+                    .ThenByDescending(sc => sc.Name.StartsWith("J"))
+                    .ThenByDescending(sc => sc.Name.StartsWith("Sh"))
                     .ToListAsync(),
                 };
 
@@ -48,6 +52,9 @@
                     ParentCategoryName = await this.categoriesService.GetParentName(id),
                     SubCategories = await this.categoriesService
                     .GetSubCategories<CategoryViewModel>(id)
+                    .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
+                    .ThenByDescending(sc => sc.Name.StartsWith("J"))
+                    .ThenByDescending(sc => sc.Name.StartsWith("D"))
                     .ToListAsync(),
                 };
 
@@ -81,6 +88,51 @@
         }
 
         [HttpGet]
+        public async Task<IActionResult> Boys(string id)
+        {
+            try
+            {
+                var subMainCategoriesBoysModel = new AllSubCategoriesViewModel
+                {
+                    ParentCategoryName = await this.categoriesService.GetParentName(id),
+                    SubCategories = await this.categoriesService
+                    .GetSubMainCategories<CategoryViewModel>(id)
+                    .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
+                    .ToListAsync(),
+                };
+
+                return this.View(subMainCategoriesBoysModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Girls(string id)
+        {
+            try
+            {
+                var subMainCategoriesGirlsModel = new AllSubCategoriesViewModel
+                {
+                    ParentCategoryName = await this.categoriesService.GetParentName(id),
+                    SubCategories = await this.categoriesService
+                    .GetSubMainCategories<CategoryViewModel>(id)
+                    .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
+                    .ThenByDescending(sc => sc.Name.StartsWith("J"))
+                    .ToListAsync(),
+                };
+
+                return this.View(subMainCategoriesGirlsModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Home(string id)
         {
             try
@@ -94,6 +146,19 @@
                 };
 
                 return this.View(subMainCategoriesHomeModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Sale(string id)
+        {
+            try
+            {
+                return this.Redirect("/Products/Index" + id);
             }
             catch (Exception)
             {

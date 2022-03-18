@@ -5,6 +5,6 @@
 
     public interface IProductsService
     {
-        Task<IEnumerable<T>> GetAllByCategory<T>(int page, int itemsPerPage, string categoryId);        
+        Task<IEnumerable<T>> GetAllByCategory<T>(string categoryId, int page, int itemsPerPage);
     }
 }

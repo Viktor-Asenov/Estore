@@ -109,6 +109,7 @@
                     {
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                        endpoints.MapControllerRoute("defaultProducts", "{controller=Home}/{action=Index}/{id}/{page?}");
                         endpoints.MapRazorPages();
                     });
         }

@@ -12,7 +12,27 @@
            {
                <div class="class="col-md-6"">
                    <div class="product-image">
-                       <a href=""><img src="@subCategory.ImageUrl" /></a>
+                        @if(@Model.ParentCategoryName == "Kids")
+                        {
+                            @if(@subCategory.Name == "Boys")
+                            {
+                                <a asp-controller="Categories" asp-action="@subCategory.Name" asp-route-id="@subCategory.Id" >
+                                    <img src="@subCategory.ImageUrl" />
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Categories" asp-action="@subCategory.Name" asp-route-id="@subCategory.Id" >
+                                    <img src="@subCategory.ImageUrl" />
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <a asp-controller="Products" asp-action="@subCategory.Name" asp-route-id="@subCategory.Id" >
+                                <img src="@subCategory.ImageUrl" />
+                            </a>
+                        }                        
                    </div>
                    <div class="product-info">
                        <a href="single-product.html">@subCategory.Name</a>

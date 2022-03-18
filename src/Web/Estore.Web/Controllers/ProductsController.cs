@@ -9,6 +9,7 @@
 
     public class ProductsController : BaseController
     {
+        private const int ItemsPerPage = 10;
         private readonly IProductsService productsService;
         private readonly ITagsService tagsService;
 
@@ -19,16 +20,16 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> AllByCategory(int page, string categoryId)
+        public async Task<IActionResult> Clothes(string id, int page = 1)
         {
-            var productsByCategory = new ProductstByCategoryViewModel
+            var productsByCategoryModel = new ProductstByCategoryViewModel
             {
-                CategoryProducts = await this.productsService.GetAllByCategory<ProductInCategoryViewModel>(page, 10, categoryId),
+                CategoryProducts = await this.productsService.GetAllByCategory<ProductInCategoryViewModel>(id, page, ItemsPerPage),
                 Tags = await this.tagsService.GetAllTags<TagViewModel>(),
                 PageNumber = page,
             };
 
-            return this.View(productsByCategory);
+            return this.View(productsByCategoryModel);
         }
     }
 }
