@@ -58,10 +58,10 @@
             return subCategories;
         }
 
-        public async Task<string> GetName(string parentCategoryId)
+        public async Task<string> GetName(string categoryId)
         {
             var category = await this.context.Categories
-                .FirstOrDefaultAsync(c => c.Id == parentCategoryId);
+                .FirstOrDefaultAsync(c => c.Id == categoryId);
 
             if (category == null)
             {
@@ -69,6 +69,19 @@
             }
 
             return category.Name;
+        }
+
+        public async Task<string> GetImage(string categoryId)
+        {
+            var categoryImage = await this.context.Images
+                .FirstOrDefaultAsync(i => i.CategoryId == categoryId);
+
+            if (categoryImage == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return categoryImage.ToString();
         }
     }
 }

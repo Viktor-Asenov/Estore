@@ -29,5 +29,14 @@
 
             return await categoryProducts;
         }
+
+        public async Task<int> GetCount(string categoryId)
+        {
+            var subMainCategoryProducts = await this.context.Products
+                .Where(p => p.Category.ParentCategoryId == categoryId)
+                .ToListAsync();
+
+            return subMainCategoryProducts.Count();
+        }
     }
 }
