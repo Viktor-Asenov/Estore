@@ -1,10 +1,12 @@
 ﻿namespace Estore.Services.Data.Implementations
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using Estore.Data;
+    using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
@@ -18,25 +20,66 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<T>> GetAllByCategory<T>(string categoryId, int page, int itemsPerPage)
+        public async Task<IEnumerable<T>> GetSubMainCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage)
         {
-            var categoryProducts = this.context.Products
-                    .Where(p => p.Category.ParentCategoryId == categoryId)
+            var result = await IfCategoryExistsAsync(categoryId);
+
+            var subMainCategoryProducts = this.context.Products
+                    .Where(p => p.Category.ParentCategoryId == result.Id)
                     .Skip((page - 1) * itemsPerPage)
                     .Take(itemsPerPage)
                     .To<T>()
                     .ToListAsync();
 
-            return await categoryProducts;
+            return await subMainCategoryProducts;
         }
 
-        public async Task<int> GetCount(string categoryId)
+        public async Task<IEnumerable<T>> GetSubCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage)
         {
+            var result = await IfCategoryExistsAsync(categoryId);
+
+            var subCategoryProducts = this.context.Products
+                    .Where(p => p.Category.Id == result.Id)
+                    .Skip((page - 1) * itemsPerPage)
+                    .Take(itemsPerPage)
+                    .To<T>()
+                    .ToListAsync();
+
+            return await subCategoryProducts;
+        }
+
+        public async Task<int> GetSubMainCategoryProductsCountAsync(string categoryId)
+        {
+            var result = await IfCategoryExistsAsync(categoryId);
+
             var subMainCategoryProducts = await this.context.Products
-                .Where(p => p.Category.ParentCategoryId == categoryId)
+                .Where(p => p.Category.ParentCategoryId == result.Id)
                 .ToListAsync();
 
             return subMainCategoryProducts.Count();
+        }
+
+        public async Task<int> GetSubCategoryProductsCountAsync(string categoryId)
+        {
+            var result = await IfCategoryExistsAsync(categoryId);
+
+            var subMainCategoryProducts = await this.context.Products
+                .Where(p => p.Category.Id == result.Id)
+                .ToListAsync();
+
+            return subMainCategoryProducts.Count();
+        }
+
+        private async Task<Category> IfCategoryExistsAsync(string categoryId)
+        {
+            var category = await this.context.Categories
+                .FirstOrDefaultAsync(c => c.Id == categoryId);
+            if (category == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            return category;
         }
     }
 }

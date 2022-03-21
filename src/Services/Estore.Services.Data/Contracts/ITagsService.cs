@@ -5,6 +5,6 @@
 
     public interface ITagsService
     {
-        Task<IEnumerable<T>> GetAllTags<T>();
+        Task<IEnumerable<T>> GetAllTagsAsync<T>();
     }
 }

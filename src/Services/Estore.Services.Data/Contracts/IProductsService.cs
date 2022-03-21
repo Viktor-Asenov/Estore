@@ -5,8 +5,12 @@
 
     public interface IProductsService
     {
-        Task<IEnumerable<T>> GetAllByCategory<T>(string categoryId, int page, int itemsPerPage);
+        Task<IEnumerable<T>> GetSubMainCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage);
 
-        Task<int> GetCount(string categoryId);
+        Task<IEnumerable<T>> GetSubCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage);
+
+        Task<int> GetSubMainCategoryProductsCountAsync(string categoryId);
+
+        Task<int> GetSubCategoryProductsCountAsync(string categoryId);
     }
 }

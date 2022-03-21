@@ -12,8 +12,8 @@
 
         IQueryable<T> GetSubCategories<T>(string parentCategoryId);
 
-        Task<string> GetName(string categoryId);
+        Task<string> GetNameAsync(string categoryId);
 
-        Task<string> GetImage(string categoryId);
+        Task<string> GetImageAsync(string categoryId);
     }
 }

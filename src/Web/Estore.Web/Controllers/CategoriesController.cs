@@ -25,7 +25,7 @@
             {
                 var subCategoriesMenModel = new AllSubCategoriesViewModel
                 {
-                    ParentCategoryName = await this.categoriesService.GetName(id),
+                    ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
@@ -49,7 +49,7 @@
             {
                 var subCategoriesWomenModel = new AllSubCategoriesViewModel
                 {
-                    ParentCategoryName = await this.categoriesService.GetName(id),
+                    ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
@@ -73,7 +73,7 @@
             {
                 var subMainCategoriesKidsModel = new AllSubCategoriesViewModel
                 {
-                    ParentCategoryName = await this.categoriesService.GetName(id),
+                    ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubMainCategories<CategoryViewModel>(id)
                     .ToListAsync(),
@@ -94,7 +94,7 @@
             {
                 var subMainCategoriesBoysModel = new AllSubCategoriesViewModel
                 {
-                    ParentCategoryName = await this.categoriesService.GetName(id),
+                    ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
@@ -116,7 +116,7 @@
             {
                 var subMainCategoriesGirlsModel = new AllSubCategoriesViewModel
                 {
-                    ParentCategoryName = await this.categoriesService.GetName(id),
+                    ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
@@ -139,26 +139,13 @@
             {
                 var subMainCategoriesHomeModel = new AllSubCategoriesViewModel
                 {
-                    ParentCategoryName = await this.categoriesService.GetName(id),
+                    ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubMainCategories<CategoryViewModel>(id)
                     .ToListAsync(),
                 };
 
                 return this.View(subMainCategoriesHomeModel);
-            }
-            catch (Exception)
-            {
-                return this.NotFound();
-            }
-        }
-
-        [HttpGet]
-        public IActionResult Sale(string id)
-        {
-            try
-            {
-                return this.Redirect("/Products/Index" + id);
             }
             catch (Exception)
             {

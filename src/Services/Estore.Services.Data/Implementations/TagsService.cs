@@ -17,7 +17,7 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<T>> GetAllTags<T>()
+        public async Task<IEnumerable<T>> GetAllTagsAsync<T>()
         {
             var tags = this.context.Tags
                 .To<T>()

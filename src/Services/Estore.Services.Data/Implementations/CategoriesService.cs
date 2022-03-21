@@ -32,7 +32,9 @@
 
         public IQueryable<T> GetSubMainCategories<T>(string parentCategoryId)
         {
-            if (parentCategoryId == null)
+            var parentCategory = this.context.Categories
+                .FirstOrDefault(c => c.Id == parentCategoryId);
+            if (parentCategory == null)
             {
                 throw new ArgumentNullException();
             }
@@ -46,19 +48,21 @@
 
         public IQueryable<T> GetSubCategories<T>(string parentCategoryId)
         {
-            if (parentCategoryId == null)
+            var parentCategory = this.context.Categories
+                .FirstOrDefault(c => c.Id == parentCategoryId);
+            if (parentCategory == null)
             {
                 throw new ArgumentNullException();
             }
 
             var subCategories = this.context.Categories
-                .Where(c => c.ParentCategory.ParentCategoryId == parentCategoryId)
+                .Where(c => c.ParentCategory.ParentCategoryId == parentCategory.Id)
                 .To<T>();
 
             return subCategories;
         }
 
-        public async Task<string> GetName(string categoryId)
+        public async Task<string> GetNameAsync(string categoryId)
         {
             var category = await this.context.Categories
                 .FirstOrDefaultAsync(c => c.Id == categoryId);
@@ -71,7 +75,7 @@
             return category.Name;
         }
 
-        public async Task<string> GetImage(string categoryId)
+        public async Task<string> GetImageAsync(string categoryId)
         {
             var categoryImage = await this.context.Images
                 .FirstOrDefaultAsync(i => i.CategoryId == categoryId);

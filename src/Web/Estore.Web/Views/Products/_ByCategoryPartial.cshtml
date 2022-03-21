@@ -75,77 +75,7 @@
 					</div>
 					<!-- VIEW-SYSTEAM END -->
 				</div>
-				<!-- PRODUCT-SHOOTING-RESULT START -->
-				<div class="product-shooting-result">
-					<form action="#">
-						<button class="btn compare-button">
-							Compare (<span class="compare-value">1</span>)
-							<i class="fa fa-chevron-right"></i>
-						</button>
-					</form>
-					<div class="showing-item">
-						<span>Showing 1 - @Model.ItemsPerPage of @Model.CategoriesProductsCount items</span>
-					</div>
-					<div class="showing-next-prev">
-						<ul class="pagination-bar">
-							@{
-								var paramsPreviousPage = new Dictionary<string, string>
-								{
-									{ "id", @Model.CategoryId },
-									{ "page", @Model.PreviousPageNumber.ToString() }
-								};
-							}
-							@if (@Model.HasPreviousPage)
-							{
-								<li>									
-									<a asp-controller="Products" asp-action="@Model.CategoryName" asp-all-route-data="paramsPreviousPage">
-										<i class="fa fa-chevron-left disabled"></i>Previous
-									</a>
-								</li>
-							}
-							@for (var i = @Model.PageNumber - 2; i < @Model.PageNumber; i++)
-							{
-								@if (i > 0)
-								{
-									<li>
-										<span><a class="pagi-num" asp-action="@Model.CategoryName" asp-all-route-data="paramsPreviousPage">@i</a></span>
-									</li>
-								}								   
-							}
-							<li class="active">
-								<span><a class="pagi-num">@Model.PageNumber</a></span>
-							</li>
-							@{
-								var paramsNextPage = new Dictionary<string, string>
-								{
-									{ "id", @Model.CategoryId },
-									{ "page", @Model.NextPageNumber.ToString() }
-								};
-							}
-							@for (var i = @Model.PageNumber + 1; i <= @Model.PageNumber + 2; i++)
-							{
-								@if (i <= Model.PagesCount)
-								{
-									<li>
-										<span><a class="pagi-num" asp-action="@Model.CategoryName" asp-all-route-data="paramsNextPage">@i</a></span>
-									</li> 
-								}								  
-							}
-							@if (Model.HasNextPage)
-							{
-								<li>									
-									<a asp-controller="Products" asp-action="@Model.CategoryName" asp-all-route-data="paramsNextPage">
-										Next<i class="fa fa-chevron-right"></i>
-									</a>
-								</li>
-							}
-						</ul>
-						<form action="#">
-							<button class="btn showall-button">Show all</button>
-						</form>
-					</div>
-				</div>
-				<!-- PRODUCT-SHOOTING-RESULT END -->
+				
 			</div>
 		</div>
 		<!-- ALL GATEGORY-PRODUCT START -->
@@ -188,11 +118,11 @@
 													@if(@product.Discount != null) 
 													{
 														<span class="price">$@product.DiscountedPrice</span>
-														<span class="old-price">$@product.Price</span>														
+														<span class="old-price">$@product.Price</span>												
 													}
 													else
 													{
-														<span class="old-price">$@product.Price</span>
+														<span class="price">$@product.Price</span>
 													}													
 												</div>
 											</div>
@@ -213,32 +143,71 @@
 				</ul>
 			</div>
 		</div>
-		<!-- ALL GATEGORY-PRODUCT END -->
+		<!-- ALL CATEGORY-PRODUCT END -->
 		<!-- PRODUCT-SHOOTING-RESULT START -->
-		<div class="product-shooting-result product-shooting-result-border">
+		<div class="product-shooting-result">
 			<form action="#">
 				<button class="btn compare-button">
-					Compare (<strong class="compare-value">1</strong>)
+					Compare (<span class="compare-value">1</span>)
 					<i class="fa fa-chevron-right"></i>
 				</button>
 			</form>
 			<div class="showing-item">
-				<span>Showing 1 - 12 of 13 items</span>
+				<span>Showing 1 - @Model.ItemsPerPage of @Model.CategoriesProductsCount items</span>
 			</div>
 			<div class="showing-next-prev">
 				<ul class="pagination-bar">
-					<li class="disabled">
-						<a href="#"><i class="fa fa-chevron-left"></i>Previous</a>
-					</li>
+					@{
+						var paramsPreviousPage = new Dictionary<string, string>
+						{
+							{ "id", @Model.CategoryId },
+							{ "page", @Model.PreviousPageNumber.ToString() }
+						};
+					}
+					@if (@Model.HasPreviousPage)
+					{
+						<li>									
+							<a asp-controller="Products" asp-action="@Model.CategoryName" asp-all-route-data="paramsPreviousPage">
+								<i class="fa fa-chevron-left disabled"></i>Previous
+							</a>
+						</li>
+					}
+					@for (var i = @Model.PageNumber - 1; i < @Model.PageNumber; i++)
+					{
+						@if (i > 0)
+						{
+							<li>
+								<span><a class="pagi-num" asp-action="@Model.CategoryName" asp-all-route-data="paramsPreviousPage">@i</a></span>
+							</li>
+						}								   
+					}
 					<li class="active">
-						<span><a class="pagi-num" href="#">1</a></span>
+						<span><a class="pagi-num">@Model.PageNumber</a></span>
 					</li>
-					<li>
-						<span><a class="pagi-num" href="#">2</a></span>
-					</li>
-					<li>
-						<a href="#">Next<i class="fa fa-chevron-right"></i></a>
-					</li>
+					@{
+						var paramsNextPage = new Dictionary<string, string>
+						{
+							{ "id", @Model.CategoryId },
+							{ "page", @Model.NextPageNumber.ToString() }
+						};
+					}
+					@for (var i = @Model.PageNumber + 1; i <= @Model.PageNumber + 1; i++)
+					{
+						@if (i <= Model.PagesCount)
+						{
+							<li>
+								<span><a class="pagi-num" asp-action="@Model.CategoryName" asp-all-route-data="paramsNextPage">@i</a></span>
+							</li> 
+						}								  
+					}
+					@if (Model.HasNextPage)
+					{
+						<li>									
+							<a asp-controller="Products" asp-action="@Model.CategoryName" asp-all-route-data="paramsNextPage">
+								Next<i class="fa fa-chevron-right"></i>
+							</a>
+						</li>
+					}
 				</ul>
 				<form action="#">
 					<button class="btn showall-button">Show all</button>
