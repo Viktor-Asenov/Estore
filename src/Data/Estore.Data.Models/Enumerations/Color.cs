@@ -29,5 +29,8 @@
         YELLOW = 25,
         PINK = 26,
         OLIVE = 27,
+        BLACKBERRY = 28,
+        NATURE = 29,
+        MULTICOLOUR = 30,
     }
 }

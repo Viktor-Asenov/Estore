@@ -20,12 +20,7 @@
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var mainCategories = await this.categoriesService
-                .GetMainCategories<MainCategoryMenuViewModel>()
-                .OrderByDescending(mc => mc.Name.StartsWith("M"))
-                .ThenByDescending(mc => mc.Name.StartsWith("W"))
-                .ThenByDescending(mc => mc.Name.StartsWith("K"))
-                .ThenByDescending(mc => mc.Name.StartsWith("H"))
-                .ToListAsync();
+                .GetMainCategoriesAsync<MainCategoryMenuViewModel>();
 
             foreach (var mainCategory in mainCategories)
             {

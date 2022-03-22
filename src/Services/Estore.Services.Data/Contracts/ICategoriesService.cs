@@ -6,7 +6,7 @@
 
     public interface ICategoriesService
     {
-        IQueryable<T> GetMainCategories<T>();
+        Task<IEnumerable<T>> GetMainCategoriesAsync<T>();
 
         IQueryable<T> GetSubMainCategories<T>(string parentCategoryId);
 

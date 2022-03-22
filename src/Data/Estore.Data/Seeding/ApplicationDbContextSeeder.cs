@@ -33,6 +33,7 @@
                               new MenProductsSeeder(),
                               new WomenProductsSeeder(),
                               new KidsProductsSeeder(),
+                              new HomeProductsSeeder(),
                               new SettingsSeeder(),
                           };
 

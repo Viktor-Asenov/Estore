@@ -1,6 +1,7 @@
 ﻿namespace Estore.Services.Data.Implementations
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Estore.Data;
@@ -13,19 +14,22 @@
     public class CategoriesService : ICategoriesService
     {
         private readonly ApplicationDbContext context;
-        private readonly IRepository<Category> categoriesRepository;
 
-        public CategoriesService(ApplicationDbContext context, IRepository<Category> categoriesRepository)
+        public CategoriesService(ApplicationDbContext context)
         {
             this.context = context;
-            this.categoriesRepository = categoriesRepository;
         }
 
-        public IQueryable<T> GetMainCategories<T>()
+        public async Task<IEnumerable<T>> GetMainCategoriesAsync<T>()
         {
-            var categories = this.context.Categories
+            var categories = await this.context.Categories
                 .Where(c => c.ParentCategoryId == null)
-                .To<T>();
+                .OrderByDescending(mc => mc.Name.StartsWith("M"))
+                .ThenByDescending(mc => mc.Name.StartsWith("W"))
+                .ThenByDescending(mc => mc.Name.StartsWith("K"))
+                .ThenByDescending(mc => mc.Name.StartsWith("H"))
+                .To<T>()
+                .ToListAsync();
 
             return categories;
         }

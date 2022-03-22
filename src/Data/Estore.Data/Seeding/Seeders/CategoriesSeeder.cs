@@ -26,6 +26,10 @@
                         new()
                         {
                             Name = "Clothes",
+                            Images = new List<Image>
+                            {
+                                new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/991CC2K301_001_10?$SFCC_L$" },
+                            },
                             SubCategories = new List<Category>
                             {
                                 new()
@@ -57,10 +61,18 @@
                         new()
                         {
                             Name = "Shoes",
+                            Images = new List<Image>
+                            {
+                                new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/091EK2W308_285_37?$SFCC_L$" },
+                            },
                         },
                         new()
                         {
                             Name = "Accessories",
+                            Images = new List<Image>
+                            {
+                                new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EA2S301_230_37?$SFCC_L$" },
+                            },
                             SubCategories = new List<Category>
                             {
                                 new()
@@ -91,6 +103,10 @@
                         new()
                         {
                             Name = "Clothes",
+                            Images = new List<Image>
+                            {
+                                new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/991EO1G304_560_15?$SFCC_L$" },
+                            },
                             SubCategories = new List<Category>
                             {
                                 new()
@@ -122,10 +138,18 @@
                         new()
                         {
                             Name = "Shoes",
+                            Images = new List<Image>
+                            {
+                                new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/071EK1W310_295_34?$SFCC_L$" },
+                            },
                         },
                         new()
                         {
                             Name = "Accessories",
+                            Images = new List<Image>
+                            {
+                                new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EA1Q303_410_34?$SFCC_L$" },
+                            },
                             SubCategories = new List<Category>
                             {
                                 new()
@@ -247,10 +271,6 @@
                             },
                         },
                     },
-                },
-                new()
-                {
-                    Name = "Sale",
                 },
             };
 
