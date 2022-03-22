@@ -29,6 +29,7 @@
                     .OrderByDescending(smc => smc.Name.StartsWith("C"))
                     .ThenByDescending(smc => smc.Name.StartsWith("A"))
                     .ThenByDescending(smc => smc.Name.StartsWith("S"))
+                    .ThenByDescending(smc => smc.Name.StartsWith("B"))
                     .ToListAsync();
 
                 foreach (var subMainCategory in subMainCategories)

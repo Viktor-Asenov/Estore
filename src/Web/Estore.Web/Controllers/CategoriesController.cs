@@ -76,6 +76,7 @@
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubMainCategories<CategoryViewModel>(id)
+                    .OrderByDescending(c => c.Name.StartsWith("B"))
                     .ToListAsync(),
                 };
 
@@ -142,6 +143,7 @@
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
                     .GetSubMainCategories<CategoryViewModel>(id)
+                    .OrderByDescending(c => c.Name.StartsWith("B"))
                     .ToListAsync(),
                 };
 

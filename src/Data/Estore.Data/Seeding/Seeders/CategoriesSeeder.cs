@@ -34,7 +34,7 @@
                             {
                                 new()
                                 {
-                                    Name = "Jackets & Coats",
+                                    Name = "Jackets",
                                     Images = new List<Image>
                                     {
                                         new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EO2G325_400_10?$SFCC_L$" },
@@ -111,7 +111,7 @@
                             {
                                 new()
                                 {
-                                    Name = "Jackets & Coats",
+                                    Name = "Jackets",
                                     Images = new List<Image>
                                     {
                                         new() { RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022CC1G303_275_10?$SFCC_L$" },

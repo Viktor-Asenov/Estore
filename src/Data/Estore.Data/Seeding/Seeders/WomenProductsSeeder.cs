@@ -35,7 +35,7 @@
 
             // ########## JACKETS CATEGORY ##########
             var jacketsCategory = dbContext.Categories
-                .FirstOrDefault(c => c.Name == "Jackets & Coats" && c.ParentCategory.ParentCategory.Name == "Women");
+                .FirstOrDefault(c => c.Name == "Jackets" && c.ParentCategory.ParentCategory.Name == "Women");
 
             var jackets = new List<Product>
             {

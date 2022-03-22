@@ -131,7 +131,112 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Sale(string id, int page = 1)
+        public async Task<IActionResult> Jeans(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Shirts(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Jackets(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Belts(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Sunglasses(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Dresses(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Scarves(string id, int page = 1)
+        {
+            try
+            {
+                var viewModel = await this.GetSubModel(id, page);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Bags(string id, int page = 1)
         {
             try
             {
