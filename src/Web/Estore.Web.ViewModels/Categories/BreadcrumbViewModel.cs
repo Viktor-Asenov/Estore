@@ -17,12 +17,21 @@
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Category, BreadcrumbViewModel>()
-                .ForPath(bvm => bvm.ParentCategory.Id, opt =>
-                    opt.MapFrom(c => c.ParentCategory.Id))
-                .ForPath(bvm => bvm.ParentCategory.Name, opt =>
-                    opt.MapFrom(c => c.ParentCategory.Name))
-                .ForPath(bvm => bvm.ParentCategory.ParentCategoryId, opt =>
-                    opt.MapFrom(c => c.ParentCategory.ParentCategoryId));
+                .ForMember(
+                    x => x.ParentCategory,
+                    opt => opt.MapFrom(c =>
+                        new BreadcrumbViewModel
+                        {
+                            Id = c.ParentCategory.Id,
+                            Name = c.ParentCategory.Name,
+                            ParentCategoryId = c.ParentCategory.ParentCategoryId,
+                            ParentCategory = new BreadcrumbViewModel
+                            {
+                                Id = c.ParentCategory.ParentCategory.Id,
+                                Name = c.ParentCategory.ParentCategory.Name,
+                                ParentCategoryId = c.ParentCategory.ParentCategory.ParentCategoryId,
+                            },
+                        }));
         }
     }
 }

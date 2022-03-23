@@ -4,10 +4,15 @@
 
 <!-- BSTORE-BREADCRUMB START -->
 <div class="bstore-breadcrumb">
-    @if(@Model.Breadcrumb.ParentCategory.ParentCategoryId == null) 
+    @if(@Model.Breadcrumb.ParentCategory.ParentCategory.ParentCategoryId == null) 
 	{
-		<a href="">@Model.Breadcrumb.ParentCategory.ParentCategory.Name</a>
+		@Model.Breadcrumb.ParentCategory.ParentCategory.Name
 		<span><i class="fa fa-caret-right"></i></span>
+		
+		@Model.Breadcrumb.ParentCategory.Name
+		<span><i class="fa fa-caret-right"></i></span>
+
+		@Model.Breadcrumb.Name
 	}
 </div>
 <!-- BSTORE-BREADCRUMB END -->
