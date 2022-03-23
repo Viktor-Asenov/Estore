@@ -7,6 +7,7 @@
     using AutoMapper;
     using Estore.Data.Models;
     using Estore.Services.Mapping;
+    using Estore.Web.ViewModels.Categories;
     using Estore.Web.ViewModels.Tags;
 
     public class ProductstByCategoryViewModel
@@ -32,6 +33,8 @@
         public int NextPageNumber => this.PageNumber + 1;
 
         public int PagesCount => (int)Math.Ceiling((double)this.CategoriesProductsCount / this.ItemsPerPage);
+
+        public BreadcrumbViewModel Breadcrumb { get; set; }
 
         public IEnumerable<ProductInCategoryViewModel> CategoryProducts { get; set; }
 

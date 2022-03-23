@@ -23,7 +23,7 @@
         {
             try
             {
-                var subCategoriesMenModel = new AllSubCategoriesViewModel
+                var subCategoriesMenModel = new SubCategoriesListViewModel
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
@@ -47,7 +47,7 @@
         {
             try
             {
-                var subCategoriesWomenModel = new AllSubCategoriesViewModel
+                var subCategoriesWomenModel = new SubCategoriesListViewModel
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
@@ -71,7 +71,7 @@
         {
             try
             {
-                var subMainCategoriesKidsModel = new AllSubCategoriesViewModel
+                var subMainCategoriesKidsModel = new SubCategoriesListViewModel
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
@@ -93,7 +93,7 @@
         {
             try
             {
-                var subMainCategoriesBoysModel = new AllSubCategoriesViewModel
+                var subMainCategoriesBoysModel = new SubCategoriesListViewModel
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
@@ -115,7 +115,7 @@
         {
             try
             {
-                var subMainCategoriesGirlsModel = new AllSubCategoriesViewModel
+                var subMainCategoriesGirlsModel = new SubCategoriesListViewModel
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
@@ -138,7 +138,7 @@
         {
             try
             {
-                var subMainCategoriesHomeModel = new AllSubCategoriesViewModel
+                var subMainCategoriesHomeModel = new SubCategoriesListViewModel
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService

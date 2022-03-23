@@ -4,11 +4,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Estore.Data;
-    using Estore.Data.Common.Repositories;
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
+    using Estore.Web.ViewModels.Categories;
     using Microsoft.EntityFrameworkCore;
 
     public class CategoriesService : ICategoriesService
@@ -90,6 +91,21 @@
             }
 
             return categoryImage.ToString();
+        }
+
+        public async Task<T> GetBreadcrumbCategoryAsync<T>(string categoryId)
+        {
+            var category = await this.context.Categories
+                .Where(c => c.Id == categoryId)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            if (category == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return category;
         }
     }
 }

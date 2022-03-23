@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
 
     using Estore.Services.Data.Contracts;
+    using Estore.Web.ViewModels.Categories;
     using Estore.Web.ViewModels.Products;
     using Estore.Web.ViewModels.Tags;
     using Microsoft.AspNetCore.Mvc;
@@ -250,6 +251,11 @@
             }
         }
 
+        public async Task<IActionResult> Details(string id)
+        {
+            return this.View();
+        }
+
         private async Task<ProductstByCategoryViewModel> GetSubMainModel(string id, int page)
         {
             var subMainCategoryProductsModel = new ProductstByCategoryViewModel
@@ -260,6 +266,7 @@
                 CategoriesProductsCount = await this.productsService.GetSubMainCategoryProductsCountAsync(id),
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = page,
+                Breadcrumb = await this.categoriesService.GetBreadcrumbCategoryAsync<BreadcrumbViewModel>(id),
                 CategoryProducts = await this.productsService.GetSubMainCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
                 Tags = await this.tagsService.GetAllTagsAsync<TagViewModel>(),
             };
@@ -277,6 +284,7 @@
                 CategoriesProductsCount = await this.productsService.GetSubCategoryProductsCountAsync(id),
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = page,
+                Breadcrumb = await this.categoriesService.GetBreadcrumbCategoryAsync<BreadcrumbViewModel>(id),
                 CategoryProducts = await this.productsService.GetSubCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
                 Tags = await this.tagsService.GetAllTagsAsync<TagViewModel>(),
             };

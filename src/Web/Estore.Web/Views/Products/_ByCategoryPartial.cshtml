@@ -4,9 +4,11 @@
 
 <!-- BSTORE-BREADCRUMB START -->
 <div class="bstore-breadcrumb">
-    <a href="index.html">HOMe</a>
-    <span><i class="fa fa-caret-right"></i></span>
-    <span>@Model.CategoryName</span>
+    @if(@Model.Breadcrumb.ParentCategory.ParentCategoryId == null) 
+	{
+		<a href="">@Model.Breadcrumb.ParentCategory.ParentCategory.Name</a>
+		<span><i class="fa fa-caret-right"></i></span>
+	}
 </div>
 <!-- BSTORE-BREADCRUMB END -->
 
