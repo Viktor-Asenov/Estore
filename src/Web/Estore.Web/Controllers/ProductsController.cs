@@ -6,7 +6,6 @@
     using Estore.Services.Data.Contracts;
     using Estore.Web.ViewModels.Categories;
     using Estore.Web.ViewModels.Products;
-    using Estore.Web.ViewModels.Tags;
     using Microsoft.AspNetCore.Mvc;
 
     public class ProductsController : BaseController
@@ -268,7 +267,6 @@
                 PageNumber = page,
                 Breadcrumb = await this.categoriesService.GetBreadcrumbCategoryAsync<BreadcrumbViewModel>(id),
                 CategoryProducts = await this.productsService.GetSubMainCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
-                Tags = await this.tagsService.GetAllTagsAsync<TagViewModel>(),
             };
 
             return subMainCategoryProductsModel;
@@ -286,7 +284,6 @@
                 PageNumber = page,
                 Breadcrumb = await this.categoriesService.GetBreadcrumbCategoryAsync<BreadcrumbViewModel>(id),
                 CategoryProducts = await this.productsService.GetSubCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
-                Tags = await this.tagsService.GetAllTagsAsync<TagViewModel>(),
             };
 
             return subCategoryProductsModel;

@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
 
     using Estore.Services.Data.Contracts;
-    using Estore.Web.ViewModels.ViewComponents;
+    using Estore.Web.ViewModels.ViewComponents.MainMenu;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 

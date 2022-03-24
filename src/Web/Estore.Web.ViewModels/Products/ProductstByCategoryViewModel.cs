@@ -8,7 +8,6 @@
     using Estore.Data.Models;
     using Estore.Services.Mapping;
     using Estore.Web.ViewModels.Categories;
-    using Estore.Web.ViewModels.Tags;
 
     public class ProductstByCategoryViewModel
     {
@@ -37,7 +36,5 @@
         public BreadcrumbViewModel Breadcrumb { get; set; }
 
         public IEnumerable<ProductInCategoryViewModel> CategoryProducts { get; set; }
-
-        public IEnumerable<TagViewModel> Tags { get; set; }
     }
 }

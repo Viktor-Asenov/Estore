@@ -18,7 +18,7 @@
         {
             configuration.CreateMap<Category, BreadcrumbViewModel>()
                 .ForMember(
-                    x => x.ParentCategory,
+                    bvm => bvm.ParentCategory,
                     opt => opt.MapFrom(c =>
                         new BreadcrumbViewModel
                         {

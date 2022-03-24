@@ -310,14 +310,14 @@ span.shop-pro-item,
 	line-height: 21px;
 }
 
-.bstore-breadcrumb a {
+.bstore-breadcrumb li {
 	color: #333;
-	display: block;
+	display: inline;
 	float: left;
 	text-transform: uppercase;
 }
 
-.bstore-breadcrumb a:hover {
+.bstore-breadcrumb li a:hover {
 	color: #ff4f4f;
 }
 

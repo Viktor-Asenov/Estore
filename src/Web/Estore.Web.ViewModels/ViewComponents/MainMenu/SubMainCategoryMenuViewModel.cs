@@ -1,4 +1,4 @@
-﻿namespace Estore.Web.ViewModels.ViewComponents
+﻿namespace Estore.Web.ViewModels.ViewComponents.MainMenu
 {
     using System.Collections.Generic;
 

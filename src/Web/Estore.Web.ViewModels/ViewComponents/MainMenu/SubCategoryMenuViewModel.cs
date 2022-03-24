@@ -1,9 +1,9 @@
-﻿namespace Estore.Web.ViewModels.Tags
+﻿namespace Estore.Web.ViewModels.ViewComponents.MainMenu
 {
     using Estore.Data.Models;
     using Estore.Services.Mapping;
 
-    public class TagViewModel : IMapFrom<Tag>
+    public class SubCategoryMenuViewModel : IMapFrom<Category>
     {
         public string Id { get; set; }
 
