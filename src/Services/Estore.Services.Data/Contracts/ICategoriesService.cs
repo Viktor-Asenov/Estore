@@ -8,9 +8,11 @@
     {
         Task<IEnumerable<T>> GetMainCategoriesAsync<T>();
 
-        IQueryable<T> GetSubMainCategories<T>(string parentCategoryId);
+        IQueryable<T> GetParentSubMainCategories<T>(string parentCategoryId);
 
-        IQueryable<T> GetSubCategories<T>(string parentCategoryId);
+        IQueryable<T> GetParentSubCategories<T>(string parentCategoryId);
+
+        IQueryable<T> GetAllSubCategories<T>();
 
         Task<string> GetNameAsync(string categoryId);
 

@@ -36,7 +36,7 @@
 
         public async Task<IEnumerable<T>> GetSubCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage)
         {
-            var result = await IfCategoryExistsAsync(categoryId);
+            var result = await this.IfCategoryExistsAsync(categoryId);
 
             var subCategoryProducts = this.context.Products
                     .Where(p => p.Category.Id == result.Id)
@@ -50,7 +50,7 @@
 
         public async Task<int> GetSubMainCategoryProductsCountAsync(string categoryId)
         {
-            var result = await IfCategoryExistsAsync(categoryId);
+            var result = await this.IfCategoryExistsAsync(categoryId);
 
             var subMainCategoryProducts = await this.context.Products
                 .Where(p => p.Category.ParentCategoryId == result.Id)
@@ -61,7 +61,7 @@
 
         public async Task<int> GetSubCategoryProductsCountAsync(string categoryId)
         {
-            var result = await IfCategoryExistsAsync(categoryId);
+            var result = await this.IfCategoryExistsAsync(categoryId);
 
             var subMainCategoryProducts = await this.context.Products
                 .Where(p => p.Category.Id == result.Id)

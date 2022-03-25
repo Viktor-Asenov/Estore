@@ -310,7 +310,7 @@ span.shop-pro-item,
 	line-height: 21px;
 }
 
-.bstore-breadcrumb li {
+.bstore-breadcrumb li a {
 	color: #333;
 	display: inline;
 	float: left;

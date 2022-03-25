@@ -4,6 +4,8 @@
 
     public class ProductsSidebarViewModel
     {
+        public IEnumerable<SidebarCategoryViewModel> Categories { get; set; }
+
         public IEnumerable<TagViewModel> Tags { get; set; }
     }
 }

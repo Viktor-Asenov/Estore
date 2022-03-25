@@ -1,4 +1,7 @@
-﻿<!-- PRODUCT-LEFT-SIDEBAR START -->
+﻿@using Estore.Web.ViewModels.ViewComponents.ProductsSidebar
+@model ProductsSidebarViewModel
+
+<!-- PRODUCT-LEFT-SIDEBAR START -->
 <div class="product-left-sidebar">
 	<h2 class="left-title pro-g-page-title">Catalog</h2>
 	
@@ -6,20 +9,18 @@
 	<div class="product-single-sidebar">
 		<span class="sidebar-title">Categories</span>
 		<ul>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="categories">
-					<span></span>
-				</label>
-				<a href="#">Tops<span> (12)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="categories">
-					<span></span>
-				</label>
-				<a href="#">Dresses<span> (13)</span></a>
-			</li>
+			@foreach (var category in Model.Categories)
+			{
+				<li>
+					<label class="cheker">
+						<input type="checkbox" name="categories">
+						<span></span>
+					</label>
+					<a asp-controller="Products" asp-action="@category.Name" asp-route-id="@category.Id">@category.Name
+						<span> (12)</span>
+					</a>
+				</li>   
+			}
 		</ul>
 	</div>
 	<!-- SINGLE SIDEBAR CATEGORIES END -->
@@ -37,20 +38,6 @@
 		</ul>
 	</div>
 	<!-- SINGLE SIDEBAR AVAILABILITY END -->
-	<!-- SINGLE SIDEBAR CONDITION START -->
-	<div class="product-single-sidebar">
-		<span class="sidebar-title">Condition</span>
-		<ul>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="condition">
-					<span></span>
-				</label>
-				<a href="#">new<span> (13)</span></a>
-			</li>
-		</ul>
-	</div>
-	<!-- SINGLE SIDEBAR CONDITION END -->
 	<!-- SINGLE SIDEBAR PRICE START -->
 	<div class="product-single-sidebar">
 		<span class="sidebar-title">Price</span>
@@ -131,104 +118,7 @@
 		</ul>
 	</div>
 	<!-- SINGLE SIDEBAR COLOR END -->
-	<!-- SINGLE SIDEBAR COMPOSITIONS START -->
-	<div class="product-single-sidebar">
-		<span class="sidebar-title">Compositions</span>
-		<ul>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="compositions">
-					<span></span>
-				</label>
-				<a href="#">Cotton<span>(8)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="compositions">
-					<span></span>
-				</label>
-				<a href="#"> Polyester<span>(3)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="compositions">
-					<span></span>
-				</label>
-				<a href="#"> Viscose<span>(2)</span></a>
-			</li>
-		</ul>
-	</div>
-	<!-- SINGLE SIDEBAR COMPOSITIONS END -->
-	<!-- SINGLE SIDEBAR STYLES START -->
-	<div class="product-single-sidebar">
-		<span class="sidebar-title">Styles</span>
-		<ul>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="styles">
-					<span></span>
-				</label>
-				<a href="#">Casual<span>(5)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="styles">
-					<span></span>
-				</label>
-				<a href="#">Dressy<span>(1)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="styles">
-					<span></span>
-				</label>
-				<a href="#">Girly<span>(7)</span></a>
-			</li>
-		</ul>
-	</div>
-	<!-- SINGLE SIDEBAR STYLES END -->
-	<!-- SINGLE SIDEBAR PROPERTIES START -->
-	<div class="product-single-sidebar">
-		<span class="sidebar-title">Properties</span>
-		<ul>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="properties">
-					<span></span>
-				</label>
-				<a href="#">Colorful Dress<span>(4)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="properties">
-					<span></span>
-				</label>
-				<a href="#">Maxi Dress <span>(1)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="properties">
-					<span></span>
-				</label>
-				<a href="#">Midi Dress<span>(2)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="properties">
-					<span></span>
-				</label>
-				<a href="#">Short Dress<span>(2)</span></a>
-			</li>
-			<li>
-				<label class="cheker">
-					<input type="checkbox" name="properties">
-					<span></span>
-				</label>
-				<a href="#"> Short Sleeve<span>(4)</span></a>
-			</li>
-		</ul>
-	</div>
-	<!-- SINGLE SIDEBAR PROPERTIES END -->
+	
 </div>
 <!-- PRODUCT-LEFT-SIDEBAR END -->
 

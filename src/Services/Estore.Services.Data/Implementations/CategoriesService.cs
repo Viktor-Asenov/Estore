@@ -35,7 +35,7 @@
             return categories;
         }
 
-        public IQueryable<T> GetSubMainCategories<T>(string parentCategoryId)
+        public IQueryable<T> GetParentSubMainCategories<T>(string parentCategoryId)
         {
             var parentCategory = this.context.Categories
                 .FirstOrDefault(c => c.Id == parentCategoryId);
@@ -51,7 +51,7 @@
             return subMainCategories;
         }
 
-        public IQueryable<T> GetSubCategories<T>(string parentCategoryId)
+        public IQueryable<T> GetParentSubCategories<T>(string parentCategoryId)
         {
             var parentCategory = this.context.Categories
                 .FirstOrDefault(c => c.Id == parentCategoryId);
@@ -65,6 +65,15 @@
                 .To<T>();
 
             return subCategories;
+        }
+
+        public IQueryable<T> GetAllSubCategories<T>()
+        {
+            var allSubCategories = this.context.Categories
+                .Where(c => c.ParentCategoryId != null)
+                .To<T>();
+
+            return allSubCategories;
         }
 
         public async Task<string> GetNameAsync(string categoryId)
