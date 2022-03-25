@@ -252,7 +252,16 @@
 
         public async Task<IActionResult> Details(string id)
         {
-            return this.View();
+            try
+            {
+                var viewModel = await this.productsService.GetProductDetails<ProductDetailsViewModel>(id);
+
+                return this.View(viewModel);
+            }
+            catch (Exception)
+            {
+                return this.NotFound();
+            }
         }
 
         private async Task<ProductstByCategoryViewModel> GetSubMainModel(string id, int page)

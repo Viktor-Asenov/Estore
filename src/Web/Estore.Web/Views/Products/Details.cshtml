@@ -1,10 +1,13 @@
-﻿<div class="container">
+﻿@using Estore.Web.ViewModels.Products
+@model ProductDetailsViewModel
+
+<div class="container">
 	<!-- BSTORE-BREADCRUMB START -->
 	<div class="bstore-breadcrumb">
 		<a href="index.html">HOMe<span><i class="fa fa-caret-right"></i> </span> </a>
 		<span> <i class="fa fa-caret-right"> </i> </span>
 		<a href="shop-gird.html"> women </a>
-		<span> Faded Short Sleeves T-shirt </span>
+		@*<span> Faded Short Sleeves T-shirt </span>*@
 	</div>
 	<!-- BSTORE-BREADCRUMB END -->
 	
@@ -16,77 +19,62 @@
 					<div class="single-product-view">
 						<!-- Tab panes -->
 						<div class="tab-content">
-							<div class="tab-pane active" id="thumbnail_1">
-								<div class="single-product-image">
-									<img src="img/product/sale/1.webp" alt="single-product-image">
-									<a class="new-mark-box" href="#">new</a>
-									<a class="fancybox" href="img/product/sale/1.webp" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
-								</div>
-							</div>
-							<div class="tab-pane" id="thumbnail_2">
-								<div class="single-product-image">
-									<img src="img/product/sale/3.webp" alt="single-product-image">
-									<a class="new-mark-box" href="#">new</a>
-									<a class="fancybox" href="img/product/sale/3.webp" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
-								</div>
-							</div>
-							<div class="tab-pane" id="thumbnail_3">
-								<div class="single-product-image">
-									<img src="img/product/sale/9.webp" alt="single-product-image">
-									<a class="new-mark-box" href="#">new</a>
-									<a class="fancybox" href="img/product/sale/9.webp" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
-								</div>
-							</div>
-							<div class="tab-pane" id="thumbnail_4">
-								<div class="single-product-image">
-									<img src="img/product/sale/13.webp" alt="single-product-image">
-									<a class="new-mark-box" href="#">new</a>
-									<a class="fancybox" href="img/product/sale/13.webp" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
-								</div>
-							</div>
-							<div class="tab-pane" id="thumbnail_5">
-								<div class="single-product-image">
-									<img src="img/product/sale/7.webp" alt="single-product-image">
-									<a class="new-mark-box" href="#">new</a>
-									<a class="fancybox" href="img/product/sale/7.webp" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
-								</div>
-							</div>
-							<div class="tab-pane" id="thumbnail_6">
-								<div class="single-product-image">
-									<img src="img/product/sale/12.webp" alt="single-product-image">
-									<a class="new-mark-box" href="#">new</a>
-									<a class="fancybox" href="img/product/sale/12.webp" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
-								</div>
-							</div>
+							@foreach (var image in @Model.Images)
+						   {
+							   <div class="tab-pane active" id="thumbnail_1">
+									<div class="single-product-image">
+										<img src="img/product/sale/1.webp" alt="single-product-image">
+										<a class="fancybox" href="img/product/sale/1.webp" data-fancybox-group="gallery">
+											<span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span>
+										</a>
+									</div>
+							   </div>
+						   }
 						</div>
 					</div>
 					<div class="select-product">
 						<!-- Nav tabs -->
-						<div class="bx-wrapper" style="max-width: 264px;"><div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative;"><div class="bx-loading"></div><ul class="nav nav-tabs select-product-tab bxslider" style="width: 815%; position: relative;">
-							<li class="active" style="float: left; list-style: none; position: relative; width: 87.997px;">
-								<a href="#thumbnail_1" data-toggle="tab"><img src="img/product/sidebar_product/1.webp" alt="pro-thumbnail"></a>
-							</li>
-							<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-								<a href="#thumbnail_2" data-toggle="tab"><img src="img/product/sidebar_product/2.webp" alt="pro-thumbnail"></a>
-							</li>
-							<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-								<a href="#thumbnail_3" data-toggle="tab"><img src="img/product/sidebar_product/3.webp" alt="pro-thumbnail"></a>
-							</li>
-							<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-								<a href="#thumbnail_4" data-toggle="tab"><img src="img/product/sidebar_product/4.webp" alt="pro-thumbnail"></a>
-							</li>
-							<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-								<a href="#thumbnail_5" data-toggle="tab"><img src="img/product/sidebar_product/5.webp" alt="pro-thumbnail"></a>
-							</li>
-							<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-								<a href="#thumbnail_6" data-toggle="tab"><img src="img/product/sidebar_product/6.webp" alt="pro-thumbnail"></a>
-							</li>
-						</ul></div><div class="bx-controls bx-has-pager bx-has-controls-direction"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div></div><div class="bx-controls-direction"><a class="bx-prev" href=""><i class="fa fa-angle-right"></i></a><a class="bx-next" href=""><i class="fa fa-angle-left"></i></a></div></div></div>
+						<div class="bx-wrapper" style="max-width: 264px;">
+							<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative;"><div class="bx-loading"></div>
+								<ul class="nav nav-tabs select-product-tab bxslider" style="width: 815%; position: relative;">
+									<li class="active" style="float: left; list-style: none; position: relative; width: 87.997px;">
+										<a href="#thumbnail_1" data-toggle="tab"><img src="img/product/sidebar_product/1.webp" alt="pro-thumbnail"></a>
+									</li>
+									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
+										<a href="#thumbnail_2" data-toggle="tab"><img src="img/product/sidebar_product/2.webp" alt="pro-thumbnail"></a>
+									</li>
+									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
+										<a href="#thumbnail_3" data-toggle="tab"><img src="img/product/sidebar_product/3.webp" alt="pro-thumbnail"></a>
+									</li>
+									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
+										<a href="#thumbnail_4" data-toggle="tab"><img src="img/product/sidebar_product/4.webp" alt="pro-thumbnail"></a>
+									</li>
+									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
+										<a href="#thumbnail_5" data-toggle="tab"><img src="img/product/sidebar_product/5.webp" alt="pro-thumbnail"></a>
+									</li>
+									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
+										<a href="#thumbnail_6" data-toggle="tab"><img src="img/product/sidebar_product/6.webp" alt="pro-thumbnail"></a>
+									</li>
+								</ul>
+							</div>
+							<div class="bx-controls bx-has-pager bx-has-controls-direction">
+								<div class="bx-pager bx-default-pager">
+									<div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link">1</a>
+									</div>
+									<div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a>
+									</div>
+								</div>
+								<div class="bx-controls-direction">
+									<a class="bx-prev" href=""><i class="fa fa-angle-right"></i>
+									</a><a class="bx-next" href=""><i class="fa fa-angle-left"></i></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-7 col-md-8">
 					<div class="single-product-descirption">
-						<h2>Faded Short Sleeves T-shirt</h2>
+						<h2>@Model.Name</h2>
 						<div class="single-product-social-share">
 							<ul>
 								<li><a href="#" class="twi-link"><i class="fa fa-twitter"></i>Tweet</a></li>
@@ -113,24 +101,17 @@
 							</div>
 						</div>
 						<div class="single-product-condition">
-							<p>Reference: <span>demo_1</span></p>
 							<p>Condition: <span>New product</span></p>
 						</div>
 						<div class="single-product-price">
-							<h2>$16.51</h2>
+							<h2>$@Model.Price</h2>
 						</div>
 						<div class="single-product-desc">
-							<p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a
-								comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
 							<div class="product-in-stock">
-								<p>300 Items<span>In stock</span></p>
+								<p><span>In stock</span></p>
 							</div>
 						</div>
-						<div class="single-product-info">
-							<a href="#"><i class="fa fa-envelope"></i></a>
-							<a href="#"><i class="fa fa-print"></i></a>
-							<a href="#"><i class="fa fa-heart"></i></a>
-						</div>
+						
 						<div class="single-product-quantity">
 							<p class="small-title">Quantity</p>
 							<div class="cart-quantity">
@@ -155,6 +136,9 @@
 						<div class="single-product-add-cart">
 							<a class="add-cart-text" title="Add to cart" href="#">Add to cart</a>
 						</div>
+						<div class="single-product-info">
+							<a href="#"><i class="fa fa-heart"></i></a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -164,22 +148,14 @@
 			<div class="product-more-info-tab">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs more-info-tab">
-					<li class="active"><a href="#moreinfo" data-toggle="tab">more info</a></li>
-					<li><a href="#datasheet" data-toggle="tab">data sheet</a></li>
+					<li class="active"><a href="#moreinfo" data-toggle="tab">Description</a></li>
 					<li><a href="#review" data-toggle="tab">reviews</a></li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div class="tab-pane active" id="moreinfo">
 						<div class="tab-description">
-							<p>Fashion has been creating well-designed collections since 2010. The brand
-								offers feminine designs delivering stylish separates and statement
-								dresses which have since evolved into a full ready-to-wear collection in
-								which every item is a vital part of a woman's wardrobe. The result?
-								Cool, easy, chic looks with youthful elegance and unmistakable signature
-								style. All the beautiful pieces are made in Italy and manufactured with
-								the greatest attention. Now Fashion extends to a range of accessories
-								including shoes, hats, belts and more!</p>
+							<p>@Model.Description</p>
 						</div>
 					</div>
 					<div class="tab-pane" id="datasheet">
@@ -465,68 +441,6 @@
 			<!-- RELATED-PRODUCTS-AREA END -->
 	
 		</div>
-		<!-- RIGHT SIDE BAR START -->
-		<div class="col-lg-3">
-			<!-- SINGLE SIDE BAR START -->
-			<div class="single-product-right-sidebar">
-				<h2 class="left-title">Viewed products</h2>
-				<ul>
-					<li>
-						<a href="#"><img src="img/product/sidebar_product/2.webp" alt=""></a>
-						<div class="r-sidebar-pro-content">
-							<h5><a href="#">Faded Short ...</a></h5>
-							<p>Faded short sleeves t-shirt with high...</p>
-						</div>
-					</li>
-					<li>
-						<a href="#"><img src="img/product/sidebar_product/4.webp" alt=""></a>
-						<div class="r-sidebar-pro-content">
-							<h5><a href="#">Printed Chif ..</a></h5>
-							<p>Printed chiffon knee length dress...</p>
-						</div>
-					</li>
-					<li>
-						<a href="#"><img src="img/product/sidebar_product/6.webp" alt=""></a>
-						<div class="r-sidebar-pro-content">
-							<h5><a href="#">Printed Sum ...</a></h5>
-							<p>Long printed dress with thin...</p>
-						</div>
-					</li>
-					<li>
-						<a href="#"><img src="img/product/sidebar_product/1.webp" alt=""></a>
-						<div class="r-sidebar-pro-content">
-							<h5><a href="#">Printed Dress </a></h5>
-							<p>100% cotton double printed dress....</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<!-- SINGLE SIDE BAR END -->
-	
-			<!-- SINGLE SIDE BAR START -->
-			<div class="single-product-right-sidebar clearfix">
-				<h2 class="left-title">Tags </h2>
-				<div class="category-tag">
-					<a href="#">fashion</a>
-					<a href="#">handbags</a>
-					<a href="#">women</a>
-					<a href="#">men</a>
-					<a href="#">kids</a>
-					<a href="#">New</a>
-					<a href="#">Accessories</a>
-					<a href="#">clothing</a>
-					<a href="#">New</a>
-				</div>
-			</div>
-			<!-- SINGLE SIDE BAR END -->
-	
-			<!-- SINGLE SIDE BAR START -->
-			<div class="single-product-right-sidebar">
-				<div class="slider-right zoom-img">
-					<a href="#"><img class="img-responsive" src="img/product/cms11.webp" alt="sidebar left"></a>
-				</div>
-			</div>
-		</div>
-		<!-- SINGLE SIDE BAR END -->
+		
 	</div>
 </div>

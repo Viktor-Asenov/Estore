@@ -12,5 +12,7 @@
         Task<int> GetSubMainCategoryProductsCountAsync(string categoryId);
 
         Task<int> GetSubCategoryProductsCountAsync(string categoryId);
+
+        Task<T> GetProductDetails<T>(string productId);
     }
 }
