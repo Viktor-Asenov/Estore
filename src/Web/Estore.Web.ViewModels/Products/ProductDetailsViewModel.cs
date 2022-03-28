@@ -18,11 +18,13 @@
 
         public IEnumerable<ImageViewModel> Images { get; set; }
 
+        public IEnumerable<RelatedProductViewModel> RelatedProducts { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Product, ProductDetailsViewModel>()
                 .ForMember(pvm => pvm.Images, opt =>
-                    opt.MapFrom(c => c.Images));
+                    opt.MapFrom(p => p.Images));
         }
     }
 }

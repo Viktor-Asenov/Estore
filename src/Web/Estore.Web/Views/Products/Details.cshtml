@@ -7,7 +7,7 @@
 		<a href="index.html">HOMe<span><i class="fa fa-caret-right"></i> </span> </a>
 		<span> <i class="fa fa-caret-right"> </i> </span>
 		<a href="shop-gird.html"> women </a>
-		@*<span> Faded Short Sleeves T-shirt </span>*@
+		<span> Faded Short Sleeves T-shirt </span>
 	</div>
 	<!-- BSTORE-BREADCRUMB END -->
 	
@@ -23,7 +23,7 @@
 						   {
 							   <div class="tab-pane active" id="thumbnail_1">
 									<div class="single-product-image">
-										<img src="img/product/sale/1.webp" alt="single-product-image">
+										<img src="@image.RemoteUrl" alt="single-product-image">
 										<a class="fancybox" href="img/product/sale/1.webp" data-fancybox-group="gallery">
 											<span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span>
 										</a>
@@ -37,24 +37,12 @@
 						<div class="bx-wrapper" style="max-width: 264px;">
 							<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative;"><div class="bx-loading"></div>
 								<ul class="nav nav-tabs select-product-tab bxslider" style="width: 815%; position: relative;">
-									<li class="active" style="float: left; list-style: none; position: relative; width: 87.997px;">
-										<a href="#thumbnail_1" data-toggle="tab"><img src="img/product/sidebar_product/1.webp" alt="pro-thumbnail"></a>
-									</li>
-									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-										<a href="#thumbnail_2" data-toggle="tab"><img src="img/product/sidebar_product/2.webp" alt="pro-thumbnail"></a>
-									</li>
-									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-										<a href="#thumbnail_3" data-toggle="tab"><img src="img/product/sidebar_product/3.webp" alt="pro-thumbnail"></a>
-									</li>
-									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-										<a href="#thumbnail_4" data-toggle="tab"><img src="img/product/sidebar_product/4.webp" alt="pro-thumbnail"></a>
-									</li>
-									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-										<a href="#thumbnail_5" data-toggle="tab"><img src="img/product/sidebar_product/5.webp" alt="pro-thumbnail"></a>
-									</li>
-									<li style="float: left; list-style: none; position: relative; width: 87.997px;">
-										<a href="#thumbnail_6" data-toggle="tab"><img src="img/product/sidebar_product/6.webp" alt="pro-thumbnail"></a>
-									</li>
+									@foreach (var image in @Model.Images)
+								   {
+									   <li class="active" style="float: left; list-style: none; position: relative; width: 87.997px;">
+											<a href="#thumbnail_1" data-toggle="tab"><img src="@image.RemoteUrl" alt="pro-thumbnail"></a>
+									   </li>
+								   }
 								</ul>
 							</div>
 							<div class="bx-controls bx-has-pager bx-has-controls-direction">
@@ -221,226 +209,55 @@
 				<div class="carousel-wrap">
 					<!-- RELATED-CAROUSEL START -->
 					<div class="related-product owl-carousel owl-loaded owl-drag">
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-						
-						<!-- SINGLE-PRODUCT-ITEM END -->
-	
-						<!-- SINGLE-PRODUCT-ITEM START -->
-																		
-						<!-- SINGLE-PRODUCT-ITEM END -->
-					<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1768px;"><div class="owl-item active" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/3.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
+						<div class="owl-stage-outer">
+							<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1768px;">
+								@foreach (var relProduct in @Model.RelatedProducts)
+							   {
+								   <div class="owl-item active" style="width: 190.881px; margin-right: 30px;">
+										<div class="single-product-item">
+											<div class="product-image">
+												<a asp-controller="Products" asp-action="Details" asp-route-id="@relProduct.Id">
+													<img src="@relProduct.ImageUrl" alt="product-image">
+												</a>
+											</div>
+											<div class="product-info">
+												<div class="customar-comments-box">
+													<div class="rating-box">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-half-empty"></i>
+													</div>
+													<div class="review-box">
+														<span>1 Review(s)</span>
+													</div>
+												</div>
+												<a asp-controller="Products" asp-action="Details" asp-route-id="@relProduct.Id">@relProduct.Name</a>
+												<div class="price-box">
+													<span class="price">$@relProduct.DiscountedPrice</span>
+													<span class="old-price">$@relProduct.Price</span>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Faded Short T-sh...</a>
-								<div class="price-box">
-									<span class="price">$16.51</span>
-								</div>
+							   }							
 							</div>
-						</div></div><div class="owl-item active" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/1.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Blouse</a>
-								<div class="price-box">
-									<span class="price">$22.95</span>
-									<span class="old-price">$27.00</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item active" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/9.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
-										<i class="fa fa-star-half-empty"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Printed Dress</a>
-								<div class="price-box">
-									<span class="price">$23.40</span>
-									<span class="old-price">$26.00</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item active" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/5.webp" alt="product-image"></a>
-								<div class="overlay-content">
-								</div>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Printed Dress</a>
-								<div class="price-box">
-									<span class="price">$50.99</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/12.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
-										<i class="fa fa-star-half-empty"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Printed Summer Dr...</a>
-								<div class="price-box">
-									<span class="price">$28.98</span>
-									<span class="old-price">$30.51</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/13.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Printed Summer</a>
-								<div class="price-box">
-									<span class="price">$30.50</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/7.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
-										<i class="fa fa-star-half-empty"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Printed Chiffon Dr...</a>
-								<div class="price-box">
-									<span class="price">$16.40</span>
-									<span class="old-price">$20.50</span>
-								</div>
-							</div>
-						</div></div><div class="owl-item" style="width: 190.881px; margin-right: 30px;"><div class="single-product-item">
-							<div class="product-image">
-								<a href="#"><img src="img/product/sale/11.webp" alt="product-image"></a>
-							</div>
-							<div class="product-info">
-								<div class="customar-comments-box">
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-									<div class="review-box">
-										<span>1 Review(s)</span>
-									</div>
-								</div>
-								<a href="#">Printed Dress</a>
-								<div class="price-box">
-									<span class="price">$26.00</span>
-								</div>
-							</div>
-						</div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left owl-prev-icon"></i></button><button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right owl-next-icon"></i></button></div><div class="owl-dots disabled"></div></div>
+						</div>
+						<div class="owl-nav">
+							<button type="button" role="presentation" class="owl-prev disabled">
+								<i class="fa fa-angle-left owl-prev-icon"></i>
+							</button>
+							<button type="button" role="presentation" class="owl-next">
+								<i class="fa fa-angle-right owl-next-icon"></i>
+							</button>
+						</div>
+						<div class="owl-dots disabled"></div>
+					</div>
 					<!-- RELATED-CAROUSEL END -->
 				</div>
 			</div>
-			<!-- RELATED-PRODUCTS-AREA END -->
-	
-		</div>
-		
+			<!-- RELATED-PRODUCTS-AREA END -->	
+		</div>		
 	</div>
 </div>

@@ -13,6 +13,8 @@
 
         Task<int> GetSubCategoryProductsCountAsync(string categoryId);
 
-        Task<T> GetProductDetails<T>(string productId);
+        Task<T> GetDetailsAsync<T>(string productId);
+
+        Task<IEnumerable<T>> GetRelated<T>(string productId);
     }
 }

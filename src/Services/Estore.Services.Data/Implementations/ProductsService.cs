@@ -70,7 +70,7 @@
             return subMainCategoryProducts.Count();
         }
 
-        public async Task<T> GetProductDetails<T>(string productId)
+        public async Task<T> GetDetailsAsync<T>(string productId)
         {
             var result = await this.IfProductExistAsync(productId);
 
@@ -80,6 +80,18 @@
                 .FirstOrDefaultAsync();
 
             return product;
+        }
+
+        public async Task<IEnumerable<T>> GetRelated<T>(string productId)
+        {
+            var product = await this.IfProductExistAsync(productId);
+
+            var relatedProducts = await this.context.Products
+                .Where(p => p.CategoryId == product.CategoryId && p.Id != product.Id)
+                .To<T>()
+                .ToListAsync();
+
+            return relatedProducts;
         }
 
         private async Task<Category> IfCategoryExistAsync(string categoryId)
