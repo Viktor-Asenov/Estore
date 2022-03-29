@@ -111,9 +111,10 @@
 						<div class="single-product-size">
 							<p class="small-title">Size </p>
 							<select name="product-size" id="product-size">
-								<option value="">S</option>
-								<option value="">M</option>
-								<option value="">L</option>
+								@foreach (var measure in @Model.Measures)
+							   {
+								   <option value="">@measure</option>
+							   }
 							</select>
 						</div>
 						<div class="single-product-color">

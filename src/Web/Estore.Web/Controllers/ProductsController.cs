@@ -254,8 +254,7 @@
         {
             try
             {
-                var viewModel = await this.productsService.GetDetailsAsync<ProductDetailsViewModel>(id);
-                viewModel.RelatedProducts = await this.productsService.GetRelated<RelatedProductViewModel>(id);
+                var viewModel = await this.productsService.GetDetailsAsync(id);
 
                 return this.View(viewModel);
             }

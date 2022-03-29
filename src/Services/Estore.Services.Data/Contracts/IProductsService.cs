@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Estore.Web.ViewModels.Products;
+    using Estore.Web.ViewModels.Products.Enums;
+
     public interface IProductsService
     {
         Task<IEnumerable<T>> GetSubMainCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage);
@@ -13,8 +16,6 @@
 
         Task<int> GetSubCategoryProductsCountAsync(string categoryId);
 
-        Task<T> GetDetailsAsync<T>(string productId);
-
-        Task<IEnumerable<T>> GetRelated<T>(string productId);
+        Task<ProductDetailsViewModel> GetDetailsAsync(string productId);
     }
 }

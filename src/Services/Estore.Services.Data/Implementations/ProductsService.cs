@@ -7,8 +7,11 @@
 
     using Estore.Data;
     using Estore.Data.Models;
+    using Estore.Data.Models.Enumerations;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
+    using Estore.Web.ViewModels.Products;
+    using Estore.Web.ViewModels.Products.Enums;
     using Microsoft.EntityFrameworkCore;
 
     public class ProductsService : IProductsService
@@ -70,28 +73,54 @@
             return subMainCategoryProducts.Count();
         }
 
-        public async Task<T> GetDetailsAsync<T>(string productId)
+        public async Task<ProductDetailsViewModel> GetDetailsAsync(string productId)
         {
             var result = await this.IfProductExistAsync(productId);
 
             var product = await this.context.Products
                 .Where(p => p.Id == result.Id)
-                .To<T>()
+                .To<ProductDetailsViewModel>()
                 .FirstOrDefaultAsync();
+
+            product.RelatedProducts = await this.GetRelated(productId);
+            product.Colors = await this.GetColorsAsync(productId);
+            product.Measures = await this.GetMeasuresAsync(productId);
 
             return product;
         }
 
-        public async Task<IEnumerable<T>> GetRelated<T>(string productId)
+        private async Task<IEnumerable<RelatedProductViewModel>> GetRelated(string productId)
         {
             var product = await this.IfProductExistAsync(productId);
 
             var relatedProducts = await this.context.Products
                 .Where(p => p.CategoryId == product.CategoryId && p.Id != product.Id)
-                .To<T>()
+                .To<RelatedProductViewModel>()
                 .ToListAsync();
 
             return relatedProducts;
+        }
+
+        private async Task<IEnumerable<ColorType>> GetColorsAsync(string productId)
+        {
+            var result = await this.IfProductExistAsync(productId);
+
+            var productColors = result.Colors
+                .Select(c => new ColorType { })
+                .ToList();
+
+            return productColors;
+        }
+
+        private async Task<IEnumerable<Measure>> GetMeasuresAsync(string productId)
+        {
+            var result = await this.IfProductExistAsync(productId);
+
+            var productMeasures = result.Sizes
+                .Select(s => new Measure { })
+                .ToList();
+
+            return productMeasures;
         }
 
         private async Task<Category> IfCategoryExistAsync(string categoryId)
