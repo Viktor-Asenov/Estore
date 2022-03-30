@@ -258,9 +258,9 @@
 
                 return this.View(viewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return this.NotFound();
+                return this.NotFound(ex.Message);
             }
         }
 

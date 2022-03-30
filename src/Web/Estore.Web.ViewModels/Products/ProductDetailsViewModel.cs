@@ -19,9 +19,9 @@
 
         public decimal Price { get; set; }
 
-        public IEnumerable<ColorType> Colors { get; set; }
+        public IEnumerable<ColorViewModel> Colors { get; set; }
 
-        public IEnumerable<Measure> Measures { get; set; }
+        public IEnumerable<SizeViewModel> Measures { get; set; }
 
         public IEnumerable<ImageViewModel> Images { get; set; }
 
@@ -29,16 +29,13 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Color, ColorType>();
-            configuration.CreateMap<Size, Measure>();
-
             configuration.CreateMap<Product, ProductDetailsViewModel>()
                 .ForMember(pvm => pvm.Images, opt =>
-                    opt.MapFrom(p => p.Images))
-                .ForMember(pvm => pvm.Colors, opt =>
-                    opt.MapFrom(p => p.Colors.ToArray()))
-                .ForMember(pvm => pvm.Measures, opt =>
-                    opt.MapFrom(p => p.Sizes.ToArray()));
+                    opt.MapFrom(p => p.Images));
+                //.ForMember(pvm => pvm.Colors, opt =>
+                //    opt.MapFrom(p => p.Colors))
+                //.ForMember(pvm => pvm.Measures, opt =>
+                //    opt.MapFrom(p => p.Sizes));
         }
     }
 }
