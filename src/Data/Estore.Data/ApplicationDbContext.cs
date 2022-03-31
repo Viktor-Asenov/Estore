@@ -38,10 +38,6 @@
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<Color> Colors { get; set; }
-
-        public DbSet<ColorProduct> ColorProducts { get; set; }
-
         public DbSet<Tag> Tags { get; set; }
 
         public DbSet<ProductTag> ProductTags { get; set; }

@@ -3,7 +3,6 @@
     using System;
 
     using AutoMapper;
-    using Estore.Data.Models.Enumerations;
     using Estore.Services.Mapping;
 
     public class SizeViewModel : IMapFrom<Enum>, IHaveCustomMappings

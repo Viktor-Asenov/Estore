@@ -17,6 +17,16 @@
                 return;
             }
 
+            // ########## SIZES ##########
+            var sizes = new List<string> { "XS", "S", "M", "L", };
+            var shoeSizes = new List<string>();
+
+            for (int i = 36; i <= 42; i++)
+            {
+                var size = i.ToString();
+                shoeSizes.Add(size);
+            }
+
             // ########## PRODUCT TAGS ##########
             var sustainableTag = dbContext.Tags
                 .FirstOrDefault(t => t.Name == "Sustainable");
@@ -58,8 +68,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/991EE1G321_295_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.XS, Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.BEIGE, Color.BLUE },
+                    Colors = new List<string> { "Beige", "Blue" },
                 },
                 new()
                 {
@@ -84,8 +93,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EE1G328_635_16?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.RED, },
+                    Colors = new List<string> { "Red", },
                 },
                 new()
                 {
@@ -106,8 +114,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EO1G324_400_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.NAVY, Color.RED, },
+                    Colors = new List<string> { "Navy", "Red", },
                 },
                 new()
                 {
@@ -128,8 +135,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/991CC1G304_001_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.BLACK, },
+                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = veganTag.Id },
@@ -138,6 +144,11 @@
                     },
                 },
             };
+
+            foreach (var jacket in jackets)
+            {
+                jacket.Sizes = sizes;
+            }
 
             await dbContext.Products.AddRangeAsync(jackets);
 
@@ -166,8 +177,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EE1B322_901_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.DARKBLUE },
+                    Colors = new List<string> { "Dark blue" },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = organicTag.Id },
@@ -193,8 +203,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/992CC1B308_910_16?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.BLACK, },
+                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -220,8 +229,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EE1B333_903_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.LIGHTBLUE, },
+                    Colors = new List<string> { "Light blue", },
                 },
                 new()
                 {
@@ -242,8 +250,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/992CC1B307_923_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.GREY, },
+                    Colors = new List<string> { "Grey", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = organicTag.Id },
@@ -251,6 +258,11 @@
                     },
                 },
             };
+
+            foreach (var product in jeans)
+            {
+                product.Sizes = sizes;
+            }
 
             await dbContext.Products.AddRangeAsync(jeans);
 
@@ -279,8 +291,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/032EE1E321_400_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.NAVY, Color.BLACK, },
+                    Colors = new List<string> { "Navy", "Black", },
                 },
                 new()
                 {
@@ -301,8 +312,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EF1A340_430_11?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.BLUE, },
+                    Colors = new List<string> { "Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = fashionTag.Id },
@@ -327,8 +337,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/992EO1E309_003_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.BLACK, },
+                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -353,10 +362,14 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/032EE1E310_103_14?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.S, Size.M, Size.L, Size.XL, },
-                    Colors = new List<Color> { Color.WHITE },
+                    Colors = new List<string> { "White", },
                 },
             };
+
+            foreach (var dress in dresses)
+            {
+                dress.Sizes = sizes;
+            }
 
             await dbContext.Products.AddRangeAsync(dresses);
 
@@ -385,8 +398,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EK1W301_100_31?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> {  },
-                    Colors = new List<Color> { Color.WHITE, Color.NAVY, },
+                    Colors = new List<string> { "White", "Navy", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = veganTag.Id },
@@ -412,8 +424,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EK1W311_400_31?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> {  },
-                    Colors = new List<Color> { Color.NAVY, },
+                    Colors = new List<string> { "Navy", },
                 },
                 new()
                 {
@@ -434,8 +445,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/101EK1W326_001_31?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> {  },
-                    Colors = new List<Color> { Color.BLACK, },
+                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
@@ -465,10 +475,14 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EK1W323_040_32?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> {  },
-                    Colors = new List<Color> { Color.GREY, Color.BLACK, },
+                    Colors = new List<string> { "Grey", "Black", },
                 },
             };
+
+            foreach (var shoe in shoes)
+            {
+                shoe.Sizes = shoeSizes;
+            }
 
             await dbContext.Products.AddRangeAsync(shoes);
 
@@ -497,8 +511,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/39112S_535_36?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BROWN },
+                    Colors = new List<string> { "Brown", },
                 },
                 new()
                 {
@@ -519,8 +532,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/39019S_538_36?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BLACK, },
+                    Colors = new List<string> { "Black", },
                 },
                 new()
                 {
@@ -541,8 +553,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/39106PS_535_36?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BROWN, },
+                    Colors = new List<string> { "Brown", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = fashionTag.Id },
@@ -567,10 +578,14 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/39183S_515_36?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.ROSE, },
+                    Colors = new List<string> { "Rose", },
                 },
             };
+
+            foreach (var product in sunglasses)
+            {
+                product.Sizes.Add("Universal");
+            }
 
             await dbContext.Products.AddRangeAsync(sunglasses);
 
@@ -599,8 +614,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EA1O301_001_32?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BLACK, Color.BROWN, },
+                    Colors = new List<string> { "Black", "Brown", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
@@ -626,8 +640,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/991EA1O302_220_37?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BROWN, Color.BLACK, },
+                    Colors = new List<string> { "Brown", "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = veganTag.Id },
@@ -654,8 +667,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EA1O302_001_32?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BLACK, Color.BROWN, },
+                    Colors = new List<string> { "Black", "Brown", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
@@ -681,14 +693,18 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EA1O307_440_37?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BLUE, },
+                    Colors = new List<string> { "Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = veganTag.Id },
                     },
                 },
             };
+
+            foreach (var bag in bags)
+            {
+                bag.Sizes.Add("Universal");
+            }
 
             await dbContext.Products.AddRangeAsync(bags);
 
@@ -717,8 +733,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EA1Q301_420_37?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.LIGHTBLUE },
+                    Colors = new List<string> { "Light blue", },
                 },
                 new()
                 {
@@ -743,8 +758,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EA1Q301_345_36?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.KHAKI, },
+                    Colors = new List<string> { "Khaki", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -769,8 +783,7 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/101EA1Q335_001_37?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.BLACK, Color.RED, },
+                    Colors = new List<string> { "Black", "Red", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -796,10 +809,14 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/121EA1Q306_530_37?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<Size> { Size.UNIVERSAL },
-                    Colors = new List<Color> { Color.LAVENDER, Color.BLACK, },
+                    Colors = new List<string> { "Lavender", "Black", },
                 },
             };
+
+            foreach (var scarf in scarves)
+            {
+                scarf.Sizes.Add("Universal");
+            }
 
             await dbContext.Products.AddRangeAsync(scarves);
             await dbContext.SaveChangesAsync();

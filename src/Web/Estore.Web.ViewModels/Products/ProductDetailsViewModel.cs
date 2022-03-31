@@ -7,7 +7,6 @@
     using Estore.Data.Models;
     using Estore.Data.Models.Enumerations;
     using Estore.Services.Mapping;
-    using Estore.Web.ViewModels.Products.Enums;
 
     public class ProductDetailsViewModel : IMapFrom<Product>, IHaveCustomMappings
     {
@@ -31,11 +30,11 @@
         {
             configuration.CreateMap<Product, ProductDetailsViewModel>()
                 .ForMember(pvm => pvm.Images, opt =>
-                    opt.MapFrom(p => p.Images));
-                //.ForMember(pvm => pvm.Colors, opt =>
-                //    opt.MapFrom(p => p.Colors))
-                //.ForMember(pvm => pvm.Measures, opt =>
-                //    opt.MapFrom(p => p.Sizes));
+                    opt.MapFrom(p => p.Images))
+                .ForMember(pvm => pvm.Colors, opt =>
+                    opt.MapFrom(p => p.Colors))
+                .ForMember(pvm => pvm.Measures, opt =>
+                    opt.MapFrom(p => p.Sizes));
         }
     }
 }

@@ -11,7 +11,6 @@
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Estore.Web.ViewModels.Products;
-    using Estore.Web.ViewModels.Products.Enums;
     using Microsoft.EntityFrameworkCore;
 
     public class ProductsService : IProductsService

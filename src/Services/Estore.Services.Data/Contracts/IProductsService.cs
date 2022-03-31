@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using Estore.Web.ViewModels.Products;
-    using Estore.Web.ViewModels.Products.Enums;
 
     public interface IProductsService
     {
