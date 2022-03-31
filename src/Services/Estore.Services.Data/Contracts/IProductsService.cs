@@ -7,6 +7,8 @@
 
     public interface IProductsService
     {
+        Task<IEnumerable<T>> GetLatest<T>();
+
         Task<IEnumerable<T>> GetSubMainCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage);
 
         Task<IEnumerable<T>> GetSubCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage);

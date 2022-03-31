@@ -22,6 +22,17 @@
             this.context = context;
         }
 
+        public async Task<IEnumerable<T>> GetLatest<T>()
+        {
+            var latestProducts = await this.context.Products
+                .OrderByDescending(p => p.CreatedOn)
+                .Take(10)
+                .To<T>()
+                .ToListAsync();
+
+            return latestProducts;
+        }
+
         public async Task<IEnumerable<T>> GetSubMainCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage)
         {
             var result = await this.IfCategoryExistAsync(categoryId);
@@ -88,43 +99,30 @@
             return productDetails;
         }
 
-        private async Task<IEnumerable<RelatedProductViewModel>> GetRelated(string productId)
+        private async Task<IEnumerable<ProductViewModel>> GetRelated(string productId)
         {
             var product = await this.IfProductExistAsync(productId);
 
             var relatedProducts = await this.context.Products
                 .Where(p => p.CategoryId == product.CategoryId && p.Id != product.Id)
-                .To<RelatedProductViewModel>()
+                .To<ProductViewModel>()
                 .ToListAsync();
 
             return relatedProducts;
         }
 
-        //private async Task<IEnumerable<ColorViewModel>> GetColorsAsync(string productId)
+        //private async Task<IEnumerable<string>> GetColorsAsync(string productId)
         //{
         //    var result = await this.IfProductExistAsync(productId);
 
-        //    var productColors = await result.Colors
-        //        .AsQueryable()
-        //        .To<ColorViewModel>()
-        //        .ToListAsync();
-
-        //    return productColors;
+        //    return result.Colors;
         //}
 
-        //private async Task<IEnumerable<SizeViewModel>> GetMeasuresAsync(string productId)
+        //private async Task<IEnumerable<string>> GetMeasuresAsync(string productId)
         //{
         //    var result = await this.IfProductExistAsync(productId);
 
-        //    var productMeasures = await result.Sizes
-        //        .AsQueryable()
-        //        .Select(s => new SizeViewModel
-        //        {
-        //            Name = s.ToString(),
-        //        })
-        //        .ToListAsync();
-
-        //    return productMeasures;
+        //    return result.Sizes;
         //}
 
         private async Task<Category> IfCategoryExistAsync(string categoryId)

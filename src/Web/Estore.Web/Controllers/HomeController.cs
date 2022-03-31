@@ -3,18 +3,29 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
 
+    using Estore.Services.Data.Contracts;
     using Estore.Web.ViewModels;
+    using Estore.Web.ViewModels.Home;
+    using Estore.Web.ViewModels.Products;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
-        public HomeController()
+        private readonly IProductsService productsService;
+
+        public HomeController(IProductsService productsService)
         {
+            this.productsService = productsService;
         }
 
         public async Task<IActionResult> Index()
         {
-            return this.View();
+            var viewModel = new IndexViewModel
+            {
+                LatestProducts = await this.productsService.GetLatest<ProductViewModel>(),
+            };
+
+            return this.View(viewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -6,7 +6,7 @@
     using Estore.Data.Models;
     using Estore.Services.Mapping;
 
-    public class RelatedProductViewModel : IMapFrom<Product>, IHaveCustomMappings
+    public class ProductViewModel : IMapFrom<Product>, IHaveCustomMappings
     {
         public string Id { get; set; }
 
@@ -23,7 +23,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Product, RelatedProductViewModel>()
+            configuration.CreateMap<Product, ProductViewModel>()
                 .ForMember(rvm => rvm.ImageUrl, opt =>
                     opt.MapFrom(p => p.Images.FirstOrDefault().RemoteUrl));
         }

@@ -1,19 +1,20 @@
 ﻿namespace Estore.Web.ViewModels.Products
 {
-    using System;
+    using System.Linq;
 
     using AutoMapper;
+    using Estore.Data.Models;
     using Estore.Services.Mapping;
 
-    public class ColorViewModel : IMapFrom<Enum>, IHaveCustomMappings
+    public class ColorViewModel : IMapFrom<string>
     {
         public string Name { get; set; }
 
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration.CreateMap<Enum, ColorViewModel>()
-                .ForPath(cvm => cvm.Name, opt =>
-                    opt.MapFrom(c => c.ToString()));
-        }
+        //public void CreateMappings(IProfileExpression configuration)
+        //{
+        //    configuration.CreateMap<Product, ColorViewModel>()
+        //        .ForPath(cvm => cvm.Name, opt =>
+        //            opt.MapFrom(p => p.Colors.FirstOrDefault().ToString()));
+        //}
     }
 }

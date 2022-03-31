@@ -67,41 +67,13 @@
                     <!-- HEADER-LEFT-MENU START -->
                     <div class="col-md-6">
                         <div class="header-left-menu">
-                            <div class="welcome-info">
-                                Welcome <span>@this.User.Identity.Name</span>
-                            </div>
-                            <div class="currenty-converter">
-                                <form method="post" action="#" id="currency-set">
-                                    <div class="current-currency">
-                                        <span class="cur-label">Currency : </span><strong>USD</strong>
-                                    </div>
-                                    <ul class="currency-list currency-toogle">
-                                        <li>
-                                            <a title="Dollar (USD)" href="#">Dollar (USD)</a>
-                                        </li>
-                                        <li>
-                                            <a title="Euro (EUR)" href="#">Euro (EUR)</a>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                            <div class="selected-language">
-                                <div class="current-lang">
-                                    <span class="current-lang-label">Language : </span><strong>English</strong>
+                            @if (this.User.Identity.IsAuthenticated) 
+                            {
+                                <div class="welcome-info">
+                                    Welcome <span>@this.User.Identity.Name</span>
                                 </div>
-                                <ul class="languages-choose language-toogle">
-                                    <li>
-                                        <a href="#" title="English">
-                                            <span>English</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Français (French)">
-                                            <span>Français</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            }
+
                             @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                             {
                                 <div class="header-left-menu">
@@ -166,7 +138,6 @@
                         </form>
                     </div>
                     <!-- CATEGORYS-PRODUCT-SEARCH END -->
-
                 </div>
             </div>
         </div>
@@ -242,37 +213,6 @@
             </div>
         </div>
         <!-- MAIN-MENU-AREA END -->
-
-        <!-- Mobile Header START -->
-        <div class="mobile-header d-lg-none">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-4">
-                        <div class="header-toggle">
-                            <button class="toggle" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="logo">
-                            <a href="index.html"><img src="~/assets/images/logo.webp" alt="bstore logo" /></a>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="mobile-shopping-cart">
-                            <a class="shop-link" href="cart.html" title="View my shopping cart">
-                                <i class="fa fa-shopping-cart cart-icon"></i>
-                                <span class="cart-quantity">2</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Header END -->
 
     </header>
     <!-- HEADER AREA End -->
