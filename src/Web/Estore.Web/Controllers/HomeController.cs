@@ -22,7 +22,8 @@
         {
             var viewModel = new IndexViewModel
             {
-                LatestProducts = await this.productsService.GetLatest<ProductViewModel>(),
+                LatestProducts = await this.productsService.GetLatestAsync<ProductViewModel>(),
+                MostDiscountedProducts = await this.productsService.GetMostDiscountedAsync<ProductViewModel>(),
             };
 
             return this.View(viewModel);

@@ -7,5 +7,7 @@
     public class IndexViewModel
     {
         public IEnumerable<ProductViewModel> LatestProducts { get; set; }
+
+        public IEnumerable<ProductViewModel> MostDiscountedProducts { get; set; }
     }
 }

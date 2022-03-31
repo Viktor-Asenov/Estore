@@ -22,7 +22,7 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<T>> GetLatest<T>()
+        public async Task<IEnumerable<T>> GetLatestAsync<T>()
         {
             var latestProducts = await this.context.Products
                 .OrderByDescending(p => p.CreatedOn)
@@ -31,6 +31,17 @@
                 .ToListAsync();
 
             return latestProducts;
+        }
+
+        public async Task<IEnumerable<T>> GetMostDiscountedAsync<T>()
+        {
+            var mostDiscounted = await this.context.Products
+                .OrderByDescending(p => p.Discount)
+                .Take(10)
+                .To<T>()
+                .ToListAsync();
+
+            return mostDiscounted;
         }
 
         public async Task<IEnumerable<T>> GetSubMainCategoryProductsAsync<T>(string categoryId, int page, int itemsPerPage)
