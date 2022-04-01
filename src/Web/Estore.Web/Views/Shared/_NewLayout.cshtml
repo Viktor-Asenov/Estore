@@ -145,70 +145,9 @@
         <!-- MAIN-MENU-AREA START -->
         <div class="main-menu-area d-none d-lg-block">
             <div class="container">
-                <div class="row">                   
-
+                <div class="row">
                     <vc:main-menu></vc:main-menu>
-
-                    <!-- SHOPPING-CART START -->
-                    <div class="col-lg-3">
-                        <div class="shopping-cart-out d-flex justify-content-end">
-                            <div class="shopping-cart">
-                                <a class="shop-link" href="cart.html" title="View my shopping cart">
-                                    <i class="fa fa-shopping-cart cart-icon"></i>
-                                    <b>My Cart</b>
-                                    <span class="ajax-cart-quantity">2</span>
-                                </a>
-
-                                <div class="shipping-cart-overly">
-                                    <div class="shipping-item">
-                                        <span class="cross-icon"><i class="fa fa-times-circle"></i></span>
-                                        <div class="shipping-item-image">
-                                            <a href="#"><img src="~/assets/images/shopping-image.webp" alt="shopping image" /></a>
-                                        </div>
-                                        <div class="shipping-item-text">
-                                            <span>
-                                                2 <span class="pro-quan-x">x</span> <a href="#"
-                                                                                       class="pro-cat">Watch</a>
-                                            </span>
-                                            <span class="pro-quality"><a href="#">S,Black</a></span>
-                                            <p>$22.95</p>
-                                        </div>
-                                    </div>
-                                    <div class="shipping-item">
-                                        <span class="cross-icon"><i class="fa fa-times-circle"></i></span>
-                                        <div class="shipping-item-image">
-                                            <a href="#"><img src="~/assets/images/shopping-image2.webp" alt="shopping image" /></a>
-                                        </div>
-                                        <div class="shipping-item-text">
-                                            <span>
-                                                2 <span class="pro-quan-x">x</span> <a href="#" class="pro-cat">
-                                                    Women
-                                                    Bag
-                                                </a>
-                                            </span>
-                                            <span class="pro-quality"><a href="#">S,Gary</a></span>
-                                            <p>$19.95</p>
-                                        </div>
-                                    </div>
-                                    <div class="shipping-total-bill">
-                                        <div class="cart-prices">
-                                            <span class="shipping-cost">$2.00</span>
-                                            <span>Shipping</span>
-                                        </div>
-                                        <div class="total-shipping-prices">
-                                            <span class="shipping-total">$24.95</span>
-                                            <span>Total</span>
-                                        </div>
-                                    </div>
-                                    <div class="shipping-checkout-btn">
-                                        <a href="checkout.html">Check out <i class="fa fa-chevron-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- SHOPPING-CART END -->
-
+                    <vc:cart></vc:cart>
                 </div>
             </div>
         </div>
@@ -228,154 +167,6 @@
         </div>
     </section>    
     <!-- MAIN-CONTENT-SECTION END -->
-
-    <!-- LATEST-NEWS-AREA START -->
-    <section class="latest-news-area">
-        <div class="container">
-            <div class="latest-news-row">
-                <div class="center-title-area">
-                    <h2 class="center-title"><a href="#">latest news</a></h2>
-                </div>
-                <div class="carousel-wrap">
-                    <!-- LATEST-NEWS-CAROUSEL START -->
-                    <div class="latest-news-carousel owl-carousel">
-
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/1.webp" alt="latest-post" /></a>
-                            <h2><a href="#">What is Lorem Ipsum?</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/2.webp" alt="latest-post" /></a>
-                            <h2><a href="#">Share the Love for printing</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/3.webp" alt="latest-post" /></a>
-                            <h2><a href="#">Answers your Questions P..</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/4.webp" alt="latest-post" /></a>
-                            <h2><a href="#">What is Bootstrap? – History</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/5.webp" alt="latest-post" /></a>
-                            <h2><a href="#">Share the Love for..</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/6.webp" alt="latest-post" /></a>
-                            <h2><a href="#">What is Bootstrap? – The History a..</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/3.webp" alt="latest-post" /></a>
-                            <h2><a href="#">Answers your Questions P..</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-                        <!-- LATEST-NEWS-SINGLE-POST START -->
-                        <div class="single-latest-post">
-                            <a href="#"><img src="~/assets/images/latest-news/4.webp" alt="latest-post" /></a>
-                            <h2><a href="#">What is Bootstrap? – History</a></h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and Type setting
-                                industry. Lorem Ipsum has been...
-                            </p>
-                            <div class="latest-post-info">
-                                <i class="fa fa-calendar"></i><span>2015-06-20 04:51:43</span>
-                            </div>
-                            <div class="read-more">
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- LATEST-NEWS-SINGLE-POST END -->
-
-                    </div>
-                    <!-- LATEST-NEWS-CAROUSEL START -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- LATEST-NEWS-AREA END -->
 
     <!-- COMPANY-FACALITY START -->
     <section class="company-facality">
@@ -445,28 +236,13 @@
                     <div class="col-lg-3 col-md-4 col-12">
                         <!-- FOOTER-TOP-LEFT START -->
                         <div class="footer-top-left">
-                            <!-- NEWSLETTER-AREA START -->
-                            <div class="newsletter-area">
-                                <h2>Newsletter</h2>
-                                <p>
-                                    Subscribe to our mailing list to receive updates on new arrivals, special offers and
-                                    other discount information.
-                                </p>
-                                <form action="#">
-                                    <div class="form-group newsletter-form-group">
-                                        <input type="text" class="form-control newsletter-form"
-                                               placeholder="Enter your e-mail">
-                                        <input type="submit" class="newsletter-btn" name="submit" value="Subscribe" />
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- NEWSLETTER-AREA END -->
+                            
                             <!-- ABOUT-US-AREA START -->
                             <div class="about-us-area">
                                 <h2>About Us</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                    Estore - online shopping platform, builded to satisfy client's need of something fashionable
+                                    and comfort.
                                 </p>
                             </div>
                             <!-- ABOUT-US-AREA END -->
@@ -475,9 +251,9 @@
                                 <h2>Follow us</h2>
                                 <ul class="flow-us-link">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 </ul>
                             </div>
                             <!-- FLLOW-US-AREA END -->
@@ -485,106 +261,9 @@
                         <!-- FOOTER-TOP-LEFT END -->
                     </div>
                     <div class="col-lg-9 col-md-8 col-12">
-                        <!-- FOOTER-TOP-RIGHT-1 START -->
-                        <div class="footer-top-right-1">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <!-- STATICBLOCK START -->
-                                    <div class="staticblock">
-                                        <h2>static block</h2>
-                                        <p>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industrys standard dummy text ever since the
-                                            1500s<br />when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. It has survived not only five centuries, but also
-                                            the leap into electronic typesetting, remaining essentially unchanged.
-                                        </p>
-                                    </div>
-                                    <!-- STATICBLOCK END -->
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <!-- STORE-INFORMATION START -->
-                                    <div class="Store-Information">
-                                        <h2>Store Information</h2>
-                                        <ul>
-                                            <li>
-                                                <div class="info-lefticon">
-                                                    <i class="fa fa-map-marker"></i>
-                                                </div>
-                                                <div class="info-text">
-                                                    <p>Your address goes here.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="info-lefticon">
-                                                    <i class="fa fa-phone"></i>
-                                                </div>
-                                                <div class="info-text call-lh">
-                                                    <p>Call us now : 0123-456-789</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="info-lefticon">
-                                                    <i class="fa fa-envelope-o"></i>
-                                                </div>
-                                                <div class="info-text">
-                                                    <p>
-                                                        Email : <a href="mailto:demo@example.com">
-                                                            <i class="fa fa-angle-double-right"></i>
-                                                            demo@example.com
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- STORE-INFORMATION END -->
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <!-- GOOGLE-MAP-AREA START -->
-                                    <div class="google-map-area">
-                                        <div class="google-map">
-                                            <div id="googleMap" style="width:100%;height:150px;"></div>
-                                        </div>
-                                    </div>
-                                    <!-- GOOGLE-MAP-AREA END -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FOOTER-TOP-RIGHT-1 END -->
+                        
                         <div class="footer-top-right-2">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <!-- FOTTER-MENU-WIDGET START -->
-                                    <div class="fotter-menu-widget">
-                                        <div class="single-f-widget">
-                                            <h2>Categories</h2>
-                                            <ul>
-                                                <li>
-                                                    <a href="shop-gird.html">
-                                                        <i class="fa fa-angle-double-right"></i>Women
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-gird.html">
-                                                        <i class="fa fa-angle-double-right"></i>Men
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-gird.html">
-                                                        <i class="fa fa-angle-double-right"></i>clothing
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-gird.html">
-                                                        <i class="fa fa-angle-double-right"></i>kids
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- FOTTER-MENU-WIDGET END -->
-                                </div>
+                            <div class="row">                                
                                 <div class="col-md-4">
                                     <!-- FOTTER-MENU-WIDGET START -->
                                     <div class="fotter-menu-widget">
@@ -592,13 +271,10 @@
                                             <h2>Information</h2>
                                             <ul>
                                                 <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>Specials</a>
+                                                    <a href="#"><i class="fa fa-angle-double-right"></i>Latest Products</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>New products</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>Best sellers</a>
+                                                    <a href="#"><i class="fa fa-angle-double-right"></i>Most Discounted</a>
                                                 </li>
                                                 <li>
                                                     <a href="contact-us.html">
@@ -617,26 +293,14 @@
                                             <h2>My account</h2>
                                             <ul>
                                                 <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>My orders</a>
+                                                    <a href="#"><i class="fa fa-angle-double-right"></i>My Wishlist</a>
                                                 </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-angle-double-right"></i>My credit
-                                                        slips
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>My addresses</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-angle-double-right"></i>My personal
-                                                        info
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>Sign out</a>
-                                                </li>
+                                                @if (this.User.Identity.IsAuthenticated)
+                                                {
+                                                    <li>
+                                                        <a href="#"><i class="fa fa-angle-double-right"></i>Sign out</a>
+                                                    </li>
+                                                }                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -662,14 +326,13 @@
     <footer class="copyright-area">
         <div class="container">
             <div class="copy-right">
-                <address>&copy; 2021 <span> Estore </span> Made with <i class="fa fa-heart"></i> by <a href="https://hasthemes.com/">HasThemes</a></address>
-            </div>
-            <div class="scroll-to-top">
-                <a href="#" class="bstore-scrollertop"><i class="fa fa-angle-double-up"></i></a>
+                <address>&copy; 2022 <span> Estore </span></address>
             </div>
         </div>
     </footer>
     <!-- COPYRIGHT-AREA END -->
+
+
     <!-- JS
     ============================================ -->
     <!-- Modernizer & jQuery JS -->

@@ -23,7 +23,7 @@
         {
             var productsSidebarModel = new ProductsSidebarViewModel
             {
-                Categories = await this.categoriesService.GetAllSubCategories<SidebarCategoryViewModel>().Distinct().ToListAsync(),
+                Categories = await this.categoriesService.GetAllSubCategories<SidebarCategoryViewModel>().ToListAsync(),
                 Tags = await this.tagsService.GetAllTagsAsync<TagViewModel>(),
             };
 
