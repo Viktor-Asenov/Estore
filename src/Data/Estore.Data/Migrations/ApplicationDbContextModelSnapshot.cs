@@ -257,6 +257,9 @@ namespace Estore.Data.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("IsDiscountGiven")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 

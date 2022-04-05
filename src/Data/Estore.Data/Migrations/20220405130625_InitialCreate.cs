@@ -303,7 +303,8 @@ namespace Estore.Data.Migrations
                     CartId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    TotalPerProduct = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    TotalPerProduct = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsDiscountGiven = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

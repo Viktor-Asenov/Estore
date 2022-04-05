@@ -17,5 +17,7 @@
         public int Quantity { get; set; }
 
         public decimal TotalPerProduct { get; set; }
+
+        public bool IsDiscountGiven { get; set; }
     }
 }

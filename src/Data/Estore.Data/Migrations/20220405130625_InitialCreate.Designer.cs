@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220331131137_InitialCreate")]
+    [Migration("20220405130625_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,6 +258,9 @@ namespace Estore.Data.Migrations
 
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDiscountGiven")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
