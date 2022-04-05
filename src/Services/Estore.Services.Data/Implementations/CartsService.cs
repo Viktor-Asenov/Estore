@@ -47,7 +47,7 @@
                 };
 
                 var productPrice = product.Price;
-                var productDiscount = product.Discount;
+                var productDiscount = product.Discount / 100;
 
                 if (newOrder.Quantity >= product.ItemApplyDiscount)
                 {
@@ -66,7 +66,7 @@
                         && o.CartId == user.CartId);
 
                 var productPrice = orderedProduct.Product.Price;
-                var productDiscount = orderedProduct.Product.Discount;
+                var productDiscount = orderedProduct.Product.Discount / 100;
 
                 orderedProduct.Quantity += quantity;
 

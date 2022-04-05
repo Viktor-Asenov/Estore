@@ -1,6 +1,8 @@
 ﻿@using Estore.Web.ViewModels.Home
 @model IndexViewModel
-  
+
+<div id="messageBody"></div>
+
 <!-- MAIN-SLIDER-AREA START -->
 <div class="row main-slider-area">
     <!-- SLIDER-AREA START -->
@@ -9,8 +11,8 @@
             <div id="wrapper">
                 <div class="slider-wrapper">
                     <div id="mainSlider" class="nivoSlider">
-                        <img src="assets/images/slider/2.webp" alt="main slider" title="#htmlcaption" />
-                        <img src="assets/images/slider/1.webp" alt="main slider" title="#htmlcaption2" />
+                        <img src="~/assets/images/slider/2.webp" alt="main slider" title="#htmlcaption" />
+                        <img src="~/assets/images/slider/1.webp" alt="main slider" title="#htmlcaption2" />
                     </div>
                     <div id="htmlcaption" class="nivo-html-caption slider-caption">
                         <div class="slider-progress"></div>
@@ -50,7 +52,7 @@
     <!-- SLIDER-RIGHT START -->
     <div class="col-md-3">
         <div class="slider-right zoom-img m-top">
-            <a href="#"><img class="img-responsive" src="assets/images/product/cms11.webp" alt="sidebar left" /></a>
+            <a href="#"><img class="img-responsive" src="~/assets/images/product/cms11.webp" alt="sidebar left" /></a>
         </div>
     </div>
     <!-- SLIDER-RIGHT END -->
@@ -195,9 +197,10 @@
                 $.ajax({
                     type: "POST",
                     url: "/api/Carts",
-                    data: JSON.stringify(data),                    
+                    data: JSON.stringify(data),               
                     success: function(data) {
-                        console.log(data);
+                       $('#messageBody').html(
+                       '<div class="alert alert-success" role="alert"><span>' + data + '</span><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');                       
                     },
                     contentType: 'application/json',
                 });

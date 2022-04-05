@@ -26,7 +26,7 @@
         [HttpPost]
         [Authorize]
         [IgnoreAntiforgeryToken]
-        public async Task<ActionResult<AddProductInOrdersModel>> Add(AddProductInOrdersModel product)
+        public async Task<ActionResult<string>> Add(AddProductInOrdersModel product)
         {
             try
             {
@@ -34,9 +34,7 @@
 
                 var result = await this.cartsService.AddProductInOrdersAsync(user.Id, product.ProductId, product.Quantity);
 
-                this.TempData["Message"] = result;
-
-                return product;
+                return result;
             }
             catch (Exception ex)
             {
