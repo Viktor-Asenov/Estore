@@ -1,4 +1,4 @@
-﻿namespace Estore.Web.ViewModels.Carts
+﻿namespace Estore.Web.ViewModels.ViewComponents.Cart
 {
     public class AddProductInOrdersModel
     {

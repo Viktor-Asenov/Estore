@@ -5,7 +5,7 @@
 
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
-    using Estore.Web.ViewModels.Carts;
+    using Estore.Web.ViewModels.ViewComponents.Cart;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
