@@ -5,30 +5,37 @@
 <div class="col-lg-3">
     <div class="shopping-cart-out d-flex justify-content-end">
         <div class="shopping-cart">
-            <a class="shop-link" href="cart.html" title="View my shopping cart">
+            <a class="shop-link" href="cart.html" >
                 <i class="fa fa-shopping-cart cart-icon"></i>
                 <b>My Cart</b>
-                <span class="ajax-cart-quantity">@Model.OrderedProductsCount</span>
+                @if (@Model.OrderedProductsCount > 0)
+                {
+                    <span class="ajax-cart-quantity">@Model.OrderedProductsCount</span>
+                }
             </a>
             <div class="shipping-cart-overly">
-                @foreach (var product in @Model.OrderedProducts)
+                @if (@Model.OrderedProductsCount > 0)
                 {
-                    <div class="shipping-item">
-                        <span class="cross-icon"><i class="fa fa-times-circle"></i></span>
-                        <div class="shipping-item-image">
-                            <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
-                                <img src="@product.ImageUrl" alt="shopping image" />
-                            </a>
+                    @foreach (var product in @Model.OrderedProducts)
+                    {
+                        <div class="shipping-item">
+                            <span class="cross-icon"><i class="fa fa-times-circle"></i></span>
+                            <div class="shipping-item-image">
+                                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                                    <img src="@product.ImageUrl" alt="shopping image" />
+                                </a>
+                            </div>
+                            <div class="shipping-item-text">
+                                <span>
+                                    @product.Quantity <span class="pro-quan-x">x</span> 
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="pro-cat">@product.Name</a>
+                                </span>
+                                <p>$@product.Price</p>
+                            </div>
                         </div>
-                        <div class="shipping-item-text">
-                            <span>
-                                @product.Quantity <span class="pro-quan-x">x</span> 
-                                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="pro-cat">@product.Name</a>
-                            </span>
-                            <p>$@product.Price</p>
-                        </div>
-                    </div>
+                    }
                 }
+                
                 <div class="shipping-total-bill">
                     <div class="total-shipping-prices">
                         <span class="shipping-total">$@Model.TotalAmount</span>

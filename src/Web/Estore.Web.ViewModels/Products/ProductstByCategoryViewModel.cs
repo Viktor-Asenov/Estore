@@ -2,11 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
-    using AutoMapper;
-    using Estore.Data.Models;
-    using Estore.Services.Mapping;
     using Estore.Web.ViewModels.Categories;
 
     public class ProductstByCategoryViewModel

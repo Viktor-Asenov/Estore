@@ -128,11 +128,11 @@
 													@if(@product.Discount != null) 
 													{
 														<span class="price">$@product.DiscountedPrice</span>
-														<span class="old-price">$@product.Price</span>												
+														<span class="old-price">$@product.Price.ToString("0.00")</span>								
 													}
 													else
 													{
-														<span class="price">$@product.Price</span>
+														<span class="price">$@product.Price.ToString("0.00")</span>
 													}													
 												</div>
 											</div>

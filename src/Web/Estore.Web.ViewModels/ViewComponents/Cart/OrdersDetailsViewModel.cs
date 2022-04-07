@@ -9,6 +9,7 @@
 
         public decimal? TotalAmount { get; set; }
 
-        public int OrderedProductsCount => this.OrderedProducts.Count();
+        public int? OrderedProductsCount
+            => this.OrderedProducts != null ? this.OrderedProducts.Count() : 0;
     }
 }

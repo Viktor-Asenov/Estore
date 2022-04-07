@@ -29,7 +29,7 @@
                 throw new NullReferenceException();
             }
 
-            var product = await this.CheckIfProductExistAsync(productId);
+            var product = await this.context.Products.FirstOrDefaultAsync(p => p.Id == productId);
 
             if (product == null)
             {
@@ -128,18 +128,6 @@
             var totalAmount = (decimal?)cart.Orders.Sum(o => o.TotalPerProduct) ?? 0;
 
             return totalAmount;
-        }
-
-        public async Task<Product> CheckIfProductExistAsync(string id)
-        {
-            var product = await this.context.Products.FirstOrDefaultAsync(p => p.Id == id);
-
-            if (product == null)
-            {
-                throw new NullReferenceException();
-            }
-
-            return product;
         }
     }
 }
