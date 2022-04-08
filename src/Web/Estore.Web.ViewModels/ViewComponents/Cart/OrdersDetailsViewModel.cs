@@ -7,7 +7,8 @@
     {
         public IEnumerable<OrderedProductViewModel> OrderedProducts { get; set; }
 
-        public decimal? TotalAmount { get; set; }
+        public decimal? TotalAmount
+            => this.OrderedProducts != null ? this.OrderedProducts.Sum(o => o.TotalPerProduct) : 0;
 
         public int? OrderedProductsCount
             => this.OrderedProducts != null ? this.OrderedProducts.Count() : 0;

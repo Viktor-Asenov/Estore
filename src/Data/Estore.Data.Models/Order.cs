@@ -1,9 +1,17 @@
 ﻿namespace Estore.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Order
+    using Estore.Data.Common.Models;
+
+    public class Order : BaseModel<string>
     {
+        public Order()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         [Required]
         public string CartId { get; set; }
 

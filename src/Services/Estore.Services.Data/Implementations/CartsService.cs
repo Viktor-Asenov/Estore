@@ -109,6 +109,7 @@
 
             var orderedProducts = await this.context.Orders
                 .Where(o => o.CartId == user.CartId)
+                .OrderByDescending(o => o.CreatedOn)
                 .To<T>()
                 .ToListAsync();
 

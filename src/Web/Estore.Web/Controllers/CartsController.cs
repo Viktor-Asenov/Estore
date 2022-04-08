@@ -41,5 +41,19 @@
                 return this.NotFound(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult<OrdersDetailsViewModel>> Info()
+        {
+            var model = new OrdersDetailsViewModel();
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            if (user != null)
+            {
+                model.OrderedProducts = await this.cartsService.GetOrderedProductsAsync<OrderedProductViewModel>(user.Id);
+            }
+
+            return model;
+        }
     }
 }

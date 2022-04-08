@@ -4,10 +4,9 @@
 <!-- SHOPPING-CART START -->
 <div class="col-lg-3">
     <div class="shopping-cart-out d-flex justify-content-end">
-        <div class="shopping-cart">
-            <a class="shop-link" href="cart.html" >
+        <div class="shopping-cart" id="cart">
+            <a class="shop-link" onmouseover="gatherInfo(this)" href="cart.html" title="View my shopping cart">
                 <i class="fa fa-shopping-cart cart-icon"></i>
-                <b>My Cart</b>
                 @if (@Model.OrderedProductsCount > 0)
                 {
                     <span class="ajax-cart-quantity">@Model.OrderedProductsCount</span>
@@ -20,11 +19,11 @@
                     {
                         <div class="shipping-item">
                             <span class="cross-icon"><i class="fa fa-times-circle"></i></span>
-                            <div class="shipping-item-image">
+                            @*<div class="shipping-item-image">
                                 <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
                                     <img src="@product.ImageUrl" alt="shopping image" />
                                 </a>
-                            </div>
+                            </div>*@
                             <div class="shipping-item-text">
                                 <span>
                                     @product.Quantity <span class="pro-quan-x">x</span> 
@@ -50,3 +49,18 @@
     </div>
 </div>
 <!-- SHOPPING-CART END -->
+
+@section Scripts {
+    <script>
+        function gatherInfo() {
+            $.ajax({
+                    type: "GET",
+                    url: "/api/Carts",
+                    dataType: 'json',
+                    success: function(data) {
+                       $("#cart").html(data);
+                    },
+                });
+        }
+    </script>
+}

@@ -72,9 +72,6 @@
                 .HasOne(x => x.Cart)
                 .WithOne(x => x.User);
 
-            builder.Entity<Order>()
-                .HasKey(x => new { x.CartId, x.ProductId });
-
             builder.Entity<WishList>()
                 .HasKey(x => new { x.UserId, x.ProductId });
 

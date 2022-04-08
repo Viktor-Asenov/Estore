@@ -6,7 +6,7 @@
 
     using Estore.Data.Common.Models;
 
-    public class Tag : BaseDeletableModel<string>
+    public class Tag : BaseModel<string>
     {
         public Tag()
         {

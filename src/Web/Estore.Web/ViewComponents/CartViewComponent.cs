@@ -21,13 +21,12 @@
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var model = new OrdersDetailsViewModel() { TotalAmount = 0 };
+            var model = new OrdersDetailsViewModel();
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
 
             if (user != null)
             {
                 model.OrderedProducts = await this.cartsService.GetOrderedProductsAsync<OrderedProductViewModel>(user.Id);
-                model.TotalAmount = await this.cartsService.GetTotalAmount(user.Id);
             }
 
             return this.View(model);
