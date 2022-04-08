@@ -1,4 +1,4 @@
-﻿namespace Estore.Web.ViewModels.ViewComponents.Cart
+﻿namespace Estore.Web.ViewModels.ViewComponents.Orders
 {
     using System.Linq;
 

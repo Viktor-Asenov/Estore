@@ -3,12 +3,12 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public interface ICartsService
+    public interface IOrdersService
     {
         Task<string> AddProductInOrdersAsync(string userId, string productId, int quantity);
 
-        Task<IEnumerable<T>> GetOrderedProductsAsync<T>(string userId);
+        Task DeleteProductFromOrdersAsync(string productId);
 
-        Task<decimal?> GetTotalAmount(string cartId);
+        Task<IEnumerable<T>> GetOrderedProductsAsync<T>(string userId);
     }
 }

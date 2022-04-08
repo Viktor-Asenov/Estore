@@ -4,16 +4,16 @@
 
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
-    using Estore.Web.ViewModels.ViewComponents.Cart;
+    using Estore.Web.ViewModels.ViewComponents.Orders;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class CartViewComponent : ViewComponent
+    public class OrdersViewComponent : ViewComponent
     {
-        private readonly ICartsService cartsService;
+        private readonly IOrdersService cartsService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CartViewComponent(ICartsService cartsService, UserManager<ApplicationUser> userManager)
+        public OrdersViewComponent(IOrdersService cartsService, UserManager<ApplicationUser> userManager)
         {
             this.cartsService = cartsService;
             this.userManager = userManager;

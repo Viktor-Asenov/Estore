@@ -11,11 +11,11 @@
     using Estore.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
 
-    public class CartsService : ICartsService
+    public class OrdersService : IOrdersService
     {
         private readonly ApplicationDbContext context;
 
-        public CartsService(ApplicationDbContext context)
+        public OrdersService(ApplicationDbContext context)
         {
             this.context = context;
         }
@@ -98,6 +98,21 @@
             return message;
         }
 
+        public async Task DeleteProductFromOrdersAsync(string productId)
+        {
+            var orderedProduct = await this.context.Orders.FirstOrDefaultAsync(o => o.ProductId == productId);
+
+            if (orderedProduct == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            this.context.Orders
+                .Remove(orderedProduct);
+
+            await this.context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetOrderedProductsAsync<T>(string userId)
         {
             var user = await this.context.Users.FindAsync(userId);
@@ -114,21 +129,6 @@
                 .ToListAsync();
 
             return orderedProducts;
-        }
-
-        public async Task<decimal?> GetTotalAmount(string userId)
-        {
-            var cart = await this.context.Carts
-                .FirstOrDefaultAsync(c => c.User.Id == userId);
-
-            if (cart == null)
-            {
-                throw new NullReferenceException();
-            }
-
-            var totalAmount = (decimal?)cart.Orders.Sum(o => o.TotalPerProduct) ?? 0;
-
-            return totalAmount;
         }
     }
 }

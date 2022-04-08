@@ -177,7 +177,9 @@
                             </div>
                         </div>
                         <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
-                        <div class="price-box">		<span class="price">$@product.DiscountedPrice</span>		<span class="old-price">$@product.Price</span>	</div>
+                        <div class="price-box">
+                            <span class="price">$@product.Price</span>
+                        </div>
                     </div>
                 </div>
             }
@@ -196,7 +198,7 @@
                 var data = { productId: productId, quantity: quantity };
                 $.ajax({
                     type: "POST",
-                    url: "/api/Carts",
+                    url: "/api/Orders",
                     data: JSON.stringify(data),               
                     success: function(data) {
                        $('#messageBody').html(

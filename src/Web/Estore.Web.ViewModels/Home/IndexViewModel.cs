@@ -3,7 +3,6 @@
     using System.Collections.Generic;
 
     using Estore.Web.ViewModels.Products;
-    using Estore.Web.ViewModels.ViewComponents.Cart;
 
     public class IndexViewModel
     {

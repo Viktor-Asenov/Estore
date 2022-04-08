@@ -1,11 +1,11 @@
-﻿@using Estore.Web.ViewModels.ViewComponents.Cart
+﻿@using Estore.Web.ViewModels.ViewComponents.Orders
 @model OrdersDetailsViewModel
 
 <!-- SHOPPING-CART START -->
 <div class="col-lg-3">
     <div class="shopping-cart-out d-flex justify-content-end">
-        <div class="shopping-cart" id="cart">
-            <a class="shop-link" onmouseover="gatherInfo(this)" href="cart.html" title="View my shopping cart">
+        <div class="shopping-cart">
+            <a class="shop-link" asp-controller="Carts" asp-action="Details" title="View my shopping cart">
                 <i class="fa fa-shopping-cart cart-icon"></i>
                 @if (@Model.OrderedProductsCount > 0)
                 {
@@ -17,13 +17,8 @@
                 {
                     @foreach (var product in @Model.OrderedProducts)
                     {
-                        <div class="shipping-item">
-                            <span class="cross-icon"><i class="fa fa-times-circle"></i></span>
-                            @*<div class="shipping-item-image">
-                                <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
-                                    <img src="@product.ImageUrl" alt="shopping image" />
-                                </a>
-                            </div>*@
+                        <div class="shipping-item" id="product">
+                            <span class="cross-icon"><i id="@product.Id" class="fa fa-times-circle"></i></span>
                             <div class="shipping-item-text">
                                 <span>
                                     @product.Quantity <span class="pro-quan-x">x</span> 
@@ -52,15 +47,13 @@
 
 @section Scripts {
     <script>
-        function gatherInfo() {
-            $.ajax({
-                    type: "GET",
-                    url: "/api/Carts",
-                    dataType: 'json',
-                    success: function(data) {
-                       $("#cart").html(data);
-                    },
-                });
-        }
+        $("i[id]").each(function myFunction(el) {
+            $(this).click(function () {
+                var productId = $(this).attr("id");
+                var data = { productId: productId };
+                console.log(data);
+            })
+        });
+        
     </script>
 }
