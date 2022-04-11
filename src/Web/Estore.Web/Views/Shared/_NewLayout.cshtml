@@ -374,7 +374,35 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    <script>
+        let targetElements = document.querySelectorAll(".fa-times-circle")
+
+        for(let i = 0; i < targetElements.length; i++) {
+            targetElements[i].addEventListener('click', deleteProduct);
+        }
+
+        function deleteProduct(e) {
+            var productId = e.target.parentElement.parentElement.id;
+            var data = { productId: productId };
+            console.log(data);
+            //$.ajax({
+            //    type: "DELETE",
+            //    url: "/api/Orders",
+            //    data: JSON.stringify(data),          
+            //    success: function() {
+            //       var productElement =  e.target.parentElement.parentElement;
+            //       productElement.remove();
+            //    },
+            //    dataType: 'json',
+            //});           
+        }
+    </script>
+     
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
+
+@section Scripts {
+
+}

@@ -37,5 +37,17 @@
                 return this.NotFound(ex.Message);
             }
         }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                return this.RedirectToAction("Details");
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
     }
 }

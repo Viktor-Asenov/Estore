@@ -16,9 +16,11 @@
                 @if (@Model.OrderedProductsCount > 0)
                 {
                     @foreach (var product in @Model.OrderedProducts)
-                    {
-                        <div class="shipping-item" id="product">
-                            <span class="cross-icon"><i id="@product.Id" class="fa fa-times-circle"></i></span>
+                    { 
+                        <div class="shipping-item" id="item_@product.Id">
+                            <span class="cross-icon delete">
+                                <i class="fa fa-times-circle"></i>
+                            </span>
                             <div class="shipping-item-text">
                                 <span>
                                     @product.Quantity <span class="pro-quan-x">x</span> 
@@ -44,16 +46,3 @@
     </div>
 </div>
 <!-- SHOPPING-CART END -->
-
-@section Scripts {
-    <script>
-        $("i[id]").each(function myFunction(el) {
-            $(this).click(function () {
-                var productId = $(this).attr("id");
-                var data = { productId: productId };
-                console.log(data);
-            })
-        });
-        
-    </script>
-}
