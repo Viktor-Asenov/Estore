@@ -383,18 +383,16 @@
 
         function deleteProduct(e) {
             var productId = e.target.parentElement.parentElement.id;
-            var data = { productId: productId };
-            console.log(data);
-            //$.ajax({
-            //    type: "DELETE",
-            //    url: "/api/Orders",
-            //    data: JSON.stringify(data),          
-            //    success: function() {
-            //       var productElement =  e.target.parentElement.parentElement;
-            //       productElement.remove();
-            //    },
-            //    dataType: 'json',
-            //});           
+            $.ajax({
+                type: "DELETE",
+                url: "/api/Orders?" + $.param({
+                    productid: productId,
+                }),          
+                success: function() {
+                   var productElement =  e.target.parentElement.parentElement;
+                   productElement.remove();
+                },
+            });           
         }
     </script>
      
@@ -402,7 +400,3 @@
 </body>
 
 </html>
-
-@section Scripts {
-
-}

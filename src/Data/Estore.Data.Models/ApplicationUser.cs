@@ -18,7 +18,7 @@ namespace Estore.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Comments = new HashSet<Review>();
-            this.Favorites = new HashSet<WishList>();
+            this.Favorites = new HashSet<Wishlist>();
         }
 
         [Required]
@@ -49,6 +49,6 @@ namespace Estore.Data.Models
 
         public virtual ICollection<Review> Comments { get; set; }
 
-        public virtual ICollection<WishList> Favorites { get; set; }
+        public virtual ICollection<Wishlist> Favorites { get; set; }
     }
 }

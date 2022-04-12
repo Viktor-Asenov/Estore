@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class WishList
+    public class Wishlist
     {
         [Required]
         public string UserId { get; set; }

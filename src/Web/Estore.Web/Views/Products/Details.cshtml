@@ -63,16 +63,6 @@
 				<div class="col-lg-7 col-md-8">
 					<div class="single-product-descirption">
 						<h2>@Model.Name</h2>
-						<div class="single-product-social-share">
-							<ul>
-								<li><a href="#" class="twi-link"><i class="fa fa-twitter"></i>Tweet</a></li>
-								<li><a href="#" class="fb-link"><i class="fa fa-facebook"></i>Share</a></li>
-								<li><a href="#" class="g-plus-link"><i class="fa fa-google-plus"></i>Google+</a>
-								</li>
-								<li><a href="#" class="pin-link"><i class="fa fa-pinterest"></i>Pinterest</a>
-								</li>
-							</ul>
-						</div>
 						<div class="single-product-review-box">
 							<div class="rating-box">
 								<i class="fa fa-star"></i>
@@ -239,8 +229,7 @@
 												</div>
 												<a asp-controller="Products" asp-action="Details" asp-route-id="@relProduct.Id">@relProduct.Name</a>
 												<div class="price-box">
-													<span class="price">$@relProduct.DiscountedPrice</span>
-													<span class="old-price">$@relProduct.Price</span>
+													<span class="price">$@relProduct.Price</span>
 												</div>
 											</div>
 										</div>

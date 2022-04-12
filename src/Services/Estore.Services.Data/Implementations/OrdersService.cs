@@ -100,7 +100,8 @@
 
         public async Task DeleteProductFromOrdersAsync(string productId)
         {
-            var id = productId.Substring(4, productId.Length);
+            var id = productId.Replace("item_", string.Empty);
+
             var orderedProduct = await this.context.Orders
                 .FirstOrDefaultAsync(o => o.ProductId == id);
 

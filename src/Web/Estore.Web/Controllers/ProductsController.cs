@@ -13,16 +13,13 @@
         private const int ItemsPerPage = 3;
         private readonly IProductsService productsService;
         private readonly ICategoriesService categoriesService;
-        private readonly ITagsService tagsService;
 
         public ProductsController(
             IProductsService productsService,
-            ICategoriesService categoriesService,
-            ITagsService tagsService)
+            ICategoriesService categoriesService)
         {
             this.productsService = productsService;
             this.categoriesService = categoriesService;
-            this.tagsService = tagsService;
         }
 
         [HttpGet]
@@ -250,6 +247,7 @@
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
             try
@@ -262,6 +260,12 @@
             {
                 return this.NotFound(ex.Message);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Wishlist()
+        {
+            return this.View();
         }
 
         private async Task<ProductstByCategoryViewModel> GetSubMainModel(string id, int page)

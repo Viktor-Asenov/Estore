@@ -17,7 +17,7 @@
             this.Sizes = new HashSet<string>();
             this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
-            this.Favorites = new HashSet<WishList>();
+            this.Favorites = new HashSet<Wishlist>();
             this.Reviews = new HashSet<Review>();
             this.ProductTags = new HashSet<ProductTag>();
         }
@@ -52,7 +52,7 @@
 
         public virtual ICollection<Image> Images { get; set; }
 
-        public virtual ICollection<WishList> Favorites { get; set; }
+        public virtual ICollection<Wishlist> Favorites { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
 

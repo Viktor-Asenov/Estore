@@ -30,7 +30,7 @@
 
         public DbSet<Review> Reviews { get; set; }
 
-        public DbSet<WishList> WishLists { get; set; }
+        public DbSet<Wishlist> WishLists { get; set; }
 
         public DbSet<Image> Images { get; set; }
 
@@ -72,7 +72,7 @@
                 .HasOne(x => x.Cart)
                 .WithOne(x => x.User);
 
-            builder.Entity<WishList>()
+            builder.Entity<Wishlist>()
                 .HasKey(x => new { x.UserId, x.ProductId });
 
             builder.Entity<ProductTag>()
