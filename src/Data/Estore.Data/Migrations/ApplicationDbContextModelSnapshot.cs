@@ -444,19 +444,40 @@ namespace Estore.Data.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Estore.Data.Models.WishList", b =>
+            modelBuilder.Entity("Estore.Data.Models.Wishlist", b =>
                 {
-                    b.Property<string>("UserId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ProductId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("UserId", "ProductId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("WishLists");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Wishlists");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -668,7 +689,7 @@ namespace Estore.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Estore.Data.Models.WishList", b =>
+            modelBuilder.Entity("Estore.Data.Models.Wishlist", b =>
                 {
                     b.HasOne("Estore.Data.Models.Product", "Product")
                         .WithMany("Favorites")

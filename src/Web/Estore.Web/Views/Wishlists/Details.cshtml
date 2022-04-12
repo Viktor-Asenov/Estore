@@ -1,0 +1,66 @@
+﻿@using Estore.Web.ViewModels.Wishlists
+@model WishlistViewModel
+
+<div class="container">
+	<!-- BSTORE-BREADCRUMB START -->
+	<div class="bstore-breadcrumb">
+		<a href="index.html">HOMe <span><i class="fa fa-caret-right"></i> </span> </a>
+		<a href="my-account.html"> my account <span><i class="fa fa-caret-right"></i></span></a>
+		<span> My wishlists</span>
+	</div>
+	<!-- BSTORE-BREADCRUMB END -->
+	
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="page-title">My wishlist</h2>
+
+			<!-- WISHLISTS-CHART START -->
+			<div class="wishlists-chart table-responsive">
+				<table class="table table-bordered">
+					<tbody><tr>
+						<th class="wish-name">Name</th>
+						<th class="wish-price">Price</th>
+						<th class="wish-description">Description</th>
+						<th class="wish-create">Added On</th>
+						<th class="wish-link">In Category</th>
+						<th class="wish-delete">Delete</th>
+					</tr>
+					@foreach (var item in @Model.WishProducts)
+					{
+						<tr>
+							<td>
+								<a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@item.ProductName </a>
+							</td>
+							<td>
+								<span>@item.ProductPrice</span>
+							</td>
+							<td>
+								<span>@item.ProductDescription</span>
+							</td>
+							<td>
+								<span>@item.AddedOn</span>
+							</td>
+							<td>
+								<a asp-controller="Products" asp-action="@item.ProductCategoryName" asp-route-id="@item.ProductCategoryId">
+									@item.ProductCategoryName
+								</a>
+							</td>
+							<td>
+								<a class="dele-wish-list" href="#"><i class="fa fa-close"></i></a>
+							</td>
+						</tr> 
+					}
+				</tbody></table>
+			</div>
+			<!-- WISHLISTS-CHART END -->
+
+			<!-- WISH-LIST BACT HOME START-->
+			<div class="wish-back-link">
+				<a class="wish-save" href="my-account.html"><i class="fa fa-chevron-left"></i> Back to
+					Your Account</a>
+				<a class="wish-save" href="index.html"><i class="fa fa-chevron-left"></i> Home</a>
+			</div>
+			<!-- WISH-LIST BACT HOME END -->
+		</div>
+	</div>
+</div>

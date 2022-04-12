@@ -27,9 +27,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubMainModel(id, page);
+                var model = await this.GetSubMainModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -42,9 +42,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubMainModel(id, page);
+                var model = await this.GetSubMainModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -57,9 +57,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -72,9 +72,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubMainModel(id, page);
+                var model = await this.GetSubMainModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -87,9 +87,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubMainModel(id, page);
+                var model = await this.GetSubMainModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -102,9 +102,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -117,9 +117,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -132,9 +132,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -147,9 +147,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -162,9 +162,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -177,9 +177,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -192,9 +192,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -207,9 +207,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -222,9 +222,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -237,9 +237,9 @@
         {
             try
             {
-                var viewModel = await this.GetSubModel(id, page);
+                var model = await this.GetSubModel(id, page);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception)
             {
@@ -252,20 +252,14 @@
         {
             try
             {
-                var viewModel = await this.productsService.GetDetailsAsync(id);
+                var model = await this.productsService.GetDetailsAsync(id);
 
-                return this.View(viewModel);
+                return this.View(model);
             }
             catch (Exception ex)
             {
                 return this.NotFound(ex.Message);
             }
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Wishlist()
-        {
-            return this.View();
         }
 
         private async Task<ProductstByCategoryViewModel> GetSubMainModel(string id, int page)

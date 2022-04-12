@@ -55,6 +55,10 @@
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
 
             services.AddSingleton(this.configuration);
 
@@ -69,6 +73,7 @@
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IProductsService, ProductsService>();
             services.AddTransient<ITagsService, TagsService>();
+            services.AddTransient<IWishlistsService, WishlistsService>();
             services.AddTransient<ISettingsService, SettingsService>();
         }
 

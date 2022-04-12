@@ -5,20 +5,20 @@
 
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
-    using Estore.Web.ViewModels.Carts;
+    using Estore.Web.ViewModels.Wishlists;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class CartsController : BaseController
+    public class WishlistsController : BaseController
     {
-        private readonly IOrdersService ordersService;
+        private readonly IWishlistsService wishlistsService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CartsController(
-            IOrdersService ordersService,
+        public WishlistsController(
+            IWishlistsService wishlistsService,
             UserManager<ApplicationUser> userManager)
         {
-            this.ordersService = ordersService;
+            this.wishlistsService = wishlistsService;
             this.userManager = userManager;
         }
 
@@ -29,25 +29,12 @@
             {
                 var user = await this.userManager.GetUserAsync(this.User);
 
-                var model = new CartDetailsViewModel
+                var model = new WishlistViewModel
                 {
-                    OrderedProducts = await this.ordersService.GetOrderedProductsAsync<CartProductViewModel>(user.Id),
+                    WishProducts = await this.wishlistsService.GetWishedProducts<WishlistProductViewModel>(user.Id),
                 };
 
                 return this.View(model);
-            }
-            catch (Exception ex)
-            {
-                return this.NotFound(ex.Message);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Delete(string id)
-        {
-            try
-            {
-                return this.RedirectToAction("Details");
             }
             catch (Exception ex)
             {

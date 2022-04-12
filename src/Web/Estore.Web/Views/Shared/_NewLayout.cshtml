@@ -98,7 +98,7 @@
                                 {
                                      <ul class="list-inline">
                                          <li class="list-inline-item">
-                                            <a asp-area="" asp-controller="Products" asp-action="Wishlist">My WishList</a>
+                                            <a asp-area="" asp-controller="Wishlists" asp-action="Details">My WishList</a>
                                          </li>
                                          <li class="list-inline-item">
                                              <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
@@ -383,11 +383,15 @@
 
         function deleteProduct(e) {
             var productId = e.target.parentElement.parentElement.id;
+            var antiForgeryToken = $("#antiForgForm input[name=__RequestVerificationToken]").val();
             $.ajax({
                 type: "DELETE",
                 url: "/api/Orders?" + $.param({
                     productid: productId,
-                }),          
+                }),
+                headers: {
+                    "X-CSRF-TOKEN": antiForgeryToken,
+                },
                 success: function() {
                    var productElement =  e.target.parentElement.parentElement;
                    productElement.remove();

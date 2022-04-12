@@ -17,7 +17,9 @@
         private readonly IOrdersService cartsService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public OrdersController(IOrdersService cartsService, UserManager<ApplicationUser> userManager)
+        public OrdersController(
+            IOrdersService cartsService,
+            UserManager<ApplicationUser> userManager)
         {
             this.cartsService = cartsService;
             this.userManager = userManager;
@@ -25,7 +27,6 @@
 
         [HttpPost]
         [Authorize]
-        [IgnoreAntiforgeryToken]
         public async Task<ActionResult<string>> Add(AddProductInOrdersModel product)
         {
             try
@@ -44,7 +45,6 @@
 
         [HttpDelete]
         [Authorize]
-        [IgnoreAntiforgeryToken]
         public async Task<ActionResult> Delete(string productId)
         {
             try
@@ -58,19 +58,5 @@
                 return this.NotFound(ex.Message);
             }
         }
-
-        //[HttpGet]
-        //public async Task<ActionResult<OrdersDetailsViewModel>> Info()
-        //{
-        //    var model = new OrdersDetailsViewModel();
-        //    var user = await this.userManager.GetUserAsync(this.User);
-
-        //    if (user != null)
-        //    {
-        //        model.OrderedProducts = await this.cartsService.GetOrderedProductsAsync<OrderedProductViewModel>(user.Id);
-        //    }
-
-        //    return model;
-        //}
     }
 }

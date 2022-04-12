@@ -1,9 +1,17 @@
 ﻿namespace Estore.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Wishlist
+    using Estore.Data.Common.Models;
+
+    public class Wishlist : BaseDeletableModel<string>
     {
+        public Wishlist()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         [Required]
         public string UserId { get; set; }
 

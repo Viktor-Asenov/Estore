@@ -188,6 +188,7 @@
     </div>
 </div>
 <!-- MOST-DSICOUNTED-PRODUCTS-AREA END -->
+<form method="post" id="antiForgeryForm"></form>
 
 @section Scripts {
     <script>
@@ -195,11 +196,15 @@
             $(this).click(function () {
                 var productId = $(this).attr("id");
                 var quantity = 1;
+                var antiForgeryToken = $("#antiForgeryForm input[name=__RequestVerificationToken]").val();
                 var data = { productId: productId, quantity: quantity };
                 $.ajax({
                     type: "POST",
                     url: "/api/Orders",
-                    data: JSON.stringify(data),               
+                    data: JSON.stringify(data),
+                    headers: {
+                        "X-CSRF-TOKEN": antiForgeryToken
+                    },
                     success: function(data) {
                        $('#messageBody').html(
                         '<div class="alert alert-success" role="alert"><span>' + data + '</span><button onclick="closeMessage()" type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

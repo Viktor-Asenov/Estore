@@ -104,8 +104,6 @@
                 .FirstOrDefaultAsync();
 
             productDetails.RelatedProducts = await this.GetRelated(productId);
-            //productDetails.Colors = await this.GetColorsAsync(productId);
-            //productDetails.Measures = await this.GetMeasuresAsync(productId);
 
             return productDetails;
         }
@@ -121,20 +119,6 @@
 
             return relatedProducts;
         }
-
-        //private async Task<IEnumerable<string>> GetColorsAsync(string productId)
-        //{
-        //    var result = await this.IfProductExistAsync(productId);
-
-        //    return result.Colors;
-        //}
-
-        //private async Task<IEnumerable<string>> GetMeasuresAsync(string productId)
-        //{
-        //    var result = await this.IfProductExistAsync(productId);
-
-        //    return result.Sizes;
-        //}
 
         private async Task<Category> IfCategoryExistAsync(string categoryId)
         {
