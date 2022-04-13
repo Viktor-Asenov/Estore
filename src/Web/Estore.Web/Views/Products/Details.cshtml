@@ -98,25 +98,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="single-product-size">
-							<p class="small-title">Size </p>
-							<select name="product-size" id="product-size">
-								@if (@Model.Measures != null && @Model.Measures.Count() >= 1)
-								{
-									@foreach (var measure in @Model.Measures)
-									{
-										   <option value="">@measure</option>
-									}
-								}								
-							</select>
-						</div>
-						<div class="single-product-color">
-							<p class="small-title">Color </p>
-							<a href="#"><span></span></a>
-							<a class="color-blue" href="#"><span></span></a>
-						</div>
 						<div class="single-product-add-cart">
-							<a class="add-cart-text" title="Add to cart" href="#">Add to cart</a>
+							<button asp-controller="Carts" asp-action="Add" asp-route-id="@Model.Id" class="add-cart-text" title="Add to cart">
+								Add to cart
+							</button>
 						</div>
 						<div class="single-product-info">
 							<a href="#"><i class="fa fa-heart"></i></a>

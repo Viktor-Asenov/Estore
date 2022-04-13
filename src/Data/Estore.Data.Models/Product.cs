@@ -13,8 +13,6 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.CreatedOn = DateTime.UtcNow;
-            this.Colors = new HashSet<string>();
-            this.Sizes = new HashSet<string>();
             this.Orders = new HashSet<Order>();
             this.Images = new HashSet<Image>();
             this.Favorites = new HashSet<Wishlist>();
@@ -41,12 +39,6 @@
         public string CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-
-        [NotMapped]
-        public virtual ICollection<string> Colors { get; set; }
-
-        [NotMapped]
-        public virtual ICollection<string> Sizes { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 

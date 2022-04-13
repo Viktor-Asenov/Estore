@@ -6,9 +6,11 @@
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
     using Estore.Web.ViewModels.Carts;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public class CartsController : BaseController
     {
         private readonly IOrdersService ordersService;
@@ -43,10 +45,25 @@
         }
 
         [HttpPost]
+        public async Task<IActionResult> Add(string id)
+        {
+            try
+            {
+                return this.Redirect("/Products/Details?" + id);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
             try
             {
+                await this.ordersService.DeleteProductFromOrdersAsync(id);
+
                 return this.RedirectToAction("Details");
             }
             catch (Exception ex)

@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
 
     using Estore.Data.Models;
-    using Estore.Data.Models.Enumerations;
 
     public class HomeProductsSeeder : ISeeder
     {
@@ -16,9 +15,6 @@
             {
                 return;
             }
-
-            // ########## SIZES ##########
-            var sizes = new List<string> { "S", "M", "L", "XL", };
 
             // ########## PRODUCT TAGS ##########
             var sustainableTag = dbContext.Tags
@@ -45,8 +41,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/17382B_740_20?$SFCC_L$",
                         },
                     },
-                    Sizes = sizes,
-                    Colors = new List<string> { "Grey", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -67,8 +61,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/17378B_740_20?$SFCC_L$",
                         },
                     },
-                    Sizes = sizes,
-                    Colors = new List<string> { "Grey", },
                 },
                 new()
                 {
@@ -89,8 +81,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/18710B_438_11?$SFCC_L$",
                         },
                     },
-                    Sizes = sizes,
-                    Colors = new List<string> { "Turqouise", "Blue", },
                 },
                 new()
                 {
@@ -111,8 +101,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/18716B_350_35?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<string> { "Universal", },
-                    Colors = new List<string> { "Blackberry", },
                 },
                 new()
                 {
@@ -133,8 +121,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/17520B_790_35?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<string> { "Universal", },
-                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -159,8 +145,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/17628B_488_36?$SFCC_L$",
                         },
                     },
-                    Sizes = new List<string> { "Universal", },
-                    Colors = new List<string> { "Navy", },
                 },
             };
 
@@ -191,7 +175,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/70460OS_040_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Yellow", },
                 },
                 new()
                 {
@@ -212,7 +195,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/ES1047_010_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Grey", },
                 },
                 new()
                 {
@@ -233,7 +215,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/70886OS_030_34?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Nature", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -258,7 +239,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/50807KH_010_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Grey", },
                 },
                 new()
                 {
@@ -279,7 +259,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/70930KH_075_34?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Rose", },
                 },
                 new()
                 {
@@ -300,18 +279,12 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/70941KH_100_34?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Multicolor", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
                     },
                 },
             };
-
-            foreach (var product in living)
-            {
-                product.Sizes.Add("Universal");
-            }
 
             await dbContext.Products.AddRangeAsync(living);
             await dbContext.SaveChangesAsync();

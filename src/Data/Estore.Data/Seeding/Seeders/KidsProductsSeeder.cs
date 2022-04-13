@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
 
     using Estore.Data.Models;
-    using Estore.Data.Models.Enumerations;
 
     public class KidsProductsSeeder : ISeeder
     {
@@ -16,9 +15,6 @@
             {
                 return;
             }
-
-            // ########## SIZES ##########
-            var sizes = new List<string> { "XS", "S", "M", };
 
             // ########## PRODUCT TAGS ##########
             var sustainableTag = dbContext.Tags
@@ -53,7 +49,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/9922044201_001_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                 },
                 new()
                 {
@@ -74,7 +69,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7121064201_600_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Bordeaux", },
                 },
                 new()
                 {
@@ -95,7 +89,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230144202_400_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Navy", },
                 },
                 new()
                 {
@@ -116,14 +109,8 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230144901_710_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Yellow", },
                 },
             };
-
-            foreach (var jacket in boysJackets)
-            {
-                jacket.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(boysJackets);
 
@@ -152,7 +139,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/9902162903_902_25?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = sustainableTag.Id },
@@ -177,7 +163,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230162901_922_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Grey", },
                 },
                 new()
                 {
@@ -198,7 +183,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230262503_922_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                 },
                 new()
                 {
@@ -219,18 +203,12 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/9902042902_901_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Dark blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = recycledTag.Id },
                     },
                 },
             };
-
-            foreach (var product in boysJeans)
-            {
-                product.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(boysJeans);
 
@@ -261,7 +239,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/9922054201_001_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", "Pink", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = sustainableTag.Id },
@@ -286,7 +263,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/9922034201_670_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Pink", },
                 },
                 new()
                 {
@@ -307,7 +283,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230254202_361_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Olive", },
                 },
                 new()
                 {
@@ -328,18 +303,12 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230134202_661_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Pink", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = recycledTag.Id },
                     },
                 },
             };
-
-            foreach (var jacket in girlsJackets)
-            {
-                jacket.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(girlsJackets);
 
@@ -368,7 +337,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230252201_610_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Pink", },
                 },
                 new()
                 {
@@ -389,7 +357,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/9902052903_902_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = recycledTag.Id },
@@ -414,7 +381,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230252502_901_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Dark blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = sustainableTag.Id },
@@ -439,14 +405,8 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230152901_901_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blue", },
                 },
             };
-
-            foreach (var product in girlsJeans)
-            {
-                product.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(girlsJeans);
 
@@ -475,7 +435,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230253103_902_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new() { TagId = sustainableTag.Id },
@@ -500,7 +459,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230253004_403_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Navy", },
                 },
                 new()
                 {
@@ -521,7 +479,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7230233003_403_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Navy", },
                 },
                 new()
                 {
@@ -542,14 +499,8 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/7121153001_911_21?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                 },
             };
-
-            foreach (var dress in girlsDresses)
-            {
-                dress.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(girlsDresses);
             await dbContext.SaveChangesAsync();

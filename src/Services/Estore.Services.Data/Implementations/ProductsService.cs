@@ -7,7 +7,6 @@
 
     using Estore.Data;
     using Estore.Data.Models;
-    using Estore.Data.Models.Enumerations;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Estore.Web.ViewModels.Products;

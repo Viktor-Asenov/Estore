@@ -4757,6 +4757,8 @@ ul.step li.step-done span a {
 
 #cart-summary tbody td.cart-product img {
 	border: 1px solid #d6d4d4;
+	width: 100px;
+	height: 100px;
 }
 
 p.product-name {

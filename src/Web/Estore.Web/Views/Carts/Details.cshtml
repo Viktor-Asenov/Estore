@@ -2,7 +2,7 @@
 @model CartDetailsViewModel
 
 <br />
-<div class="table-content table-responsive text-center">
+<div class="table-content table-responsive">
 	<!-- TABLE START -->
 	<table class="table table-bordered" id="cart-summary">
 		<!-- TABLE HEADER START -->
@@ -25,7 +25,7 @@
 				<!-- SINGLE CART_ITEM START -->
 				<tr>
 					<td class="cart-product">
-						<a href="#"><img alt="Blouse" src="@order.ImageUrl"></a>
+						<a asp-controller="Products" asp-action="Details" asp-route-id="@order.Id"><img src="@order.ImageUrl"></a>
 					</td>
 					<td class="cart-description">
 						<p class="product-name">
@@ -45,8 +45,8 @@
 					</td>
 					<td class="cart-delete text-center">
 						<span>
-							<a  class="cart_quantity_delete" title="Delete">
-								<i class="fa fa-trash-o"></i>
+							<a class="cart_quantity_delete" title="Delete">
+								<i class="fa fa-trash-o"></i>							
 							</a>
 						</span>
 					</td>
@@ -87,7 +87,38 @@
 	<!-- TABLE END -->
 </div>
 <div class="returne-continue-shop">
-	<a asp-controller="Home" asp-action="Index" class="continueshoping"><i class="fa fa-chevron-left"></i>Continue
-		shopping</a>
+	<a asp-controller="Home" asp-action="Index" class="continueshoping"><i class="fa fa-chevron-left"></i>
+		Continue shopping</a>
 	<a href="checkout-signin.html" class="procedtocheckout">Proceed to checkout<i class="fa fa-chevron-right"></i></a>
 </div>
+
+
+@*<form method="post" id="csrfToken"></form>
+
+<script>
+	let targets = document.querySelectorAll(".cart_quantity_delete")
+
+    for(let i = 0; i < targets.length; i++) {
+        targets[i].addEventListener('click', deleteProduct);
+    }
+
+	function deleteProduct(e) {
+        var productId = e.target.parentElement.parentElement.parentElement.parentElement.id;
+		var antiForgeryToken = $("#csrfToken input[name=__RequestVerificationToken]").val();
+		$.ajax({
+            type: "DELETE",
+            url: "/api/Orders?" + $.param({
+                productid: productId,
+            }),
+            headers: {
+                "X-CSRF-TOKEN": antiForgeryToken,
+            },
+            success: function() {
+				   $.ajax({
+					   type: GET,
+					   url: https://localhost:44319/Carts/Details,
+				});
+            },
+        });
+	}
+</script>*@

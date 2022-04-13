@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
 
     using Estore.Data.Models;
-    using Estore.Data.Models.Enumerations;
 
     internal class MenProductsSeeder : ISeeder
     {
@@ -15,23 +14,6 @@
             if (dbContext.Products.Any(p => p.Category.ParentCategory.ParentCategory.Name == "Men"))
             {
                 return;
-            }
-
-            // ########## SIZES ##########
-            var sizes = new List<string> { "S", "M", "L", "XL", };
-            var shoeSizes = new List<string>();
-            var beltSizes = new List<string>();
-
-            for (int i = 38; i <= 47; i++)
-            {
-                var size = i.ToString();
-                shoeSizes.Add(size);
-            }
-
-            for (int i = 110; i <= 120; i++)
-            {
-                var size = i.ToString();
-                beltSizes.Add(size);
             }
 
             // ########## PRODUCT TAGS ##########
@@ -73,7 +55,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EE2G305_001_14?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -99,7 +80,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/101EE2G308_010_14?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", "Anthracite", "Camel", },
                 },
                 new()
                 {
@@ -116,7 +96,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EE2G302_001_20?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", "Dark blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -143,14 +122,8 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EE2G303_291_14?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Light Beige", },
                 },
             };
-
-            foreach (var jacket in jackets)
-            {
-                jacket.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(jackets);
 
@@ -179,7 +152,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990CC2B302_922_11?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Grey", "Dark Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -205,7 +177,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990CC2B307_905_11?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blueblack", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = organicTag.Id },
@@ -231,7 +202,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EE2B307_902_20?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blue", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = slimTag.Id },
@@ -252,7 +222,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EE2B308_911_20?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = organicTag.Id },
@@ -260,11 +229,6 @@
                     },
                 },
             };
-
-            foreach (var product in jeans)
-            {
-                product.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(jeans);
 
@@ -293,7 +257,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/991EO2F302_001_16?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", "Offwhite", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = organicTag.Id },
@@ -314,7 +277,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/992EE2F301_100_10?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "White" },
                 },
                 new()
                 {
@@ -335,7 +297,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/012EE2F301_470_14?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Turqoise" },
                 },
                 new()
                 {
@@ -360,7 +321,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EE2F305_430_16?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Blue", "Dusty Nude", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -368,11 +328,6 @@
                     },
                 },
             };
-
-            foreach (var shirt in shirts)
-            {
-                shirt.Sizes = sizes;
-            }
 
             await dbContext.Products.AddRangeAsync(shirts);
 
@@ -401,7 +356,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/091EK2W307_235_31?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Caramel", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -428,7 +382,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/091EK2W308_285_31?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Sand", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = fashionTag.Id },
@@ -453,7 +406,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/091EK2W307_285_31?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Sand", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
@@ -478,14 +430,8 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/032EK2W303_400_31?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Navy", },
                 },
             };
-
-            foreach (var shoe in shoes)
-            {
-                shoe.Sizes = shoeSizes;
-            }
 
             await dbContext.Products.AddRangeAsync(shoes);
 
@@ -514,7 +460,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/990EA2S302_230_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Camel", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = sustainableTag.Id },
@@ -540,7 +485,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/998EA2S800_001_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
@@ -566,7 +510,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/022EA2S302_220_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Brown", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
@@ -591,18 +534,12 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/999EA2S805_001_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = leatherTag.Id },
                     },
                 },
             };
-
-            foreach (var belt in belts)
-            {
-                belt.Sizes = beltSizes;
-            }
 
             await dbContext.Products.AddRangeAsync(belts);
 
@@ -635,7 +572,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/39129S_538_37?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                 },
                 new()
                 {
@@ -656,7 +592,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/39199S_538_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Black", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = fashionTag.Id },
@@ -681,7 +616,6 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/19670S_577_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Purple", },
                     ProductTags = new List<ProductTag>
                     {
                         new ProductTag { TagId = fashionTag.Id },
@@ -706,14 +640,8 @@
                             RemoteUrl = "https://esprit.scene7.com/is/image/esprit/19672S_531_36?$SFCC_L$",
                         },
                     },
-                    Colors = new List<string> { "Red", },
                 },
             };
-
-            foreach (var product in sunglasses)
-            {
-                product.Sizes.Add("Universal");
-            }
 
             await dbContext.Products.AddRangeAsync(sunglasses);
             await dbContext.SaveChangesAsync();

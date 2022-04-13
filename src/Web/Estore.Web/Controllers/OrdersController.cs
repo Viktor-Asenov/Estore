@@ -10,30 +10,30 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class OrdersController : BaseController
     {
-        private readonly IOrdersService cartsService;
+        private readonly IOrdersService ordersService;
         private readonly UserManager<ApplicationUser> userManager;
 
         public OrdersController(
-            IOrdersService cartsService,
+            IOrdersService ordersService,
             UserManager<ApplicationUser> userManager)
         {
-            this.cartsService = cartsService;
+            this.ordersService = ordersService;
             this.userManager = userManager;
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<string>> Add(AddProductInOrdersModel product)
         {
             try
             {
                 var user = await this.userManager.GetUserAsync(this.User);
 
-                var result = await this.cartsService.AddProductInOrdersAsync(user.Id, product.ProductId, product.Quantity);
+                var result = await this.ordersService.AddProductInOrdersAsync(user.Id, product.ProductId, product.Quantity);
 
                 return result;
             }
@@ -44,12 +44,13 @@
         }
 
         [HttpDelete]
-        [Authorize]
         public async Task<ActionResult> Delete(string productId)
         {
             try
             {
-                await this.cartsService.DeleteProductFromOrdersAsync(productId);
+                var productIdNormalized = productId.Replace("item_", string.Empty);
+
+                await this.ordersService.DeleteProductFromOrdersAsync(productIdNormalized);
 
                 return this.Ok();
             }
