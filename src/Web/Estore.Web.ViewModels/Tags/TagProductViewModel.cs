@@ -18,16 +18,19 @@
 
         public decimal Price { get; set; }
 
-        public decimal? Discount { get; set; }
-
-        public decimal? DiscountedPrice
-            => this.Price -= this.Price * (this.Discount / 100) ?? this.Price;
-
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ProductTag, TagProductViewModel>()
+                .ForMember(tpvm => tpvm.Id, opt =>
+                    opt.MapFrom(pt => pt.Product.Id))
+                .ForMember(tpvm => tpvm.Name, opt =>
+                    opt.MapFrom(pt => pt.Product.Name))
+                .ForMember(tpvm => tpvm.Description, opt =>
+                    opt.MapFrom(pt => pt.Product.Description))
                 .ForMember(tpvm => tpvm.ImageUrl, opt =>
-                    opt.MapFrom(pt => pt.Product.Images.FirstOrDefault().RemoteUrl));
+                    opt.MapFrom(pt => pt.Product.Images.FirstOrDefault().RemoteUrl))
+                .ForMember(tpvm => tpvm.Price, opt =>
+                    opt.MapFrom(pt => pt.Product.Price));
         }
     }
 }

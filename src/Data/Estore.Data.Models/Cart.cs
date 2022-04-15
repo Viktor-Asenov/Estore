@@ -15,7 +15,7 @@
         }
 
         [Required]
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
     }

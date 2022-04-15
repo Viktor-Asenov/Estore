@@ -29,7 +29,7 @@ namespace Estore.Data.Models
         public string CartId { get; set; }
 
         [Required]
-        public Cart Cart { get; set; }
+        public virtual Cart Cart { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

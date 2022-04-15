@@ -17,7 +17,98 @@
             this.tagsService = tagsService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Organic(string id, int page = 1)
+        {
+            try
+            {
+                var model = await this.GetModelAsync(id, page);
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Leather(string id, int page = 1)
+        {
+            try
+            {
+                var model = await this.GetModelAsync(id, page);
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Fashion(string id, int page = 1)
+        {
+            try
+            {
+                var model = await this.GetModelAsync(id, page);
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Vegan(string id, int page = 1)
+        {
+            try
+            {
+                var model = await this.GetModelAsync(id, page);
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Recycled(string id, int page = 1)
+        {
+            try
+            {
+                var model = await this.GetModelAsync(id, page);
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Slim(string id, int page = 1)
+        {
+            try
+            {
+                var model = await this.GetModelAsync(id, page);
+
+                return this.View(model);
+            }
+            catch (Exception ex)
+            {
+                return this.NotFound(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Sustainable(string id, int page = 1)
         {
             try
             {
@@ -38,6 +129,8 @@
                 TagId = id,
                 TagName = await this.tagsService.GetNameAsync(id),
                 TagProductsCount = await this.tagsService.GetTagProductsCountAsync(id),
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = page,
                 TagProducts = await this.tagsService.GetProductsByTagAsync(id, page, ItemsPerPage),
             };
 

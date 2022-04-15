@@ -41,13 +41,11 @@
 
             var TEST = this.context.ProductTags
                 .Where(pt => pt.TagId == tag.Id)
-                .Include(pt => pt.Product)
                 .To<TagProductViewModel>()
                 .ToList();
 
             var tagProducts = await this.context.ProductTags
                 .Where(pt => pt.TagId == tag.Id)
-                .Include(pt => pt.Product)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
                 .To<TagProductViewModel>()
