@@ -18,6 +18,7 @@
             this.productsService = productsService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var viewModel = new IndexViewModel

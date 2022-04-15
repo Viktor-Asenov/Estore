@@ -33,7 +33,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -48,7 +48,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -63,7 +63,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -78,7 +78,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -93,7 +93,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -108,7 +108,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -123,7 +123,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -138,7 +138,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -153,7 +153,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -168,7 +168,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -183,7 +183,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -198,7 +198,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -213,7 +213,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -228,7 +228,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -243,7 +243,7 @@
             }
             catch (Exception)
             {
-                return this.NotFound();
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -258,7 +258,7 @@
             }
             catch (Exception ex)
             {
-                return this.NotFound(ex.Message);
+                return this.Redirect("/Home/Error");
             }
         }
 

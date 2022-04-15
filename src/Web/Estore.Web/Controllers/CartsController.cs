@@ -38,9 +38,9 @@
 
                 return this.View(model);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return this.NotFound(ex.Message);
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -51,9 +51,9 @@
             {
                 return this.Redirect("/Products/Details?" + id);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return this.NotFound(ex.Message);
+                return this.Redirect("/Home/Error");
             }
         }
 
@@ -66,9 +66,9 @@
 
                 return this.RedirectToAction("Details");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return this.NotFound(ex.Message);
+                return this.Redirect("/Home/Error");
             }
         }
     }
