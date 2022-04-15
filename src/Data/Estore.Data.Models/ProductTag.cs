@@ -12,6 +12,6 @@
         [Required]
         public string TagId { get; set; }
 
-        public Tag Tag { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

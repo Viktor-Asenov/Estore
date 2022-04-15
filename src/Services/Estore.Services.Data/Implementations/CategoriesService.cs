@@ -99,7 +99,7 @@
                 throw new ArgumentNullException();
             }
 
-            return categoryImage.ToString();
+            return categoryImage.RemoteUrl;
         }
 
         public async Task<T> GetBreadcrumbCategoryAsync<T>(string categoryId)
