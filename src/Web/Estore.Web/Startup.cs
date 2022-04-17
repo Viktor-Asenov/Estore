@@ -72,6 +72,7 @@
             services.AddTransient<IOrdersService, OrdersService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IProductsService, ProductsService>();
+            services.AddTransient<IReviewsService, ReviewsService>();
             services.AddTransient<ITagsService, TagsService>();
             services.AddTransient<IWishlistsService, WishlistsService>();
             services.AddTransient<ISettingsService, SettingsService>();

@@ -13,14 +13,14 @@
         }
 
         [Required]
-        [MinLength(10)]
-        [MaxLength(300)]
-        public string Content { get; set; }
+        [MinLength(3)]
+        [MaxLength(25)]
+        public string Author { get; set; }
 
         [Required]
-        public string AuthorId { get; set; }
-
-        public virtual ApplicationUser Author { get; set; }
+        [MinLength(4)]
+        [MaxLength(300)]
+        public string Content { get; set; }
 
         [Required]
         public string ProductId { get; set; }

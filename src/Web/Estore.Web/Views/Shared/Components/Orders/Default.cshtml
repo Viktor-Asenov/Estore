@@ -7,6 +7,7 @@
         <div class="shopping-cart">
             <a class="shop-link" asp-controller="Carts" asp-action="Details" title="View my shopping cart">
                 <i class="fa fa-shopping-cart cart-icon"></i>
+                <b>My Cart</b>
                 @if (@Model.OrderedProductsCount > 0)
                 {
                     <span class="ajax-cart-quantity">@Model.OrderedProductsCount</span>

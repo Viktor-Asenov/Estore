@@ -256,7 +256,7 @@
 
                 return this.View(model);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return this.Redirect("/Home/Error");
             }

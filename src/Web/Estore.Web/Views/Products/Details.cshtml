@@ -75,7 +75,7 @@
 								<a href="#">Read reviews (1)</a>
 							</div>
 							<div class="write-review">
-								<a href="#">Write a review</a>
+								<a asp-controller="Reviews" asp-action="Create" asp-route-id="@Model.Id">Write a review</a>
 							</div>
 						</div>
 						<div class="single-product-condition">
@@ -239,3 +239,11 @@
 		</div>		
 	</div>
 </div>
+
+<script>
+	$(function () {
+  $('.example-popover').popover({
+    container: 'body'
+  })
+})
+</script>
