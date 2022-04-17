@@ -5,6 +5,8 @@
 
     public interface IWishlistsService
     {
-        Task<IEnumerable<T>> GetWishedProducts<T>(string userId);
+        Task<IEnumerable<T>> GetWishedProductsAsync<T>(string userId);
+
+        Task<string> AddProductToWishlistAsync(string userId, string productId);
     }
 }

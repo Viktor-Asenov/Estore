@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
 
     using Estore.Data;
+    using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@
             this.context = context;
         }
 
-        public async Task<IEnumerable<T>> GetWishedProducts<T>(string userId)
+        public async Task<IEnumerable<T>> GetWishedProductsAsync<T>(string userId)
         {
             var user = await this.context.Users.FindAsync(userId);
 
@@ -34,6 +35,45 @@
                 .ToListAsync();
 
             return wishedProducts;
+        }
+
+        public async Task<string> AddProductToWishlistAsync(string userId, string productId)
+        {
+            var user = await this.context.Users.FindAsync(userId);
+
+            if (user == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            var product = await this.context.Products
+                .FirstOrDefaultAsync(p => p.Id == productId);
+
+            if (product == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            var wishlistProduct = await this.context.Wishlists
+                .FirstOrDefaultAsync(wp => wp.ProductId == productId);
+
+            if (wishlistProduct == null)
+            {
+                wishlistProduct = new Wishlist
+                {
+                    UserId = user.Id,
+                    ProductId = product.Id,
+                };
+            }
+            else
+            {
+                return $"You already have this product in your wishlist.";
+            }
+
+            await this.context.Wishlists.AddAsync(wishlistProduct);
+            await this.context.SaveChangesAsync();
+
+            return $"You have added {product.Name} into your wishlist.";
         }
     }
 }

@@ -25,7 +25,9 @@
                                     aliquam erat volutpat.
                                 </p>
                                 <a class="wow zoomInDown" data-wow-duration="1s" data-wow-delay="1s"
-                                   href="#">Read More <i class="fa fa-caret-right"></i></a>
+                                   asp-controller="Home" asp-action="About">Read More 
+                                   <i class="fa fa-caret-right"></i>
+                               </a>
                             </div>
                         </div>
                     </div>
@@ -78,13 +80,8 @@
                         <div class="overlay-content">
                             <ul>
                                 <li>
-                                    <a id="@product.Id" title="Add to cart">
+                                    <a class="text-white" id="@product.Id" title="Add to cart">
                                         <i class="fa fa-shopping-cart"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Add to wishlist">
-                                        <i class="fa fa-heart-o"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -148,13 +145,8 @@
                         <div class="overlay-content">
                             <ul>
                                 <li>
-                                    <a id="@product.Id" title="Add to cart">
+                                    <a class="text-white" id="@product.Id" title="Add to cart">
                                         <i class="fa fa-shopping-cart"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Add to wishlist">
-                                        <i class="fa fa-heart-o"></i>
                                     </a>
                                 </li>
                             </ul>

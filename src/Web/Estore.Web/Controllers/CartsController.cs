@@ -10,7 +10,6 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize]
     public class CartsController : BaseController
     {
         private readonly IOrdersService ordersService;
@@ -44,12 +43,18 @@
             }
         }
 
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add(string id)
+        public async Task<IActionResult> Add(CartProductInputModel model)
         {
             try
             {
-                return this.Redirect("/Products/Details?" + id);
+                var user = await this.userManager.GetUserAsync(this.User);
+
+                var result = await this.ordersService.AddProductInOrdersAsync(user.Id, model.ProductId, model.Quantity);
+                this.TempData["Message"] = result;
+
+                return this.Redirect("/Products/Details/" + model.ProductId);
             }
             catch (Exception)
             {

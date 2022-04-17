@@ -1,6 +1,17 @@
 ﻿@using Estore.Web.ViewModels.Products
 @model ProductDetailsViewModel
 
+<div id="message">
+	@if (this.TempData.ContainsKey("Message"))
+	{
+	    <div class="alert alert-success" role="alert">
+	        @this.TempData["Message"]
+	        <button onclick="closeMessage()" type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close">
+	        </button>
+	    </div>
+	}
+</div>
+
 <div class="container">
 	<!-- BSTORE-BREADCRUMB START -->
 	<div class="bstore-breadcrumb">
@@ -89,23 +100,36 @@
 								<p><span>In stock</span></p>
 							</div>
 						</div>
-						
-						<div class="single-product-quantity">
-							<p class="small-title">Quantity</p>
-							<div class="cart-quantity">
-								<div class="cart-plus-minus-button single-qty-btn">
-									<input class="cart-plus-minus sing-pro-qty" type="number" name="qtybutton" min=1>
+						@if (this.User.Identity.IsAuthenticated) 
+						{
+							<form method="post" asp-controller="Carts" asp-action="Add">
+								<div class="single-product-quantity">
+								<p class="small-title">Quantity</p>
+								<div class="form-group">
+									<div class="cart-quantity">
+										<div class="cart-plus-minus-button single-qty-btn">
+											<input class="form-control" type="number" name="quantity" value=1 min=1>
+										</div>
+									</div>
+								</div>							
 								</div>
-							</div>
-						</div>
-						<div class="single-product-add-cart">
-							<button asp-controller="Carts" asp-action="Add" asp-route-id="@Model.Id" class="add-cart-text" title="Add to cart">
-								Add to cart
-							</button>
-						</div>
-						<div class="single-product-info">
-							<a href="#"><i class="fa fa-heart"></i></a>
-						</div>
+								<div class="single-product-add-cart">
+									<button class="add-cart-text" type="submit" title="Add to cart">
+										Add to cart
+									</button>
+								</div>
+								<input type="hidden" name="productId" value="@Model.Id" />
+							</form>
+
+							<form method="post" asp-controller="Wishlists" asp-action="Add">
+								<div class="single-product-info">
+									<button class="add-cart-text" type="submit" title="Add to wishlist">
+										<i class="fa fa-heart"></i>
+									</button>
+								</div>
+								<input type="hidden" name="productId" value="@Model.Id" />
+							</form>
+						}
 					</div>
 				</div>
 			</div>
@@ -241,9 +265,8 @@
 </div>
 
 <script>
-	$(function () {
-  $('.example-popover').popover({
-    container: 'body'
-  })
-})
+	function closeMessage() {
+        let messageTag = document.getElementById('message');
+        messageTag.style.display = "none";
+    }
 </script>

@@ -6,6 +6,7 @@
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
     using Estore.Web.ViewModels.Wishlists;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -31,10 +32,29 @@
 
                 var model = new WishlistViewModel
                 {
-                    WishProducts = await this.wishlistsService.GetWishedProducts<WishlistProductViewModel>(user.Id),
+                    WishProducts = await this.wishlistsService.GetWishedProductsAsync<WishlistProductViewModel>(user.Id),
                 };
 
                 return this.View(model);
+            }
+            catch (Exception)
+            {
+                return this.Redirect("/Home/Error");
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Add(string productId)
+        {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.User);
+
+                var result = await this.wishlistsService.AddProductToWishlistAsync(user.Id, productId);
+                this.TempData["Message"] = result;
+
+                return this.Redirect("/Products/Details/" + productId);
             }
             catch (Exception)
             {
