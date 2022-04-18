@@ -8,5 +8,7 @@
         Task<IEnumerable<T>> GetWishedProductsAsync<T>(string userId);
 
         Task<string> AddProductToWishlistAsync(string userId, string productId);
+
+        Task DeleteProductFromOrdersAsync(string productId);
     }
 }

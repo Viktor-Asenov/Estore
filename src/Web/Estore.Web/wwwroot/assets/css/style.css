@@ -712,7 +712,7 @@ a.bstore-scrollertop i {
 	height: 45px;
 	outline: medium none;
 	padding: 6px 10px;
-	width: 370px;
+	width: 504px;
 	background: #fff;
 }
 
@@ -728,15 +728,15 @@ a.bstore-scrollertop i {
 	position: relative;
 }
 
-.search-form-cat {
+/*.search-form-cat {
 	border: 1px solid #d7d7d7;
 	height: 45px;
 	color: #464646;
 	text-transform: uppercase;
 	overflow: hidden;
-}
+}*/
 
-.cat-search {
+/*.cat-search {
 	background: #fff url("../images/caret.webp") no-repeat scroll 92% 45%;
 	border: medium none;
 	color: #464646;
@@ -749,7 +749,7 @@ a.bstore-scrollertop i {
 	padding: 0px 0px 0px 10px;
 	text-transform: uppercase;
 	width: 134px;
-}
+}*/
 
 select::-ms-expand {
 	display: none;
@@ -790,12 +790,12 @@ input.search-form[placeholder]:-ms-input-placeholder {
 	color: #464646;
 }
 
-.cat-search option {
+/*.cat-search option {
 	text-transform: capitalize;
 	font-weight: normal;
 	padding: 9px 7px 7px 7px;
 	font-size: 14px;
-}
+}*/
 
 .search-button {
 	background: #ff4f4f;

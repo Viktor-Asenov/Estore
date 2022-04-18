@@ -31,6 +31,7 @@
 
             var wishedProducts = await this.context.Wishlists
                 .Where(w => w.UserId == user.Id)
+                .OrderByDescending(w => w.CreatedOn)
                 .To<T>()
                 .ToListAsync();
 
@@ -63,6 +64,7 @@
                 {
                     UserId = user.Id,
                     ProductId = product.Id,
+                    CreatedOn = DateTime.UtcNow,
                 };
             }
             else
@@ -74,6 +76,22 @@
             await this.context.SaveChangesAsync();
 
             return $"You have added {product.Name} into your wishlist.";
+        }
+
+        public async Task DeleteProductFromOrdersAsync(string productId)
+        {
+            var wishlistProduct = await this.context.Wishlists
+                .FirstOrDefaultAsync(w => w.ProductId == productId);
+
+            if (wishlistProduct == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            this.context.Wishlists
+                .Remove(wishlistProduct);
+
+            await this.context.SaveChangesAsync();
         }
     }
 }

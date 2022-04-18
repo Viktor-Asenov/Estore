@@ -25,9 +25,11 @@
 
         public int NextPageNumber => this.PageNumber + 1;
 
-        public int PagesCount => (int)Math.Ceiling((double)this.TagProductsCount / this.ItemsPerPage);
+        public int CurrentPageItemsNumber
+            => this.ItemsPerPage * this.PageNumber > this.TagProductsCount
+            ? this.TagProductsCount : this.ItemsPerPage * this.PageNumber;
 
-        public BreadcrumbViewModel Breadcrumb { get; set; }
+        public int PagesCount => (int)Math.Ceiling((double)this.TagProductsCount / this.ItemsPerPage);
 
         public IEnumerable<TagProductViewModel> TagProducts { get; set; }
     }

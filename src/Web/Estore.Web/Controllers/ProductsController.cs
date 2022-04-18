@@ -268,11 +268,9 @@
             {
                 CategoryId = id,
                 CategoryName = await this.categoriesService.GetNameAsync(id),
-                CategoryImage = await this.categoriesService.GetImageAsync(id),
                 CategoriesProductsCount = await this.productsService.GetSubMainCategoryProductsCountAsync(id),
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = page,
-                Breadcrumb = await this.categoriesService.GetBreadcrumbCategoryAsync<BreadcrumbViewModel>(id),
                 CategoryProducts = await this.productsService.GetSubMainCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
             };
 
@@ -285,11 +283,9 @@
             {
                 CategoryId = id,
                 CategoryName = await this.categoriesService.GetNameAsync(id),
-                CategoryImage = await this.categoriesService.GetImageAsync(id),
                 CategoriesProductsCount = await this.productsService.GetSubCategoryProductsCountAsync(id),
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = page,
-                Breadcrumb = await this.categoriesService.GetBreadcrumbCategoryAsync<BreadcrumbViewModel>(id),
                 CategoryProducts = await this.productsService.GetSubCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
             };
 

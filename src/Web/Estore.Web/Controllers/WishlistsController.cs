@@ -10,6 +10,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public class WishlistsController : BaseController
     {
         private readonly IWishlistsService wishlistsService;
@@ -43,7 +44,6 @@
             }
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(string productId)
         {
@@ -55,6 +55,21 @@
                 this.TempData["Message"] = result;
 
                 return this.Redirect("/Products/Details/" + productId);
+            }
+            catch (Exception)
+            {
+                return this.Redirect("/Home/Error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string productId)
+        {
+            try
+            {
+                await this.wishlistsService.DeleteProductFromOrdersAsync(productId);
+
+                return this.RedirectToAction("Details");
             }
             catch (Exception)
             {

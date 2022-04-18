@@ -1,15 +1,8 @@
 ﻿@using Estore.Web.ViewModels.Wishlists
 @model WishlistViewModel
 
-<div class="container">
-	<!-- BSTORE-BREADCRUMB START -->
-	<div class="bstore-breadcrumb">
-		<a href="index.html">HOMe <span><i class="fa fa-caret-right"></i> </span> </a>
-		<a href="my-account.html"> my account <span><i class="fa fa-caret-right"></i></span></a>
-		<span> My wishlists</span>
-	</div>
-	<!-- BSTORE-BREADCRUMB END -->
-	
+<br />
+<div class="container">	
 	<div class="row">
 		<div class="col-lg-12">
 			<h2 class="page-title">My wishlist</h2>
@@ -25,28 +18,33 @@
 						<th class="wish-link">In Category</th>
 						<th class="wish-delete">Delete</th>
 					</tr>
-					@foreach (var item in @Model.WishProducts)
+					@foreach (var product in @Model.WishProducts)
 					{
 						<tr>
 							<td>
-								<a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@item.ProductName </a>
+								<a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId">@product.ProductName </a>
 							</td>
 							<td>
-								<span>@item.ProductPrice</span>
+								<span>$@product.ProductPrice</span>
 							</td>
 							<td>
-								<span>@item.ProductDescription</span>
+								<span>@product.ProductDescription</span>
 							</td>
 							<td>
-								<span>@item.AddedOn</span>
+								<span>@product.AddedOn.ToShortDateString()</span>
 							</td>
 							<td>
-								<a asp-controller="Products" asp-action="@item.ProductCategoryName" asp-route-id="@item.ProductCategoryId">
-									@item.ProductCategoryName
+								<a asp-controller="Products" asp-action="@product.ProductCategoryName" asp-route-id="@product.ProductCategoryId">
+									@product.ProductCategoryName
 								</a>
 							</td>
 							<td>
-								<a class="dele-wish-list" href="#"><i class="fa fa-close"></i></a>
+								<form method="post" asp-controller="Wishlists" asp-action="Delete">
+									<span>
+										<button type="submit" class="btn-close btn-sm" title="Delete"></button>
+									</span>
+									<input type="hidden" name="productId" value="@product.ProductId">
+								</form>
 							</td>
 						</tr> 
 					}

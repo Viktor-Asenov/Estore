@@ -15,9 +15,5 @@
         IQueryable<T> GetAllSubCategories<T>();
 
         Task<string> GetNameAsync(string categoryId);
-
-        Task<string> GetImageAsync(string categoryId);
-
-        Task<T> GetBreadcrumbCategoryAsync<T>(string categoryId);
     }
 }

@@ -10,6 +10,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public class CartsController : BaseController
     {
         private readonly IOrdersService ordersService;
@@ -43,18 +44,17 @@
             }
         }
 
-        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add(CartProductInputModel model)
+        public async Task<IActionResult> Add(string productId, int quantity = 1)
         {
             try
             {
                 var user = await this.userManager.GetUserAsync(this.User);
 
-                var result = await this.ordersService.AddProductInOrdersAsync(user.Id, model.ProductId, model.Quantity);
+                var result = await this.ordersService.AddProductInOrdersAsync(user.Id, productId, quantity);
                 this.TempData["Message"] = result;
 
-                return this.Redirect("/Products/Details/" + model.ProductId);
+                return this.Redirect("/Products/Details/" + productId);
             }
             catch (Exception)
             {
@@ -63,11 +63,11 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string productId)
         {
             try
             {
-                await this.ordersService.DeleteProductFromOrdersAsync(id);
+                await this.ordersService.DeleteProductFromOrdersAsync(productId);
 
                 return this.RedirectToAction("Details");
             }

@@ -2,43 +2,10 @@
 @using Estore.Web.ViewModels.Products
 @model ProductstByCategoryViewModel
 
-<!-- BSTORE-BREADCRUMB START -->
-<ul class="bstore-breadcrumb">
-    @if(@Model.Breadcrumb.ParentCategory.ParentCategory.ParentCategoryId == null) 
-	{
-		<li>
-			<a asp-controller="Categories" asp-action="@Model.Breadcrumb.ParentCategory.ParentCategory.Name" asp-route-id="@Model.Breadcrumb.ParentCategory.ParentCategory.Id">
-				@Model.Breadcrumb.ParentCategory.ParentCategory.Name
-			</a>
-			<span><i class="fa fa-caret-right"></i></span>
-		</li>
-		<li>
-			<a asp-controller="Products" asp-action="@Model.Breadcrumb.ParentCategory.Name" asp-route-id="@Model.Breadcrumb.ParentCategory.Id">
-				@Model.Breadcrumb.ParentCategory.Name
-			</a>
-			<span><i class="fa fa-caret-right"></i></span>
-		</li>
-		<li>@Model.Breadcrumb.Name</li>
-	}
-</ul>
-<!-- BSTORE-BREADCRUMB END -->
-
 <div class="row flex-row-reverse">
 	<div class="col-lg-9">
 		<div class="right-all-product">
-			<!-- PRODUCT-CATEGORY-HEADER START -->
-			<div class="product-category-header">
-				<div class="category-header-image">
-					<img src="@Model.CategoryImage" alt="category-header">
-					<div class="category-header-text">
-						@*<h2>@Model.CategoryName </h2>
-						<strong>You will find here all woman fashion collections.</strong>
-						<p>This category includes all the basics of your wardrobe and much more:</p>
-						<p>shoes, accessories, printed t-shirts, feminine dresses, women's jeans!</p>*@
-					</div>
-				</div>
-			</div>
-			<!-- PRODUCT-CATEGORY-HEADER END -->
+			
 			<div class="product-category-title">
 				<!-- PRODUCT-CATEGORY-TITLE START -->
 				<h1>
@@ -100,7 +67,9 @@
 								<div class="col-md-4 col-12">
 									<div class="single-product-item">
 										<div class="product-image">
-											<a href="#"><img src="@product.ImageUrl" alt="product-image"></a>
+											<a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+												<img src="@product.ImageUrl" alt="product-image">
+											</a>
 										</div>
 									</div>
 								</div>
@@ -125,23 +94,35 @@
 													<p>@product.Description</p>
 												</div>
 												<div class="price-box">
-													@if(@product.Discount != null) 
-													{
-														<span class="price">$@product.DiscountedPrice</span>
-														<span class="old-price">$@product.Price.ToString("0.00")</span>								
-													}
-													else
-													{
-														<span class="price">$@product.Price.ToString("0.00")</span>
-													}													
+													<span class="price">$@product.Price</span>													
 												</div>
 											</div>
 											<div class="overlay-content-list">
-												<ul>
-													<li><a href="#" title="Add to cart" class="add-cart-text">Add to
-															cart</a></li>
-													<li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"></i></a></li>
-												</ul>
+												@if (this.User.Identity.IsAuthenticated) 
+												{
+													<ul>														
+														<li>
+															<form method="post" asp-controller="Carts" asp-action="Add">
+																<div class="single-product-add-cart">
+																	<button class="add-cart-text" type="submit" title="Add to cart">
+																		Add to cart
+																	</button>
+																</div>
+																<input type="hidden" name="productId" value="@product.Id" />
+															</form>
+														</li>
+														<li>
+															<form method="post" asp-controller="Wishlists" asp-action="Add">
+																<div class="single-product-info">
+																	<button class="add-cart-text" type="submit" title="Add to wishlist">
+																		<i class="fa fa-heart"></i>
+																	</button>
+																</div>
+																<input type="hidden" name="productId" value="@product.Id" />
+															</form>
+														</li>
+													</ul>
+												}												
 											</div>
 										</div>
 									</div>
@@ -156,14 +137,10 @@
 		<!-- ALL CATEGORY-PRODUCT END -->
 		<!-- PRODUCT-SHOOTING-RESULT START -->
 		<div class="product-shooting-result">
-			<form action="#">
-				<button class="btn compare-button">
-					Compare (<span class="compare-value">1</span>)
-					<i class="fa fa-chevron-right"></i>
-				</button>
-			</form>
 			<div class="showing-item">
-				<span>Showing 1 - @Model.ItemsPerPage of @Model.CategoriesProductsCount items</span>
+				<span>
+					Showing @Model.CurrentPageItemsNumber of @Model.CategoriesProductsCount items
+				</span>
 			</div>
 			<div class="showing-next-prev">
 				<ul class="pagination-bar">
@@ -219,9 +196,6 @@
 						</li>
 					}
 				</ul>
-				<form action="#">
-					<button class="btn showall-button">Show all</button>
-				</form>
 			</div>
 		</div>
 		<!-- PRODUCT-SHOOTING-RESULT END -->

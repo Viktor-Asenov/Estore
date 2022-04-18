@@ -155,7 +155,7 @@
     <!-- MAIN-CONTENT-SECTION START -->
     <section class="main-content-section">
         <div class="container">
-            <partial name="_CookieConsentPartial" />
+            @*<partial name="_CookieConsentPartial" />*@
 
             <main role="main" class="pb-3">
                 @this.RenderBody()
@@ -267,8 +267,8 @@
                                             <h2>Information</h2>
                                             <ul>
                                                 <li>
-                                                    <a asp-controller="Home" asp-action="Contact">
-                                                        <i class="fa fa-angle-double-right"></i>Contact Us
+                                                    <a asp-controller="Home" asp-action="About">
+                                                        <i class="fa fa-angle-double-right"></i>About Us
                                                     </a>
                                                 </li>
                                             </ul>
@@ -283,7 +283,9 @@
                                             <h2>My account</h2>
                                             <ul>
                                                 <li>
-                                                    <a href="#"><i class="fa fa-angle-double-right"></i>My Wishlist</a>
+                                                    <a asp-controller="Wishlists" asp-action="Details">
+                                                        <i class="fa fa-angle-double-right"></i>My Wishlist
+                                                    </a>
                                                 </li>
                                                 @if (this.User.Identity.IsAuthenticated)
                                                 {

@@ -4,6 +4,7 @@
 <div id="message">
 	@if (this.TempData.ContainsKey("Message"))
 	{
+		<br />
 	    <div class="alert alert-success" role="alert">
 	        @this.TempData["Message"]
 	        <button onclick="closeMessage()" type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close">
@@ -11,17 +12,8 @@
 	    </div>
 	}
 </div>
-
+<br />
 <div class="container">
-	<!-- BSTORE-BREADCRUMB START -->
-	<div class="bstore-breadcrumb">
-		<a href="index.html">HOMe<span><i class="fa fa-caret-right"></i> </span> </a>
-		<span> <i class="fa fa-caret-right"> </i> </span>
-		<a href="shop-gird.html"> women </a>
-		<span> Faded Short Sleeves T-shirt </span>
-	</div>
-	<!-- BSTORE-BREADCRUMB END -->
-	
 	<div class="row">
 		<div class="col-lg-9">
 			<!-- SINGLE-PRODUCT-DESCRIPTION START -->

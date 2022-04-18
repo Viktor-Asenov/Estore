@@ -3,15 +3,11 @@
     using System;
     using System.Collections.Generic;
 
-    using Estore.Web.ViewModels.Categories;
-
     public class ProductstByCategoryViewModel
     {
         public string CategoryId { get; set; }
 
         public string CategoryName { get; set; }
-
-        public string CategoryImage { get; set; }
 
         public int CategoriesProductsCount { get; set; }
 
@@ -27,9 +23,11 @@
 
         public int NextPageNumber => this.PageNumber + 1;
 
-        public int PagesCount => (int)Math.Ceiling((double)this.CategoriesProductsCount / this.ItemsPerPage);
+        public int CurrentPageItemsNumber
+            => this.ItemsPerPage * this.PageNumber > this.CategoriesProductsCount
+            ? this.CategoriesProductsCount : this.ItemsPerPage * this.PageNumber;
 
-        public BreadcrumbViewModel Breadcrumb { get; set; }
+        public int PagesCount => (int)Math.Ceiling((double)this.CategoriesProductsCount / this.ItemsPerPage);
 
         public IEnumerable<ProductInCategoryViewModel> CategoryProducts { get; set; }
     }

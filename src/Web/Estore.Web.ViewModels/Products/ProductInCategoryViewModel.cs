@@ -18,11 +18,6 @@
 
         public decimal Price { get; set; }
 
-        public decimal? Discount { get; set; }
-
-        public decimal? DiscountedPrice
-            => this.Price -= this.Price * (this.Discount / 100) ?? this.Price;
-
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Product, ProductInCategoryViewModel>()
