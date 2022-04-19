@@ -49,6 +49,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css">
     <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/custom.css">
 
 </head>
 
@@ -73,7 +74,7 @@
                             @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                             {
                                 <div class="header-left-menu">
-                                    <a asp-area="Administration" asp-controller="" asp-action="">Administration</a>
+                                    <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Administration</a>
                                 </div>                                               
                             }
                         </div>

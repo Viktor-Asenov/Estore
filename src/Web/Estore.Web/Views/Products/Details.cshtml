@@ -74,9 +74,6 @@
 								<i class="fa fa-star"></i>
 								<i class="fa fa-star-half-empty"></i>
 							</div>
-							<div class="read-reviews">
-								<a href="#">Read reviews (1)</a>
-							</div>
 							<div class="write-review">
 								<a asp-controller="Reviews" asp-action="Create" asp-route-id="@Model.Id">Write a review</a>
 							</div>
@@ -131,8 +128,7 @@
 			<div class="product-more-info-tab">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs more-info-tab">
-					<li class="active"><a href="#moreinfo" data-toggle="tab">Description</a></li>
-					<li><a href="#review" data-toggle="tab">reviews</a></li>
+					<li class="active">Description</li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">
@@ -141,60 +137,48 @@
 							<p>@Model.Description</p>
 						</div>
 					</div>
-					<div class="tab-pane" id="datasheet">
-						<div class="deta-sheet">
-							<table class="table-data-sheet">
-								<tbody>
-									<tr class="odd">
-										<td>Compositions</td>
-										<td>Cotton</td>
-									</tr>
-									<tr class="even">
-										<td class="td-bg">Styles</td>
-										<td class="td-bg">Casual</td>
-									</tr>
-									<tr class="odd">
-										<td>Properties</td>
-										<td>Short Sleeve</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="tab-pane" id="review">
-						<div class="row tab-review-row">
-							<div class="col-xs-5 col-sm-4 col-md-4 col-lg-3 padding-5">
-								<div class="tab-rating-box">
-									<span>Grade</span>
-									<div class="rating-box">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-empty"></i>
-									</div>
-									<div class="review-author-info">
-										<strong>write A REVIEW</strong>
-										<span>06/22/2015</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-7 col-sm-8 col-md-8 col-lg-9 padding-5">
-								<div class="write-your-review">
-									<p><strong>write A REVIEW</strong></p>
-									<p>write A REVIEW</p>
-									<span class="usefull-comment">Was this comment useful to you?
-										<span>Yes</span><span>No</span></span>
-									<a href="#">Report abuse </a>
-								</div>
-							</div>
-							<a href="#" class="write-review-btn">Write your review!</a>
-						</div>
-					</div>
 				</div>
 			</div>					
 			<!-- SINGLE-PRODUCT INFO TAB END -->
-	
+
+			<!-- REVIEWS-AREA START -->
+			@if (@Model.Reviews.Count() >= 1)
+			{
+				<div class="product-more-info-tab">
+					<ul class="nav nav-tabs more-info-tab">
+						<li class="active">Reviews</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="moreinfo">
+							<div class="container mt-3 d-flex">
+							    <div class="row d-flex col-lg-12">
+							         @foreach (var review in @Model.Reviews)
+									 {
+										<div class="d-flex flex-row">
+										    <div class="d-flex flex-column ms-2">										            
+										        <p class="comment-text">"@review.Content"</p>
+										    </div>
+										</div>
+										<div class="d-flex justify-content-between">
+										    <div class="d-flex flex-row gap-3 align-items-center">
+												<span>By</span>
+											    <h3 class="text-primary">@review.Author</h3>
+											</div>
+											<div id="date" class="d-flex flex-row">
+												<span id="date-created">Created On: </span>
+												<span class="text-muted fw-normal fs-10">@review.CreatedOn</span>
+											</div>
+										</div>
+									 }
+							    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+			<!-- REVIEWS-AREA END -->
+
+			<br />
 			<!-- RELATED-PRODUCTS-AREA START -->
 			<div class="left-title-area">
 				<h2 class="left-title">related products</h2>

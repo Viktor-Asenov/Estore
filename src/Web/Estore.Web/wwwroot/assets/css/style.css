@@ -803,7 +803,7 @@ input.search-form[placeholder]:-ms-input-placeholder {
 	color: #fff;
 	float: right;
 	line-height: 45px;
-	width: 45px;
+	width: 70px;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -5783,7 +5783,7 @@ p.small-title {
 	border-bottom: medium none;
 }
 
-.more-info-tab li a {
+.more-info-tab li {
 	border: none;
 	border-right: 1px solid #fff;
 	color: #333;
@@ -5799,9 +5799,9 @@ p.small-title {
 	margin-right: 0;
 }
 
-.more-info-tab>li.active>a,
-.more-info-tab>li.active>a:focus,
-.more-info-tab>li.active>a:hover {
+.more-info-tab>li.active,
+.more-info-tab>li.active:focus,
+.more-info-tab>li.active:hover {
 	background-color: #ff4f4f;
 	border-color: #ddd #ddd transparent;
 	border: none;

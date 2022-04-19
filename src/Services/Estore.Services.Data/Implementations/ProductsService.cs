@@ -10,7 +10,8 @@
     using Estore.Services.Data.Contracts;
     using Estore.Services.Mapping;
     using Estore.Web.ViewModels.Products;
-    using Microsoft.EntityFrameworkCore;
+	using Estore.Web.ViewModels.Reviews;
+	using Microsoft.EntityFrameworkCore;
 
     public class ProductsService : IProductsService
     {
@@ -102,12 +103,25 @@
                 .To<ProductDetailsViewModel>()
                 .FirstOrDefaultAsync();
 
-            productDetails.RelatedProducts = await this.GetRelated(productId);
+            productDetails.Reviews = await this.GetReviewsAsync(productId);
+            productDetails.RelatedProducts = await this.GetRelatedAsync(productId);
 
             return productDetails;
         }
 
-        private async Task<IEnumerable<ProductViewModel>> GetRelated(string productId)
+        private async Task<IEnumerable<ReviewViewModel>> GetReviewsAsync(string productId)
+        {
+            var product = await this.IfProductExistAsync(productId);
+
+            var reviews = await this.context.Reviews
+                .Where(r => r.ProductId == product.Id)
+                .To<ReviewViewModel>()
+                .ToListAsync();
+
+            return reviews;
+        }
+
+        private async Task<IEnumerable<ProductViewModel>> GetRelatedAsync(string productId)
         {
             var product = await this.IfProductExistAsync(productId);
 

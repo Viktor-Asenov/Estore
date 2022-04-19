@@ -33,6 +33,7 @@
                 ProductId = product.Id,
                 Author = model.Author,
                 Content = model.Content,
+                CreatedOn = DateTime.UtcNow,
             };
 
             await this.context.Reviews.AddAsync(review);

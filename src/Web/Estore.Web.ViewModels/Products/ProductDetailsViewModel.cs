@@ -5,6 +5,7 @@
     using AutoMapper;
     using Estore.Data.Models;
     using Estore.Services.Mapping;
+    using Estore.Web.ViewModels.Reviews;
 
     public class ProductDetailsViewModel : IMapFrom<Product>, IHaveCustomMappings
     {
@@ -17,6 +18,8 @@
         public decimal Price { get; set; }
 
         public IEnumerable<ImageViewModel> Images { get; set; }
+
+        public IEnumerable<ReviewViewModel> Reviews { get; set; }
 
         public IEnumerable<ProductViewModel> RelatedProducts { get; set; }
 
