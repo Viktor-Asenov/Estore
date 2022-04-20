@@ -20,5 +20,7 @@
         Task<int> GetSubCategoryProductsCountAsync(string categoryId);
 
         Task<ProductDetailsViewModel> GetDetailsAsync(string productId);
-    }
+
+        Task<IEnumerable<T>> GetBySearchTermAsync<T>(string keyword);
+	}
 }

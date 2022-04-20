@@ -109,6 +109,26 @@
             return productDetails;
         }
 
+        public async Task<IEnumerable<T>> GetBySearchTermAsync<T>(string keyword)
+		{
+            var searchTerm = string.Empty;
+            if (keyword.ToLower().EndsWith('s'))
+			{
+                searchTerm = keyword.Substring(0, keyword.Length - 1);
+			}
+            else
+			{
+                searchTerm = keyword;
+            }
+
+            var foundProducts = await this.context.Products
+                .Where(p => p.Name.ToLower().Contains(searchTerm.ToLower()))
+                .To<T>()
+                .ToListAsync();
+
+            return foundProducts;
+		}
+
         private async Task<IEnumerable<ReviewViewModel>> GetReviewsAsync(string productId)
         {
             var product = await this.IfProductExistAsync(productId);

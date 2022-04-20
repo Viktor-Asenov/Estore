@@ -16,10 +16,7 @@
 
         public decimal Price { get; set; }
 
-        public decimal? Discount { get; set; }
-
-        public string DiscountedPrice
-            => string.Format("{0:0.00}", this.Price -= this.Price * (this.Discount / 100) ?? this.Price);
+        public string Description { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

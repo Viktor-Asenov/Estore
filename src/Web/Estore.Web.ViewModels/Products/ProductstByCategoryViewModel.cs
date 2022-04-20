@@ -29,6 +29,6 @@
 
         public int PagesCount => (int)Math.Ceiling((double)this.CategoriesProductsCount / this.ItemsPerPage);
 
-        public IEnumerable<ProductInCategoryViewModel> CategoryProducts { get; set; }
+        public IEnumerable<ProductViewModel> CategoryProducts { get; set; }
     }
 }

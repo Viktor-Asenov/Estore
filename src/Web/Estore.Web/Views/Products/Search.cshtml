@@ -1,0 +1,53 @@
+﻿@using Estore.Web.ViewModels.Products
+@model ProductsBySearchViewModel
+
+<div class="all-gategory-product">
+	<div class="row gategory-product">
+		<div class="product-category-title">
+			<!-- PRODUCT-CATEGORY-TITLE START -->
+			<h1>
+				<span class="cat-name">Search criteria: @Model.Keyword</span>
+				<span class="count-product">Found: @Model.ProductsCount products.</span>
+			</h1>
+			<!-- PRODUCT-CATEGORY-TITLE END -->
+		</div>
+		@foreach (var product in @Model.Products)
+		{
+			<!-- SINGLE ITEM START -->
+			<div class="col-xl-3 col-md-4 col-sm-6 col-12">
+				<div class="gategory-product-list">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+								<img src="@product.ImageUrl" alt="product-image">
+							</a>
+							<div class="overlay-content">
+								<ul>
+									<li><a href="#" title="Quick view"><i class="fa fa-shopping-cart"></i></a></li>
+									<li><a href="#" title="Quick view"><i class="fa fa-heart-o"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="product-info">
+							<div class="customar-comments-box">
+								<div class="rating-box">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-half-empty"></i>
+									<i class="fa fa-star-half-empty"></i>
+								</div>
+							</div>
+							<a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+							<div class="price-box">
+								<span class="price">$@product.Price</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- SINGLE ITEM END -->
+		}
+	</div>
+</div>

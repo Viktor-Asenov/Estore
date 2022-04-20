@@ -262,6 +262,25 @@
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Search(ProductsSearchInputModel inputModel)
+        {
+            try
+            {
+                var model = new ProductsBySearchViewModel
+                {
+                    Keyword = inputModel.Keyword,
+                    Products = await this.productsService.GetBySearchTermAsync<ProductViewModel>(inputModel.Keyword),
+                };
+
+                return this.View(model);
+            }
+            catch (Exception)
+            {
+                return this.Redirect("/Home/Error");
+            }
+        }
+
         private async Task<ProductstByCategoryViewModel> GetSubMainModel(string id, int page)
         {
             var subMainCategoryProductsModel = new ProductstByCategoryViewModel
@@ -271,7 +290,7 @@
                 CategoriesProductsCount = await this.productsService.GetSubMainCategoryProductsCountAsync(id),
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = page,
-                CategoryProducts = await this.productsService.GetSubMainCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
+                CategoryProducts = await this.productsService.GetSubMainCategoryProductsAsync<ProductViewModel>(id, page, ItemsPerPage),
             };
 
             return subMainCategoryProductsModel;
@@ -286,7 +305,7 @@
                 CategoriesProductsCount = await this.productsService.GetSubCategoryProductsCountAsync(id),
                 ItemsPerPage = ItemsPerPage,
                 PageNumber = page,
-                CategoryProducts = await this.productsService.GetSubCategoryProductsAsync<ProductInCategoryViewModel>(id, page, ItemsPerPage),
+                CategoryProducts = await this.productsService.GetSubCategoryProductsAsync<ProductViewModel>(id, page, ItemsPerPage),
             };
 
             return subCategoryProductsModel;
