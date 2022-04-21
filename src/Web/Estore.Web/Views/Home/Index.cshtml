@@ -20,7 +20,7 @@
                             <div class="d-table-cell">
                                 <h2 class="animated bounceInDown">About Us</h2>
                                 <p class="animated bounceInUp">
-                                    We kindly ask you to visit our introducing page.
+                                    We kindly ask you to meet our team.
                                 </p>
                                 <a asp-controller="Home" asp-action="About" class="wow zoomInDown" data-wow-duration="1s" data-wow-delay="1s">
                                     Read More 
@@ -176,7 +176,7 @@
                     },
                     success: function(data) {
                        $('#messageBody').html(
-                        '<div class="alert alert-success" role="alert"><span>' + data + '</span><button onclick="closeMessage()" type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        '<br/><div class="alert alert-success" role="alert"><span>' + data + '</span><button onclick="closeMessage()" type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     },
                     contentType: 'application/json',
                 });

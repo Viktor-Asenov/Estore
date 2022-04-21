@@ -7,7 +7,7 @@
 
 	public class ReviewViewModel : IMapFrom<Review>
     {
-        public string Author { get; set; }
+		public string Author { get; set; }
 
         public string Content { get; set; }
 

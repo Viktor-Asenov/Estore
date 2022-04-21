@@ -1,12 +1,15 @@
 ﻿namespace Estore.Services.Data.Implementations
 {
     using System;
-    using System.Threading.Tasks;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Threading.Tasks;
 
     using Estore.Data;
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
-    using Estore.Web.ViewModels.Reviews;
+	using Estore.Services.Mapping;
+	using Estore.Web.ViewModels.Reviews;
     using Microsoft.EntityFrameworkCore;
 
     public class ReviewsService : IReviewsService
@@ -41,5 +44,29 @@
 
             return "Thank you for your valuable opinion.";
         }
+
+        public async Task<IEnumerable<T>> GetAll<T>()
+		{
+            var reviews = await this.context.Reviews
+                .To<T>()
+                .ToListAsync();
+
+            return reviews;
+		}
+
+        public async Task<T> GetByIdAsync<T>(string id)
+		{
+            var review = await this.context.Reviews
+                .Where(r => r.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return review;
+		}
+
+        public async Task EditAsync(string id, EditReviewInputModel input)
+		{
+
+		}
     }
 }

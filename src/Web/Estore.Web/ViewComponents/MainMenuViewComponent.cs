@@ -25,7 +25,7 @@
             foreach (var mainCategory in mainCategories)
             {
                 var subMainCategories = await this.categoriesService
-                    .GetParentSubMainCategories<SubMainCategoryMenuViewModel>(mainCategory.Id)
+                    .GetSubMainCategories<SubMainCategoryMenuViewModel>(mainCategory.Id)
                     .OrderByDescending(smc => smc.Name.StartsWith("C"))
                     .ThenByDescending(smc => smc.Name.StartsWith("A"))
                     .ThenByDescending(smc => smc.Name.StartsWith("S"))
@@ -35,7 +35,7 @@
                 foreach (var subMainCategory in subMainCategories)
                 {
                     var subCategories = await this.categoriesService
-                        .GetParentSubCategories<SubCategoryMenuViewModel>(subMainCategory.Id)
+                        .GetSubSubMainCategories<SubCategoryMenuViewModel>(subMainCategory.Id)
                         .ToListAsync();
 
                     foreach (var subCategory in subCategories)

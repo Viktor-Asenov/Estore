@@ -27,7 +27,7 @@
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
-                    .GetParentSubCategories<CategoryViewModel>(id)
+                    .GetSubSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
                     .ThenByDescending(sc => sc.Name.StartsWith("J"))
                     .ThenByDescending(sc => sc.Name.StartsWith("Sh"))
@@ -51,7 +51,7 @@
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
-                    .GetParentSubCategories<CategoryViewModel>(id)
+                    .GetSubSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
                     .ThenByDescending(sc => sc.Name.StartsWith("J"))
                     .ThenByDescending(sc => sc.Name.StartsWith("D"))
@@ -75,7 +75,7 @@
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
-                    .GetParentSubMainCategories<CategoryViewModel>(id)
+                    .GetSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(c => c.Name.StartsWith("B"))
                     .ToListAsync(),
                 };
@@ -97,7 +97,7 @@
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
-                    .GetParentSubMainCategories<CategoryViewModel>(id)
+                    .GetSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
                     .ToListAsync(),
                 };
@@ -119,7 +119,7 @@
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
-                    .GetParentSubMainCategories<CategoryViewModel>(id)
+                    .GetSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(sc => sc.Name.StartsWith("Ja"))
                     .ThenByDescending(sc => sc.Name.StartsWith("J"))
                     .ToListAsync(),
@@ -142,7 +142,7 @@
                 {
                     ParentCategoryName = await this.categoriesService.GetNameAsync(id),
                     SubCategories = await this.categoriesService
-                    .GetParentSubMainCategories<CategoryViewModel>(id)
+                    .GetSubMainCategories<CategoryViewModel>(id)
                     .OrderByDescending(c => c.Name.StartsWith("B"))
                     .ToListAsync(),
                 };

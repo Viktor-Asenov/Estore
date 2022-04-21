@@ -33,7 +33,7 @@
             return categories;
         }
 
-        public IQueryable<T> GetParentSubMainCategories<T>(string parentCategoryId)
+        public IQueryable<T> GetSubMainCategories<T>(string parentCategoryId)
         {
             var parentCategory = this.context.Categories
                 .FirstOrDefault(c => c.Id == parentCategoryId);
@@ -49,7 +49,7 @@
             return subMainCategories;
         }
 
-        public IQueryable<T> GetParentSubCategories<T>(string parentCategoryId)
+        public IQueryable<T> GetSubSubMainCategories<T>(string parentCategoryId)
         {
             var parentCategory = this.context.Categories
                 .FirstOrDefault(c => c.Id == parentCategoryId);
