@@ -51,7 +51,7 @@
                 var productPrice = product.Price;
                 var productDiscount = product.Discount / 100;
 
-                if (newOrder.Quantity >= product.ItemApplyDiscount)
+                if (newOrder.Quantity >= product.ItemApplyDiscount && product.ItemApplyDiscount != 0)
                 {
                     var calculatedDiscount = productPrice * productDiscount;
                     newOrder.TotalPerProduct -= calculatedDiscount ?? newOrder.TotalPerProduct;
@@ -72,12 +72,12 @@
 
                 orderedProduct.Quantity += quantity;
 
-                if (orderedProduct.IsDiscountGiven != false)
+                if (orderedProduct.IsDiscountGiven != false && product.ItemApplyDiscount != 0)
                 {
                     var currentOrderCalculationTotalPerProduct = productPrice * quantity;
                     orderedProduct.TotalPerProduct += currentOrderCalculationTotalPerProduct;
                 }
-                else if (orderedProduct.Quantity >= product.ItemApplyDiscount)
+                else if (orderedProduct.Quantity >= product.ItemApplyDiscount && product.ItemApplyDiscount != 0)
                 {
                     orderedProduct.TotalPerProduct = productPrice * orderedProduct.Quantity;
                     var calculatedDiscount = productPrice * productDiscount;

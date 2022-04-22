@@ -87,8 +87,12 @@
                                 @if (!this.User.Identity.IsAuthenticated)
                                 {
                                     <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="/Identity/Account/Login">Sign in</a></li>
-                                        <li class="list-inline-item"><a href="/Identity/Account/Register">Register</a></li>
+                                        <li class="list-inline-item">
+                                            <a asp-area="Identity" asp-controller="Account" asp-action="Login">Sign in</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a asp-area="Identity" asp-controller="Account" asp-action="Register" >Register</a>
+                                        </li>
                                     </ul>
                                 }
                                 else
