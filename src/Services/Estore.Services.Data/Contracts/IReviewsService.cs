@@ -15,5 +15,7 @@
         Task<T> GetByIdAsync<T>(string id);
 
         Task EditAsync(string id, EditReviewInputModel input);
+
+        Task DeleteAsync(string id);
     }
 }

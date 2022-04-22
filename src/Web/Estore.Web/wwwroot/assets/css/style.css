@@ -4482,58 +4482,6 @@ a.wish-save:hover {
 	width: 100%;
 }
 
-.qtybutton {
-	background: #fbfbfb;
-	border: 1px solid #ccc;
-	color: #c0c0c0;
-	cursor: pointer;
-	display: block;
-	font-size: 24px;
-	height: 26px;
-	line-height: 24px;
-	margin-top: 3px;
-	padding: 0;
-	vertical-align: middle;
-	width: 26px;
-	text-align: center;
-}
-
-.qtybutton:hover {
-	color: #000;
-}
-
-.inc {
-	float: right;
-	position: relative;
-}
-
-.inc:before {
-	position: absolute;
-	content: "+";
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	font-family: arial;
-}
-
-.dec {
-	float: left;
-	font-size: 28px;
-	line-height: 19px;
-	position: relative;
-}
-
-.dec:before {
-	position: absolute;
-	content: "-";
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	font-family: arial;
-}
-
 /*-----------------
 20.1 cart page menu
 ------------------*/
@@ -4917,7 +4865,7 @@ ul.address li span {
 	overflow: hidden;
 }
 
-.returne-continue-shop a.continueshoping {
+.returne-continue-shop div a.continueshoping {
 	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
 	border: medium none;
 	color: #333;
@@ -4926,16 +4874,16 @@ ul.address li span {
 	line-height: 50px;
 }
 
-.returne-continue-shop a.continueshoping:hover {
+.returne-continue-shop div a.continueshoping:hover {
 	color: #515151;
 }
 
-.returne-continue-shop a.continueshoping i {
+.returne-continue-shop div a.continueshoping i {
 	color: #777777;
 	margin-right: 11px;
 }
 
-.returne-continue-shop a.procedtocheckout {
+.returne-continue-shop div button.procedtocheckout {
 	background: #ff4f4f none repeat scroll 0 0;
 	border-radius: 4px;
 	color: #fff;
@@ -4945,14 +4893,15 @@ ul.address li span {
 	line-height: 50px;
 	padding: 0 16px;
 	transition: all 500ms ease 0s;
+	border: none;
 }
 
-.returne-continue-shop a.procedtocheckout:hover {
+.returne-continue-shop div button.procedtocheckout:hover {
 	background: #3a3d42 none repeat scroll 0 0;
 	border-color: #3a3d42;
 }
 
-.returne-continue-shop a.procedtocheckout i {
+.returne-continue-shop div button.procedtocheckout i {
 	font-size: 25px;
 	line-height: 50px;
 	margin-left: 9px;
@@ -5675,30 +5624,9 @@ span.large-btn:hover i {
 	background: #fff;
 }
 
-.single-qty-btn .qtybutton {
-	height: 28px;
-	width: 28px;
-	margin-top: 0;
-}
-
-.single-qty-btn .inc {
-	margin-left: 3px;
-	float: left;
-}
-
-.single-qty-btn .dec {
-	float: left;
-}
-
 .single-product-quantity a:hover {
 	color: #333;
 }
-
-.product_quantity_down {}
-
-.single-product-size {}
-
-.single-product-size p {}
 
 p.small-title {
 	font-size: 12px;

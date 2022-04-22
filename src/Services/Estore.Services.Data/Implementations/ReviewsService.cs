@@ -49,6 +49,8 @@
         public async Task<IEnumerable<T>> GetAll<T>()
 		{
             var reviews = await this.context.Reviews
+                .Where(r => r.IsDeleted != true)
+                .OrderByDescending(r => r.CreatedOn)
                 .To<T>()
                 .ToListAsync();
 
@@ -69,9 +71,28 @@
 		{
             var review = await this.context.Reviews
                 .FirstOrDefaultAsync(r => r.Id == id);
+            if (review == null)
+            {
+                throw new NullReferenceException();
+            }
+
             review.Author = input.Author;
             review.Content = input.Content;
             review.ProductId = input.ProductId;
+
+            await this.context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(string id)
+		{
+            var review = await this.context.Reviews
+                .FirstOrDefaultAsync(r => r.Id == id);
+            if (review == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            review.IsDeleted = true;
 
             await this.context.SaveChangesAsync();
         }

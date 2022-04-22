@@ -57,5 +57,20 @@
 			}
 			
 		}
+
+		[HttpPost]
+		public async Task<IActionResult> Delete(string id)
+		{
+			try
+			{
+				await this.reviewsService.DeleteAsync(id);
+
+				return this.RedirectToAction(nameof(this.Index));
+			}
+			catch (Exception)
+			{
+				return this.Redirect("/Home/Error");
+			}
+		}
 	}
 }

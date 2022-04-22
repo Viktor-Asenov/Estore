@@ -131,5 +131,22 @@
 
             return orderedProducts;
         }
+
+        public async Task Checkout(string userId)
+        {
+            var user = await this.context.Users.FindAsync(userId);
+
+            if (user == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            var userOrders = await this.context.Orders
+                .Where(o => o.CartId == user.Cart.Id)
+                .ToListAsync();
+
+            this.context.Orders.RemoveRange(userOrders);
+            await this.context.SaveChangesAsync();
+        }
     }
 }

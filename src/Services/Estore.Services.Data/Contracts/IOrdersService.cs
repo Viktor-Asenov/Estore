@@ -10,5 +10,7 @@
         Task DeleteProductFromOrdersAsync(string productId);
 
         Task<IEnumerable<T>> GetOrderedProductsAsync<T>(string userId);
+
+        Task Checkout(string userId);
     }
 }

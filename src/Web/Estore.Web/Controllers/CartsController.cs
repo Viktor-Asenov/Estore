@@ -69,12 +69,29 @@
             {
                 await this.ordersService.DeleteProductFromOrdersAsync(productId);
 
-                return this.RedirectToAction("Details");
+                return this.RedirectToAction(nameof(this.Details));
             }
             catch (Exception)
             {
                 return this.Redirect("/Home/Error");
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout()
+		{
+			try
+			{
+                var user = await this.userManager.GetUserAsync(this.User);
+
+                await this.ordersService.Checkout(user.Id);
+
+                return this.RedirectToAction(nameof(this.Details));
+            }
+			catch (Exception)
+			{
+                return this.Redirect("/Home/Error");
+            }
+		}
     }
 }

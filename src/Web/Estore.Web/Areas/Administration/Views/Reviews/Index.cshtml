@@ -39,16 +39,16 @@
 									</span>
 								</td>
 								<td>
-									<a class="btn btn-success text-white" asp-controller="Reviews" asp-action="Edit" asp-route-id="@review.Id">
+									<a class="btn btn-danger text-white" asp-controller="Reviews" asp-action="Edit" asp-route-id="@review.Id">
 										Edit
 									</a>
 								</td>
 								<td>
 									<form method="post" asp-controller="Reviews" asp-action="Delete">
 										<span>
-											<button type="submit" class="btn-close btn-sm" title="Delete"></button>
+											<button type="submit" class="btn-close btn-sm" data-toggle="modal" data-target="#modalDelete" title="Delete"></button>
 										</span>
-										<input type="hidden" name="reviewId" value="@review.Id">
+										<input type="hidden" name="id" value="@review.Id">
 									</form>
 								</td>
 							</tr> 
@@ -60,7 +60,7 @@
 
 			<!-- WISH-LIST BACT HOME START-->
 			<div class="wish-back-link">
-				<a class="wish-save" asp-controller="Home" asp-action="Index">
+				<a class="wish-save" asp-area="" asp-controller="Home" asp-action="Index">
 					<i class="fa fa-chevron-left"></i> Back to home page
 				</a>
 			</div>

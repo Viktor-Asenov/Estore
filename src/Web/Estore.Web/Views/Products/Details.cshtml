@@ -22,44 +22,36 @@
 					<div class="single-product-view">
 						<!-- Tab panes -->
 						<div class="tab-content">
-							@foreach (var image in @Model.Images)
-						   {
-							   <div class="tab-pane active" id="thumbnail_1">
-									<div class="single-product-image">
-										<img src="@image.RemoteUrl" alt="single-product-image">
-										<a class="fancybox" href="img/product/sale/1.webp" data-fancybox-group="gallery">
-											<span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span>
-										</a>
-									</div>
-							   </div>
-						   }
-						</div>
-					</div>
-					<div class="select-product">
-						<!-- Nav tabs -->
-						<div class="bx-wrapper" style="max-width: 264px;">
-							<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative;"><div class="bx-loading"></div>
-								<ul class="nav nav-tabs select-product-tab bxslider" style="width: 815%; position: relative;">
-									@foreach (var image in @Model.Images)
-								   {
-									   <li class="active" style="float: left; list-style: none; position: relative; width: 87.997px;">
-											<a href="#thumbnail_1" data-toggle="tab"><img src="@image.RemoteUrl" alt="pro-thumbnail"></a>
-									   </li>
-								   }
-								</ul>
-							</div>
-							<div class="bx-controls bx-has-pager bx-has-controls-direction">
-								<div class="bx-pager bx-default-pager">
-									<div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link">1</a>
-									</div>
-									<div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a>
-									</div>
+							<div id="carouselIndicators" class="carousel slide"  >
+								  <ol class="carousel-indicators">
+								    @{
+									    int i = 0;
+									}
+									@foreach (var image in Model.Images)
+									{
+									    <li data-target="#carouselIndicators" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+									    i++;
+									}
+								  </ol>
+								  <div class="carousel-inner">
+								    @{
+									    i = 0;
+									}
+									@foreach (var image in Model.Images)
+									{
+									    <div class="carousel-item @(i == 0 ? "active" : "")">
+									        <img src="@image.RemoteUrl" class="image img-responsive">
+									    </div>
+									    i++;
+									}
+								  </div>
+								  <a href="#carouselIndicators" class="carousel-control-prev" data-bs-slide="prev">
+								    <span class="carousel-control-prev-icon"></span>
+								  </a>
+								  <a href="#carouselIndicators" class="carousel-control-next" data-bs-slide="next">
+								    <span class="carousel-control-next-icon"></span>
+								  </a>
 								</div>
-								<div class="bx-controls-direction">
-									<a class="bx-prev" href=""><i class="fa fa-angle-right"></i>
-									</a><a class="bx-next" href=""><i class="fa fa-angle-left"></i></a>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -96,7 +88,7 @@
 								<p class="small-title">Quantity</p>
 								<div class="form-group">
 									<div class="cart-quantity">
-										<div class="cart-plus-minus-button single-qty-btn">
+										<div class="single-qty-btn">
 											<input class="form-control" type="number" name="quantity" value=1 min=1>
 										</div>
 									</div>
@@ -123,7 +115,7 @@
 				</div>
 			</div>
 			<!-- SINGLE-PRODUCT-DESCRIPTION END -->
-	
+			<br />	
 			<!-- SINGLE-PRODUCT INFO TAB START -->
 			<div class="product-more-info-tab">
 				<!-- Nav tabs -->

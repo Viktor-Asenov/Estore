@@ -69,7 +69,7 @@
             {
                 await this.wishlistsService.DeleteProductFromOrdersAsync(productId);
 
-                return this.RedirectToAction("Details");
+                return this.RedirectToAction(nameof(this.Details));
             }
             catch (Exception)
             {
