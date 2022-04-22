@@ -8,19 +8,19 @@
                 @foreach (var mainCategory in Model.MainCategories)
                 {
                     <li>
-                        <a asp-controller="Categories" asp-action="@mainCategory.Name" asp-route-id="@mainCategory.Id">@mainCategory.Name</a>
+                        <a asp-area="" asp-controller="Categories" asp-action="@mainCategory.Name" asp-route-id="@mainCategory.Id">@mainCategory.Name</a>
                         <ul class="mega-menu row">
                             @foreach (var subMainCategory in mainCategory.SubMainCategories)
                             {
                                 <li class="col-6">
-                                    <a class="mega-menu-title" asp-controller="Products" asp-action="@subMainCategory.Name" asp-route-id="@subMainCategory.Id">
+                                    <a asp-area="" class="mega-menu-title" asp-controller="Products" asp-action="@subMainCategory.Name" asp-route-id="@subMainCategory.Id">
                                         @subMainCategory.Name
                                     </a>
                                     <ul>
                                         @foreach (var subCategory in subMainCategory.SubCategories)
                                         {
                                             <li>
-                                                <a asp-controller="Products" asp-action="@subCategory.Name" asp-route-id="@subCategory.Id">@subCategory.Name</a>
+                                                <a asp-area="" asp-controller="Products" asp-action="@subCategory.Name" asp-route-id="@subCategory.Id">@subCategory.Name</a>
                                             </li>
                                         }
                                     </ul>

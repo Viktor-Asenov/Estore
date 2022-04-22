@@ -10,10 +10,14 @@
 	public class ReviewsController : AdministrationController
 	{
 		private readonly IReviewsService reviewsService;
+		private readonly IProductsService productsService;
 
-		public ReviewsController(IReviewsService reviewsService)
+		public ReviewsController(
+			IReviewsService reviewsService,
+			IProductsService productsService)
 		{
 			this.reviewsService = reviewsService;
+			this.productsService = productsService;
 		}
 
 		[HttpGet]
@@ -28,23 +32,28 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Edit(string reviewId)
+		public async Task<IActionResult> Edit(string id)
 		{
-			var inputModel = await this.reviewsService.GetByIdAsync<EditReviewInputModel>(reviewId);
+			var inputModel = await this.reviewsService.GetByIdAsync<EditReviewInputModel>(id);
+			inputModel.Products = await this.productsService.GetAllAsKeyValuePairsAsync();
 
 			return this.View(inputModel);
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(string reviewId, EditReviewInputModel input)
+		public async Task<IActionResult> Edit(string id, EditReviewInputModel input)
 		{
 			try
 			{
+				await this.reviewsService.EditAsync(id, input);
+
 				return this.RedirectToAction(nameof(this.Index));
 			}
 			catch (Exception)
 			{
-				return this.View();
+				input.Products = await this.productsService.GetAllAsKeyValuePairsAsync();
+
+				return this.View(input);
 			}
 			
 		}

@@ -22,5 +22,7 @@
         Task<ProductDetailsViewModel> GetDetailsAsync(string productId);
 
         Task<IEnumerable<T>> GetBySearchTermAsync<T>(string keyword);
+
+        Task<IEnumerable<KeyValuePair<string, string>>> GetAllAsKeyValuePairsAsync();
 	}
 }

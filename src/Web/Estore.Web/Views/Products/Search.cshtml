@@ -1,6 +1,8 @@
 ﻿@using Estore.Web.ViewModels.Products
 @model ProductsBySearchViewModel
 
+<div id="message"></div>
+
 <div class="all-gategory-product">
 	<div class="row gategory-product">
 		<div class="product-category-title">
@@ -23,9 +25,11 @@
 							</a>
 							<div class="overlay-content">
 								<ul>
-									<li><a href="#" title="Quick view"><i class="fa fa-shopping-cart"></i></a></li>
-									<li><a href="#" title="Quick view"><i class="fa fa-heart-o"></i></a>
-									</li>
+									<li>
+										<a class="text-white" id="@product.Id" title="Add to cart">
+											<i class="fa fa-shopping-cart"></i>
+										</a>
+									</li>									
 								</ul>
 							</div>
 						</div>
@@ -51,3 +55,35 @@
 		}
 	</div>
 </div>
+<form method="post" id="antiForgery"></form>
+
+@section Scripts {
+    <script>
+        $("a[id]").each(function myFunction(el) {
+            $(this).click(function () {
+                var productId = $(this).attr("id");
+                var quantity = 1;
+                var antiForgeryToken = $("#antiForgery input[name=__RequestVerificationToken]").val();
+                var data = { productId: productId, quantity: quantity };
+                $.ajax({
+                    type: "POST",
+                    url: "/api/Orders",
+                    data: JSON.stringify(data),
+                    headers: {
+                        "X-CSRF-TOKEN": antiForgeryToken
+                    },
+                    success: function(data) {
+                       $('#message').html(
+                        '<br/><div class="alert alert-success" role="alert"><span>' + data + '</span><button onclick="closeMessage()" type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    },
+                    contentType: 'application/json',
+                });
+            })
+        });
+
+        function closeMessage() {
+            let messageTag = document.getElementById('message');
+            messageTag.style.display = "none";
+        }
+    </script>
+}

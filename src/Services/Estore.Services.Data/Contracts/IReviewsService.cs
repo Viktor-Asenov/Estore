@@ -14,6 +14,6 @@
 
         Task<T> GetByIdAsync<T>(string id);
 
-        Task Edit(string id, EditReviewInputModel input);
+        Task EditAsync(string id, EditReviewInputModel input);
     }
 }

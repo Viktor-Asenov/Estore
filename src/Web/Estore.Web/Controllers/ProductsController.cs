@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using Estore.Services.Data.Contracts;
-    using Estore.Web.ViewModels.Categories;
     using Estore.Web.ViewModels.Products;
     using Microsoft.AspNetCore.Mvc;
 

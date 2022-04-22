@@ -9,6 +9,7 @@
     using Estore.Data.Models;
     using Estore.Services.Data.Contracts;
 	using Estore.Services.Mapping;
+	using Estore.Web.ViewModels.Administration.Reviews;
 	using Estore.Web.ViewModels.Reviews;
     using Microsoft.EntityFrameworkCore;
 
@@ -66,7 +67,13 @@
 
         public async Task EditAsync(string id, EditReviewInputModel input)
 		{
+            var review = await this.context.Reviews
+                .FirstOrDefaultAsync(r => r.Id == id);
+            review.Author = input.Author;
+            review.Content = input.Content;
+            review.ProductId = input.ProductId;
 
-		}
+            await this.context.SaveChangesAsync();
+        }
     }
 }

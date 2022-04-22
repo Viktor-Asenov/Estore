@@ -129,6 +129,21 @@
             return foundProducts;
 		}
 
+        public async Task<IEnumerable<KeyValuePair<string, string>>> GetAllAsKeyValuePairsAsync()
+		{
+            var products = await this.context.Products
+                .ToListAsync();
+            var keyValuePairs = new List<KeyValuePair<string, string>>();
+
+
+            foreach (var product in products)
+			{
+                keyValuePairs.Add(new KeyValuePair<string, string>(product.Id, product.Name));
+            }
+
+            return keyValuePairs;
+		}
+
         private async Task<IEnumerable<ReviewViewModel>> GetReviewsAsync(string productId)
         {
             var product = await this.IfProductExistAsync(productId);

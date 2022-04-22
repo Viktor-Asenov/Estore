@@ -39,17 +39,14 @@
 									</span>
 								</td>
 								<td>
-									<form method="post" asp-controller="Reviews" asp-action="Edit">
-										<span>
-											<button type="submit" class="btn btn-success" title="Edit">Edit</button>
-										</span>
-										<input type="hidden" name="reviewId" value="@review.Id">
-									</form>
+									<a class="btn btn-success text-white" asp-controller="Reviews" asp-action="Edit" asp-route-id="@review.Id">
+										Edit
+									</a>
 								</td>
 								<td>
 									<form method="post" asp-controller="Reviews" asp-action="Delete">
 										<span>
-											<button type="submit" class="btn btn-danger" title="Delete">Delete</button>
+											<button type="submit" class="btn-close btn-sm" title="Delete"></button>
 										</span>
 										<input type="hidden" name="reviewId" value="@review.Id">
 									</form>
