@@ -98,6 +98,38 @@
             return message;
         }
 
+        public async Task UpdateQuantityAsync(string productId, int quantity)
+        {
+            var orderedProduct = await this.context.Orders
+                .FirstOrDefaultAsync(o => o.ProductId == productId);
+
+            if (orderedProduct == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            var productPrice = orderedProduct.Product.Price;
+            var productDiscount = orderedProduct.Product.Discount / 100;
+
+            orderedProduct.Quantity = quantity;
+
+            if (orderedProduct.Quantity < orderedProduct.Product.ItemApplyDiscount)
+            {
+                orderedProduct.TotalPerProduct = productPrice * orderedProduct.Quantity;
+                orderedProduct.IsDiscountGiven = false;
+            }
+            else if (orderedProduct.Quantity >= orderedProduct.Product.ItemApplyDiscount && orderedProduct.Product.ItemApplyDiscount != 0)
+            {
+                orderedProduct.TotalPerProduct = productPrice * orderedProduct.Quantity;
+                var calculatedDiscount = productPrice * productDiscount;
+                orderedProduct.TotalPerProduct -= calculatedDiscount ?? orderedProduct.TotalPerProduct;
+
+                orderedProduct.IsDiscountGiven = true;
+            }
+
+            await this.context.SaveChangesAsync();
+        }
+
         public async Task DeleteProductFromOrdersAsync(string productId)
         {
             var orderedProduct = await this.context.Orders

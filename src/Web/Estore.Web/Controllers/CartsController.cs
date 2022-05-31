@@ -63,6 +63,21 @@
         }
 
         [HttpPost]
+        public async Task<IActionResult> Update(string productId, int quantity)
+        {
+            try
+            {
+                await this.ordersService.UpdateQuantityAsync(productId, quantity);
+
+                return this.RedirectToAction("Details");
+            }
+            catch (Exception)
+            {
+                return this.Redirect("/Home/Error");
+            }
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Delete(string productId)
         {
             try

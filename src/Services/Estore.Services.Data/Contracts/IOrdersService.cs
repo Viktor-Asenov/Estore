@@ -7,6 +7,8 @@
     {
         Task<string> AddProductInOrdersAsync(string userId, string productId, int quantity);
 
+        Task UpdateQuantityAsync(string productId, int quantity);
+
         Task DeleteProductFromOrdersAsync(string productId);
 
         Task<IEnumerable<T>> GetOrderedProductsAsync<T>(string userId);

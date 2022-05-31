@@ -13,6 +13,7 @@
 				<th class="cart-avail text-center">Availability</th>
 				<th class="cart-unit text-right">Unit price</th>
 				<th class="cart_quantity text-center">Qty</th>
+				<th class="cart_update">Update</th>
 				<th class="cart-delete">&nbsp;</th>
 				<th class="cart-total text-right">Total</th>
 			</tr>
@@ -42,6 +43,15 @@
 						<div class="single-qty-btn">
 							<input class="cart-plus-minus" type="text" name="qtybutton" value="@order.Quantity">
 						</div>
+					</td>
+					<td>
+						<form method="post" asp-controller="Carts" asp-action="Update">
+							<span>
+								<button type="submit" onclick="takeValue()" class="btn btn-danger btn-sm" title="Update">Update</button>
+							</span>
+							<input type="hidden" name="productId" value="@order.Id">
+							<input type="hidden" name ="quantity">
+						</form>
 					</td>
 					<td class="cart-delete text-center">
 						<form method="post" asp-controller="Carts" asp-action="Delete">
@@ -100,3 +110,10 @@
 		</div>
 	</div>		
 </div>
+
+<script>
+	function takeValue() {
+		let quantity = document.querySelector('input[name="qtybutton"]').value;
+		document.querySelector('input[name="quantity"]').value = quantity;
+	}
+</script>
