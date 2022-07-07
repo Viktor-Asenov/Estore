@@ -11,3 +11,4 @@ Used technoloqies:
 - CSS
 - Bootstrap
 - JavaScript
+- AJAX
