@@ -39,10 +39,10 @@
                 throw new NullReferenceException();
             }
 
-            var TEST = this.context.ProductTags
-                .Where(pt => pt.TagId == tag.Id)
-                .To<TagProductViewModel>()
-                .ToList();
+            //var TEST = this.context.ProductTags
+            //    .Where(pt => pt.TagId == tag.Id)
+            //    .To<TagProductViewModel>()
+            //    .ToList();
 
             var tagProducts = await this.context.ProductTags
                 .Where(pt => pt.TagId == tag.Id)

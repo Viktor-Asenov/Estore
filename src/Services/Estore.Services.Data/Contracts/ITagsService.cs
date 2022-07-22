@@ -1,8 +1,9 @@
 ﻿namespace Estore.Services.Data.Contracts
 {
-    using Estore.Web.ViewModels.Tags;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    using Estore.Web.ViewModels.Tags;
 
     public interface ITagsService
     {
